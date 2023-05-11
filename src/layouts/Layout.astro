@@ -13,6 +13,12 @@ const { title } = Astro.props
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/mylogo.ico' />
     <meta name='generator' content={Astro.generator} />
+    <meta name='description' content='まなさすの創作保管庫' />
+    <meta property='og:site_name' content='北極の とある倉庫' />
+    <meta property='og:title' content={title} />
+    <meta property='og:url' content='https://novel.manasas.dev' />
+    <meta property='og:description' content='まなさすの創作保管庫' />
+    <meta property='og:image' content='https://novel.manasas.dev/bg/top.png' />
     <title>{title}</title>
   </head>
   <body>
