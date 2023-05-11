@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title='Welcome to Astro.'>
+  <main>
+    <div class='inner'>
+      <div class='card'>
+        <h1>北極の とある倉庫</h1>
+        <p>まなさすの創作まとめサイト。</p>
+        <hr />
+        <h2>Novel</h2>
+        <h3>水のたまゆら</h3>
+        <ul>
+          <li><a href='./novel/tamayura/abstract'>はじまり</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style lang='scss'>
+  h1 {
+    text-align: center;
+  }
+  hr {
+    width: 75%;
+  }
+  .card {
+    background: rgba(181, 184, 199, 0.9);
+    max-width: 980px;
+    width: calc(100vw - 24px * 4);
+    margin: 0 auto;
+    font-size: 1.2rem;
+    padding: 24px;
+    border-radius: 8px;
+  }
+  .inner {
+    padding: 24px;
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    position: relative;
+    background: rgba(3, 7, 19, 1);
+
+    &::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('/bg/top.png') no-repeat center bottom;
+      background-size: contain;
+      z-index: -2;
+      opacity: 1;
+    }
+    &::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(
+        rgba(3, 7, 19, 1) calc(100vh - 100vw * 0.95),
+        rgba(3, 7, 19, 0) calc(100vh - 100vw * 0.7)
+      );
+      z-index: -1;
+      opacity: 1;
+    }
+  }
+</style>
