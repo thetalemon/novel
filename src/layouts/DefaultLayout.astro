@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Card from '../components/Card.astro'
+import ReturnButton from '../components/ReturnButton.astro'
+export interface Props {
+  title: string
+  cardTextColor?: string
+  cardBgColor?: string
+  bgColor?: string
+  bgUrl?: string
+  isTop?: boolean
+}
+
+const { title, cardTextColor, cardBgColor, bgColor, bgUrl, isTop } = Astro.props
+---
+
+<Layout title={title}>
+  <main style=`--bgColor: ${bgColor}; --bgUrl: ${bgUrl}`>
+    <div class='inner'>
+      <Card textColor={cardTextColor} bgColor={cardBgColor}>
+        <slot />
+      </Card>
+      {!isTop && <ReturnButton />}
+    </div>
+  </main>
+</Layout>
+
+<style lang='scss'>
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 1;
+    position: relative;
+    background: rgba(var(--bgColor), 1);
+
+    .inner {
+      padding: 24px 0;
+      width: calc(min(min(100vh, 100vw), 1024px) - 48px);
+    }
+
+    &::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--bgUrl) no-repeat center bottom;
+      background-size: contain;
+      z-index: -2;
+      opacity: 1;
+    }
+    &::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(
+        rgba(var(--bgColor), 1) calc(100vh - 100vw * 0.95),
+        rgba(var(--bgColor), 0) calc(100vh - 100vw * 0.7)
+      );
+      z-index: -1;
+      opacity: 1;
+    }
+  }
+</style>

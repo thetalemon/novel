@@ -1,74 +1,55 @@
 ---
-import Layout from '../../../layouts/Layout.astro'
+import DefaultLayout from '../../../layouts/DefaultLayout.astro'
 ---
 
-<Layout title='水のたまゆら はじまり'>
-  <main>
-    <div class='inner'>
-      <div class='card'>
-        <p>世界はゆっくりと水に沈んでいった。</p>
-        <p>
-          人々も世界がゆっくりと水に沈んでいることは認識していた。<br />
-          認識していたからこそ、人々はゆっくりと、そんな世界に適応していった。
-        </p>
-        <p>
-          ビルが1階から沈みゆくのであれば、上へ上へと居を移せばいい。<br />
-          低い土地が沈むのであれば、高い土地へと居を移せばいい。<br />
-          そして、あまりにもゆっくりだったから、人々は、今までの住まいのまま、水の下で住まう技術も、作ることができた。<br
-          />
-        </p>
-        <p>
-          水の上へ、下へ。<br />
-          人々は分かれて暮らした。
-        </p>
-        <p>
-          水の下はしっかりとインフラが整備されている。<br />
-          水の上よりもお金が必要だが、あれこれ機械があり、人がいる分、仕事も多い。
-        </p>
-        <p>
-          水の上は打ち捨てられたような生活だ。<br />
-          それでもここには日光があり、空気がある。
-        </p>
-        <p>
-          どちらが良い、などない。<br />
-          どちらだって昔とは違う。<br />
-          どちらかを選ぶしかない。
-        </p>
-        <p>これはそんな世界で暮らす、人々の話。</p>
-      </div>
-      <a href='/'><img src='/icon/return.gif' /></a>
-    </div>
-  </main>
-</Layout>
+<DefaultLayout
+  title='水のたまゆら はじまり'
+  cardTextColor={'rgb(9, 51, 58);'}
+  cardBgColor={'rgba(222, 250, 255, 0.8);'}
+  bgColor={'60, 211, 238'}
+  bgUrl={"url('/bg/tamayura/abstract.jpg')"}
+>
+  <p>世界はゆっくりと水に沈んでいった。</p>
+  <p>
+    人々も世界がゆっくりと水に沈んでいることは認識していた。<br />
+    認識していたからこそ、人々はゆっくりと、そんな世界に適応していった。
+  </p>
+  <p>
+    ビルが1階から沈みゆくのであれば、上へ上へと居を移せばいい。<br />
+    低い土地が沈むのであれば、高い土地へと居を移せばいい。<br />
+    そして、あまりにもゆっくりだったから、人々は、今までの住まいのまま、水の下で住まう技術も、作ることができた。<br
+    />
+  </p>
+  <p>
+    水の上へ、下へ。<br />
+    人々は分かれて暮らした。
+  </p>
+  <p>
+    水の下はしっかりとインフラが整備されている。<br />
+    水の上よりもお金が必要だが、あれこれ機械があり、人がいる分、仕事も多い。
+  </p>
+  <p>
+    水の上は打ち捨てられたような生活だ。<br />
+    それでもここには日光があり、空気がある。
+  </p>
+  <p>
+    どちらが良い、などない。<br />
+    どちらだって昔とは違う。<br />
+    どちらかを選ぶしかない。
+  </p>
+  <p>これはそんな世界で暮らす、人々の話。</p>
+</DefaultLayout>
 
 <style lang='scss'>
-  .card {
-    background: rgba(222, 250, 255, 0.8);
-    max-width: 980px;
-    width: calc(100% - 48px);
-    margin: 0 auto;
-    font-size: 1.2rem;
-    padding: 24px;
-    border-radius: 8px;
-    color: rgb(9, 51, 58);
-  }
-  a {
-    display: block;
-    margin-top: 42px;
-    text-align: center;
-    img {
-      width: 42px;
-      height: 42px;
-    }
-  }
   .inner {
-    padding: 24px;
+    padding: 24px 0;
+    width: calc(min(min(100vh, 100vw), 1024px) - 48px);
   }
   main {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
     z-index: 1;
     position: relative;
