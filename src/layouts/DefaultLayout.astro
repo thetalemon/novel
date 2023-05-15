@@ -11,7 +11,14 @@ export interface Props {
   isTop?: boolean
 }
 
-const { title, cardTextColor, cardBgColor, bgColor, bgUrl, isTop } = Astro.props
+const {
+  title,
+  cardTextColor = 'rgb(9, 51, 58);',
+  cardBgColor = 'rgba(181, 184, 199, 0.9);',
+  bgColor = '3, 7, 19',
+  bgUrl = "url('/bg/top.webp')",
+  isTop = false,
+} = Astro.props
 ---
 
 <Layout title={title}>

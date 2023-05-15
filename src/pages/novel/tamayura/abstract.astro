@@ -7,7 +7,7 @@ import DefaultLayout from '../../../layouts/DefaultLayout.astro'
   cardTextColor={'rgb(9, 51, 58);'}
   cardBgColor={'rgba(222, 250, 255, 0.8);'}
   bgColor={'60, 211, 238'}
-  bgUrl={"url('/bg/tamayura/abstract.jpg')"}
+  bgUrl={"url('/bg/tamayura/abstract.webp')"}
 >
   <p>世界はゆっくりと水に沈んでいった。</p>
   <p>
@@ -39,47 +39,3 @@ import DefaultLayout from '../../../layouts/DefaultLayout.astro'
   </p>
   <p>これはそんな世界で暮らす、人々の話。</p>
 </DefaultLayout>
-
-<style lang='scss'>
-  .inner {
-    padding: 24px 0;
-    width: calc(min(min(100vh, 100vw), 1024px) - 48px);
-  }
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh;
-    z-index: 1;
-    position: relative;
-    background: rgba(60, 211, 238, 1);
-
-    &::after {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: url('/bg/tamayura/abstract.jpg') no-repeat center bottom;
-      background-size: contain;
-      z-index: -2;
-      opacity: 1;
-    }
-    &::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(
-        rgba(60, 211, 238, 1) calc(100vh - 100vw * 0.95),
-        rgba(60, 211, 238, 0) calc(100vh - 100vw * 0.7)
-      );
-      z-index: -1;
-      opacity: 1;
-    }
-  }
-</style>
