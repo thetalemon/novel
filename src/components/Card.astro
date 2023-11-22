@@ -1,17 +1,17 @@
 ---
 export interface Props {
-  textColor?: string
-  bgColor?: string
+  textColor?: string;
+  bgColor?: string;
 }
 
-const { textColor, bgColor } = Astro.props
+const { textColor, bgColor } = Astro.props;
 
-const TEXT_COLOR = textColor ? `color: ${textColor};` : ''
-const BG_COLOR = bgColor ? ` background: ${bgColor};` : ''
-const STYLE = `${TEXT_COLOR} ${BG_COLOR}`
+const TEXT_COLOR = textColor ? `color: ${textColor};` : "";
+const BG_COLOR = bgColor ? ` background: ${bgColor};` : "";
+const STYLE = `${TEXT_COLOR} ${BG_COLOR}`;
 ---
 
-<div class='card' style=`${STYLE}`>
+<div class="card" style=`${STYLE}`>
   <slot />
 </div>
 

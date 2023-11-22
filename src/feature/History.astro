@@ -1,8 +1,8 @@
 ---
-import { HISTORY_LIST } from '../data/history'
+import { HISTORY_LIST } from "../data/history";
 ---
 
-<ul class='root'>
+<ul class="root">
   {
     HISTORY_LIST.map(({ date, title, href }) => (
       <li>
@@ -20,7 +20,7 @@ import { HISTORY_LIST } from '../data/history'
   }
 </ul>
 
-<style lang='scss'>
+<style lang="scss">
   .root {
     display: flex;
     flex-direction: column;
