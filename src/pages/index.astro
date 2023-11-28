@@ -1,6 +1,7 @@
 ---
 import DefaultLayout from "../layouts/DefaultLayout.astro";
 import History from "../feature/History.astro";
+import NovelList from "../components/NovelList.astro";
 ---
 
 <DefaultLayout
@@ -18,12 +19,7 @@ import History from "../feature/History.astro";
   <h2>-- 更新履歴 --</h2>
   <History />
   <hr />
-  <h2>-- Novel --</h2>
-  <h3>水のたまゆら</h3>
-  <ul class="novelList">
-    <li><a href="./novel/tamayura/abstract">はじまり</a></li>
-    <li><a href="./novel/tamayura/rainy">瀬知と司ととある雨の日</a></li>
-  </ul>
+  <NovelList />
   <hr />
   <p>このサイトの背景はBing Image Creatorで生成しています</p>
   <p>
@@ -37,7 +33,6 @@ import History from "../feature/History.astro";
   <p>リンクフリー・アンリンクフリー・直リンクNG</p>
   <p><img src="/banner.png" /></p>
 
-  <hr />
   <p>
     <a href="https://manasas.dev" rel="me" target="_blank"
       ><img src="/icon/profile.gif" /></a
@@ -51,10 +46,5 @@ import History from "../feature/History.astro";
   }
   hr {
     width: 75%;
-  }
-  .novelList {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
   }
 </style>
