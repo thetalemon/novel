@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 export interface Props {
   title: string;
 }
@@ -6,25 +7,6 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="まなさすの創作保管庫" />
-    <meta property="og:site_name" content="北極の とある倉庫" />
-    <meta property="og:title" content={title} />
-    <meta property="og:url" content="https://novel.manasas.dev" />
-    <meta property="og:description" content="まなさすの創作保管庫" />
-    <meta property="og:image" content="https://novel.manasas.dev/bg/top.png" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <slot />
-  </body>
-</html>
 <style is:global lang="scss">
   html {
     font-family: system-ui, sans-serif;
@@ -53,16 +35,28 @@ const { title } = Astro.props;
   h6,
   p {
     text-align: center;
+    margin: 0.25rem 0;
+  }
+  h1,
+  h2 {
+    margin: 0 0 0.5rem;
+  }
+  h3 {
+    margin: 0 0 0.5rem;
   }
   hr {
     border: none;
     border-top: 2px double #f0f0ff;
-    margin: 4px auto;
+    margin: 1.5rem auto;
   }
   ul {
     list-style: none;
     padding: 0;
     text-align: center;
+    margin: 0;
+  }
+  li {
+    margin: 0.5rem 0;
   }
   a {
     color: #367da7;
@@ -71,3 +65,23 @@ const { title } = Astro.props;
     }
   }
 </style>
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="まなさすの創作保管庫" />
+    <meta property="og:site_name" content="北極の とある倉庫" />
+    <meta property="og:title" content={title} />
+    <meta property="og:url" content="https://novel.manasas.dev" />
+    <meta property="og:description" content="まなさすの創作保管庫" />
+    <meta property="og:image" content="https://novel.manasas.dev/bg/top.png" />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
