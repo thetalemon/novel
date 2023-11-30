@@ -16,7 +16,7 @@ import NovelList from "../components/NovelList.astro";
   <p>まなさすの創作まとめサイト。</p>
   <p>🌟 このサイトは性別を超越した装いと愛に溢れています 🌟</p>
   <hr />
-  <h2>-- 更新履歴 --</h2>
+  <h2>更新履歴</h2>
   <History />
   <hr />
   <NovelList />
@@ -29,11 +29,11 @@ import NovelList from "../components/NovelList.astro";
   </p>
 
   <hr />
-  <h4>バナー</h4>
+  <h3>バナー</h3>
   <p>リンクフリー・アンリンクフリー・直リンクNG</p>
   <p><img src="/banner.png" /></p>
 
-  <p>
+  <p class="link">
     <a href="https://manasas.dev" rel="me" target="_blank"
       ><img src="/icon/profile.gif" /></a
     >
@@ -46,5 +46,8 @@ import NovelList from "../components/NovelList.astro";
   }
   hr {
     width: 75%;
+  }
+  .link {
+    margin-top: 2rem;
   }
 </style>
