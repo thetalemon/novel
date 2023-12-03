@@ -1,0 +1,45 @@
+---
+import Card from "../components/Card.astro";
+import ReturnButton from "../components/ReturnButton.astro";
+import NovelList from "../components/NovelList.astro";
+export interface Props {
+  textColor?: string;
+  bgColor?: string;
+}
+
+const { textColor = "rgb(9, 51, 58);", bgColor = "rgba(181, 184, 199, 0.9);" } =
+  Astro.props;
+---
+
+<style lang="scss">
+  .menuWrapper {
+    margin-bottom: 40px;
+    width: calc(min(min(100vh, 100vw), 620px) - 24px);
+    @media screen and (min-width: 1000px) {
+      width: fit-content;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-40%)
+        translateX(calc(min(min(100vh, 100vw), 620px) / 3));
+      display: flex;
+      align-items: center;
+    }
+    .menu {
+      width: 100%;
+      flex-shrink: 0;
+      @media screen and (min-width: 1000px) {
+        width: 240px;
+      }
+    }
+  }
+</style>
+
+<div class="menuWrapper">
+  <div class="menu">
+    <Card textColor={textColor} bgColor={bgColor}>
+      <NovelList isMenu={true} />
+    </Card>
+    <ReturnButton />
+  </div>
+</div>
