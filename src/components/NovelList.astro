@@ -1,11 +1,12 @@
 ---
+import { NOVEL_LIST } from "@/data/novel";
+
 export interface Props {
   bgColor?: string;
   isMenu?: boolean;
 }
 
 const { bgColor, isMenu = false } = Astro.props;
-import { NOVEL_LIST } from "../data/novel";
 ---
 
 <script>
