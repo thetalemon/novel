@@ -5,9 +5,7 @@ export interface Props {
 }
 
 const { bgColor, isMenu = false } = Astro.props;
-
-const BG_COLOR = bgColor ? ` background: ${bgColor};` : "";
-const STYLE = `${BG_COLOR}`;
+import { NOVEL_LIST } from "../data/novel";
 ---
 
 <script>
@@ -82,12 +80,20 @@ const STYLE = `${BG_COLOR}`;
   }
 </style>
 
-<div class={isMenu && "menu"} style=`--bgColor: ${bgColor};}`>
+<div class={isMenu ? "menu" : ""} style=`--bgColor: ${bgColor};}`>
   <h2>Novel</h2>
-  <h3>水のたまゆら</h3>
-
-  <ul class="novelList">
-    <li><a href="/novel/tamayura/abstract">はじまり</a></li>
-    <li><a href="/novel/tamayura/rainy">瀬知と司ととある雨の日</a></li>
-  </ul>
+  {
+    NOVEL_LIST.map(({ title, stories }) => (
+      <>
+        <h3>{title}</h3>
+        <ul class="novelList">
+          {stories.map(({ title, href }) => (
+            <li>
+              <a href={href}>{title}</a>
+            </li>
+          ))}
+        </ul>
+      </>
+    ))
+  }
 </div>
