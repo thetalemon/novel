@@ -11,10 +11,6 @@ const BG_COLOR = bgColor ? ` background: ${bgColor};` : "";
 const STYLE = `${TEXT_COLOR} ${BG_COLOR}`;
 ---
 
-<div class="card" style=`${STYLE}`>
-  <slot />
-</div>
-
 <style>
   .card {
     background: rgba(255, 255, 255, 0.8);
@@ -25,3 +21,7 @@ const STYLE = `${TEXT_COLOR} ${BG_COLOR}`;
     color: rgb(55, 55, 55);
   }
 </style>
+
+<div class="card" style=`${STYLE}`>
+  <slot />
+</div>

@@ -22,30 +22,6 @@ const {
 } = Astro.props;
 ---
 
-<Layout title={title}>
-  <main style=`--bgColor: ${bgColor}; --bgUrl: ${bgUrl}`>
-    <div class={`wrapper ${isTop ? "isTop" : ""}`}>
-      <div class="inner">
-        <Card textColor={cardTextColor} bgColor={cardBgColor}>
-          <slot />
-        </Card>
-      </div>
-      {
-        !isTop && (
-          <div class="menuWrapper">
-            <div class="menu">
-              <Card textColor={cardTextColor} bgColor={cardBgColor}>
-                <NovelList isMenu={true} />
-              </Card>
-              <ReturnButton />
-            </div>
-          </div>
-        )
-      }
-    </div>
-  </main>
-</Layout>
-
 <style lang="scss">
   main {
     display: flex;
@@ -132,3 +108,27 @@ const {
     }
   }
 </style>
+
+<Layout title={title}>
+  <main style=`--bgColor: ${bgColor}; --bgUrl: ${bgUrl}`>
+    <div class={`wrapper ${isTop ? "isTop" : ""}`}>
+      <div class="inner">
+        <Card textColor={cardTextColor} bgColor={cardBgColor}>
+          <slot />
+        </Card>
+      </div>
+      {
+        !isTop && (
+          <div class="menuWrapper">
+            <div class="menu">
+              <Card textColor={cardTextColor} bgColor={cardBgColor}>
+                <NovelList isMenu={true} />
+              </Card>
+              <ReturnButton />
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </main>
+</Layout>

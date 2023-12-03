@@ -2,6 +2,19 @@
 import { HISTORY_LIST } from "../data/history";
 ---
 
+<style lang="scss">
+  .root {
+    max-width: 75%;
+    margin: 1em auto;
+    li {
+      display: flex;
+      p {
+        margin: 0;
+      }
+    }
+  }
+</style>
+
 <ul class="root">
   {
     HISTORY_LIST.map(({ date, title, href }) => (
@@ -19,16 +32,3 @@ import { HISTORY_LIST } from "../data/history";
     ))
   }
 </ul>
-
-<style lang="scss">
-  .root {
-    max-width: 75%;
-    margin: 1em auto;
-    li {
-      display: flex;
-      p {
-        margin: 0;
-      }
-    }
-  }
-</style>
