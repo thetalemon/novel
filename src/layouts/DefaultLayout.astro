@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Card from "@/components/Card.astro";
 import Menu from "@/components/Menu.astro";
+import { styleHelper } from "@/utils/styleHelper";
 
 export interface Props {
   title: string;
@@ -21,7 +22,12 @@ const {
   isTop = false,
 } = Astro.props;
 
-const STYLE = `--bgColor: ${bgColor}; --bgUrl: ${bgUrl}; --cardTextColor: ${cardTextColor}; --cardBgColor: ${cardBgColor}; `;
+const STYLE = styleHelper([
+  { name: "bgColor", value: bgColor },
+  { name: "bgUrl", value: bgUrl },
+  { name: "cardTextColor", value: cardTextColor },
+  { name: "cardBgColor", value: cardBgColor },
+]);
 ---
 
 <style lang="scss">
@@ -92,6 +98,7 @@ const STYLE = `--bgColor: ${bgColor}; --bgUrl: ${bgUrl}; --cardTextColor: ${card
 <Layout title={title}>
   <main style={STYLE}>
     <div class={`wrapper ${isTop ? "isTop" : ""}`}>
+      {STYLE}
       <div class="inner">
         <Card>
           <slot />
