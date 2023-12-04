@@ -10,8 +10,9 @@ export interface Props {
   cardBgColor?: string;
   bgColor?: string;
   bgUrl?: string;
-  isTop?: boolean;
 }
+
+const isTop = Astro.url.pathname === "/";
 
 const {
   title,
@@ -19,7 +20,6 @@ const {
   cardBgColor = "rgba(181, 184, 199, 0.9);",
   bgColor = "3, 7, 19",
   bgUrl = "/bg/top.webp",
-  isTop = false,
 } = Astro.props;
 
 const STYLE = styleHelper([
