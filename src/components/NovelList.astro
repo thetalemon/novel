@@ -1,34 +1,8 @@
 ---
 import { NOVEL_LIST } from "@/data/novel";
 
-export interface Props {
-  bgColor?: string;
-  isMenu?: boolean;
-}
-
-const { bgColor, isMenu = false } = Astro.props;
+const isMenu = Astro.url.pathname !== "/";
 ---
-
-<script>
-  const a = document.querySelectorAll("a");
-  a.forEach((element) => {
-    if (element.pathname === location.pathname) {
-      if (element.parentElement?.classList) {
-        element.parentElement.classList.add("current");
-      }
-    }
-  });
-  document.addEventListener("astro:after-swap", () => {
-    const a = document.querySelectorAll("a");
-    a.forEach((element) => {
-      if (element.pathname === location.pathname) {
-        if (element.parentElement?.classList) {
-          element.parentElement.classList.add("current");
-        }
-      }
-    });
-  });
-</script>
 
 <style lang="scss">
   .menu {
@@ -62,12 +36,6 @@ const { bgColor, isMenu = false } = Astro.props;
           display: flex;
           align-items: center;
           margin-left: 0;
-          a {
-            text-decoration: none;
-            color: inherit;
-            display: inline-flex;
-            cursor: default;
-          }
 
           &::before {
             content: "";
@@ -92,11 +60,15 @@ const { bgColor, isMenu = false } = Astro.props;
       <>
         <h3>{title}</h3>
         <ul class="novelList">
-          {stories.map(({ title, href }) => (
-            <li>
-              <a href={href}>{title}</a>
-            </li>
-          ))}
+          {stories.map(({ title, href }) => {
+            return Astro.url.pathname === href ? (
+              <li class="current">{title}</li>
+            ) : (
+              <li>
+                <a href={href}>{title}</a>
+              </li>
+            );
+          })}
         </ul>
       </>
     ))
