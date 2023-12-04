@@ -2,13 +2,6 @@
 import Card from "@/components/Card.astro";
 import ReturnButton from "@/components/ReturnButton.astro";
 import NovelList from "@/components/NovelList.astro";
-export interface Props {
-  textColor?: string;
-  bgColor?: string;
-}
-
-const { textColor = "rgb(9, 51, 58);", bgColor = "rgba(181, 184, 199, 0.9);" } =
-  Astro.props;
 ---
 
 <style lang="scss">
@@ -37,7 +30,7 @@ const { textColor = "rgb(9, 51, 58);", bgColor = "rgba(181, 184, 199, 0.9);" } =
 
 <div class="menuWrapper">
   <div class="menu">
-    <Card textColor={textColor} bgColor={bgColor}>
+    <Card>
       <NovelList isMenu={true} />
     </Card>
     <ReturnButton />

@@ -20,6 +20,8 @@ const {
   bgUrl = "url('/bg/top.webp')",
   isTop = false,
 } = Astro.props;
+
+const STYLE = `--bgColor: ${bgColor}; --bgUrl: ${bgUrl}; --cardTextColor: ${cardTextColor}; --cardBgColor: ${cardBgColor}; `;
 ---
 
 <style lang="scss">
@@ -88,14 +90,14 @@ const {
 </style>
 
 <Layout title={title}>
-  <main style=`--bgColor: ${bgColor}; --bgUrl: ${bgUrl}`>
+  <main style={STYLE}>
     <div class={`wrapper ${isTop ? "isTop" : ""}`}>
       <div class="inner">
-        <Card textColor={cardTextColor} bgColor={cardBgColor}>
+        <Card>
           <slot />
         </Card>
       </div>
-      {!isTop && <Menu textColor={cardTextColor} bgColor={cardBgColor} />}
+      {!isTop && <Menu />}
     </div>
   </main>
 </Layout>
