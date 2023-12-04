@@ -18,13 +18,13 @@ const {
   cardTextColor = "rgb(9, 51, 58);",
   cardBgColor = "rgba(181, 184, 199, 0.9);",
   bgColor = "3, 7, 19",
-  bgUrl = "url('/bg/top.webp')",
+  bgUrl = "/bg/top.webp",
   isTop = false,
 } = Astro.props;
 
 const STYLE = styleHelper([
   { name: "bgColor", value: bgColor },
-  { name: "bgUrl", value: bgUrl },
+  { name: "bgUrl", value: `url('${bgUrl}')` },
   { name: "cardTextColor", value: cardTextColor },
   { name: "cardBgColor", value: cardBgColor },
 ]);
@@ -98,7 +98,6 @@ const STYLE = styleHelper([
 <Layout title={title}>
   <main style={STYLE}>
     <div class={`wrapper ${isTop ? "isTop" : ""}`}>
-      {STYLE}
       <div class="inner">
         <Card>
           <slot />
