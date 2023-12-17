@@ -1,0 +1,36 @@
+---
+import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import { getDetailNovelList } from "../../lib/newt/novel";
+
+export const getStaticPaths = async () => {
+  const novels = await getDetailNovelList();
+  return novels.map((novel) => ({
+    params: { slug: novel.slug },
+    props: { novel },
+  }));
+};
+const { novel } = Astro.props;
+---
+
+<DefaultLayout
+  title={novel.title}
+  cardTextColor={novel.textColor}
+  cardBgColor={novel.cardBgColor}
+  cardBgColorAlpha={novel.cardBgColorAlpha}
+  bgColor={novel.bgColor}
+  bg={novel.bg}
+>
+  <article set:html={novel.body} />
+</DefaultLayout>
+
+<style lang="scss">
+  h1 {
+    text-align: center;
+  }
+  hr {
+    width: 75%;
+  }
+  .link {
+    margin-top: 2rem;
+  }
+</style>
