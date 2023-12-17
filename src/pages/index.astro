@@ -2,6 +2,9 @@
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 import History from "@/feature/History.astro";
 import NovelList from "@/feature/NovelList.astro";
+import Icon from "@/components/Icon.astro";
+import { Image } from "astro:assets";
+import BannerImage from "./banner.png";
 ---
 
 <DefaultLayout title="北極の とある倉庫">
@@ -24,11 +27,11 @@ import NovelList from "@/feature/NovelList.astro";
   <hr />
   <h3>バナー</h3>
   <p>リンクフリー・アンリンクフリー・直リンクNG</p>
-  <p><img src="/banner.png" /></p>
+  <p><Image src={BannerImage} alt="バナー" /></p>
 
   <p class="link">
     <a href="https://manasas.dev" rel="me" target="_blank"
-      ><img src="/icon/profile.gif" /></a
+      ><Icon type="profile" /></a
     >
   </p>
 </DefaultLayout>
@@ -41,6 +44,6 @@ import NovelList from "@/feature/NovelList.astro";
     width: 75%;
   }
   .link {
-    margin-top: 2rem;
+    margin-top: 4rem;
   }
 </style>

@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import ReturnImage from "./icons/return.gif";
+import ProfileImage from "./icons/profile.gif";
+
+export interface Props {
+  type: "return" | "profile";
+}
+
+const { type } = Astro.props;
+
+const item = (function () {
+  switch (type) {
+    case "return":
+      return { src: ReturnImage, alt: "トップに戻る" };
+    case "profile":
+      return { src: ProfileImage, alt: "メインサイトに行く" };
+  }
+})();
+---
+
+<style lang="scss">
+  img {
+    width: 42px;
+    height: 42px;
+  }
+</style>
+
+<Image src={item.src} alt="item.alt" />
