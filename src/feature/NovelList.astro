@@ -1,5 +1,6 @@
 ---
-import { getSimpleNovelList, getSeriesList } from "../lib/newt";
+import { getSimpleNovelList } from "@/lib/newt/novel";
+import { getSeriesList } from "@/lib/newt/series";
 
 const novels = await getSimpleNovelList();
 const seriesList = await getSeriesList();

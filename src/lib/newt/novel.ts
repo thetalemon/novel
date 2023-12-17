@@ -1,4 +1,5 @@
-import { createClient } from "newt-client-js";
+import { newtClient, APP_UID } from "./general";
+import type { NewtImage } from "./general";
 
 interface SimpleNovelListItem {
   title: string;
@@ -7,14 +8,6 @@ interface SimpleNovelListItem {
     title: string;
     slug: string;
   };
-}
-
-export interface NewtImage {
-  altText: string;
-  src: string;
-  height: number;
-  width: number;
-  fileType: string;
 }
 
 interface DetailNovelListItem extends SimpleNovelListItem {
@@ -26,27 +19,10 @@ interface DetailNovelListItem extends SimpleNovelListItem {
   cardBgColorAlpha: number;
 }
 
-interface SeriesListItem {
-  title: string;
-  slug: string;
-}
-
-export const newtClient = createClient({
-  spaceUid: import.meta.env.NEWT_SPACE_UID,
-  token: import.meta.env.NEWT_CDN_API_TOKEN,
-  apiType: "cdn",
-});
-
-const NOVEL_APP_UID = "novel";
 const NOVEL_MODEL_UID = "novel";
-const SERIES_MODEL_UID = "series";
 const NOVEL_UIDS = {
-  appUid: NOVEL_APP_UID,
+  appUid: APP_UID,
   modelUid: NOVEL_MODEL_UID,
-};
-const SERIES_UIDS = {
-  appUid: NOVEL_APP_UID,
-  modelUid: SERIES_MODEL_UID,
 };
 
 export const getSimpleNovelList = async (): Promise<SimpleNovelListItem[]> => {
@@ -78,15 +54,4 @@ export const getDetailNovelList = async (): Promise<DetailNovelListItem[]> => {
   });
 
   return novels;
-};
-
-export const getSeriesList = async (): Promise<SeriesListItem[]> => {
-  const { items: series } = await newtClient.getContents<SeriesListItem>({
-    ...SERIES_UIDS,
-    query: {
-      select: ["title", "slug"],
-    },
-  });
-
-  return series;
 };
