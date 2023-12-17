@@ -3,6 +3,8 @@ import Layout from "@/layouts/Layout.astro";
 import Card from "@/components/Card.astro";
 import Menu from "@/components/Menu.astro";
 import { styleHelper } from "@/utils/styleHelper";
+import { Image } from "astro:assets";
+import defaultBg from "./top.png";
 
 export interface Props {
   title: string;
@@ -66,18 +68,22 @@ const STYLE = styleHelper([
       }
     }
 
-    &::after {
-      content: "";
+    .bgWrapper {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: var(--bgUrl) no-repeat center bottom;
-      background-size: contain;
+      display: flex;
+      align-items: center;
       z-index: -2;
-      opacity: 1;
+      .bg {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+      }
     }
+
     &::before {
       content: "";
       position: fixed;
@@ -104,6 +110,9 @@ const STYLE = styleHelper([
         </Card>
       </div>
       {!isTop && <Menu />}
+    </div>
+    <div class="bgWrapper">
+      <Image src={defaultBg} alt="背景" class="bg" />
     </div>
   </main>
 </Layout>
