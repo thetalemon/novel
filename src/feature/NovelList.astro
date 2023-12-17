@@ -70,7 +70,7 @@ const isMenu = Astro.url.pathname !== "/";
         <h3>{item.series.title}</h3>
         <ul class="novelList">
           {item.novels.map((novel) => {
-            const path = `/novel/${novel.slug}`;
+            const path = `/novel/${novel.slug}/`;
             return Astro.url.pathname === path ? (
               <li class="current">{novel.title}</li>
             ) : (
