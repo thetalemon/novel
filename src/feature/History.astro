@@ -1,5 +1,14 @@
 ---
-import { HISTORY_LIST } from "../data/history";
+import { getHistoryList } from "@/lib/newt/notify";
+import { format } from "date-fns";
+import ja from "date-fns/locale/ja/index.js";
+const formatDate = (value: string) =>
+  format(new Date(value), "yyyy-MM-dd", {
+    locale: ja,
+  });
+
+const historyList = await getHistoryList();
+console.log(historyList);
 ---
 
 <style lang="scss">
@@ -17,15 +26,16 @@ import { HISTORY_LIST } from "../data/history";
 
 <ul class="root">
   {
-    HISTORY_LIST.map(({ date, title, href }) => (
+    historyList.map((item) => (
       <li>
-        {href ? (
+        {item.novelLink ? (
           <p>
-            {date} <a href={href}>{title}</a>
+            {formatDate(item.date)}
+            <a href={`/novel/${item.novelLink.slug}`}>{item.title}</a>
           </p>
         ) : (
           <p>
-            {date} {title}
+            {formatDate(item.date)} {item.title}
           </p>
         )}
       </li>

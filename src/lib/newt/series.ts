@@ -1,19 +1,19 @@
 import { newtClient, APP_UID } from "./general";
 
-interface SeriesListItem {
+export interface SeriesItem {
   title: string;
   slug: string;
 }
 
-const SERIES_MODEL_UID = "series";
-const SERIES_UIDS = {
+const MODEL_UID = "series";
+const UIDS = {
   appUid: APP_UID,
-  modelUid: SERIES_MODEL_UID,
+  modelUid: MODEL_UID,
 };
 
-export const getSeriesList = async (): Promise<SeriesListItem[]> => {
-  const { items: series } = await newtClient.getContents<SeriesListItem>({
-    ...SERIES_UIDS,
+export const getSeriesList = async (): Promise<SeriesItem[]> => {
+  const { items: series } = await newtClient.getContents<SeriesItem>({
+    ...UIDS,
     query: {
       select: ["title", "slug"],
     },

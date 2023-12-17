@@ -1,6 +1,6 @@
 ---
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
-import { getDetailNovelList } from "../../lib/newt";
+import { getDetailNovelList } from "../../lib/newt/novel";
 
 export const getStaticPaths = async () => {
   const novels = await getDetailNovelList();

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "astro": "3.6.1",
+    "date-fns": "^2.30.0",
     "newt-client-js": "^3.2.8"
   },
   "devDependencies": {
