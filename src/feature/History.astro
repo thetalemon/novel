@@ -30,7 +30,7 @@ const historyList = await getHistoryList();
         {item.novelLink ? (
           <p>
             {formatDate(item.date)}
-            <a href={`/novel/${item.novelLink.slug}`}>{item.title}</a>
+            <a href={`/novel/${item.novelLink.slug}/`}>{item.title}</a>
           </p>
         ) : (
           <p>

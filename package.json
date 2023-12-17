@@ -11,7 +11,7 @@
     "format": "prettier -w ."
   },
   "dependencies": {
-    "astro": "3.6.4",
+    "astro": "4.0.6",
     "date-fns": "2.30.0",
     "newt-client-js": "3.2.8"
   },
