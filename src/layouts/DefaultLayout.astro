@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Card from "@/components/Card.astro";
-import Menu from "@/components/Menu.astro";
+import Menu from "@/feature/Menu.astro";
 import type { NewtImage } from "@/lib/newt.ts";
 import { styleHelper } from "@/utils/styleHelper";
 import { Image } from "astro:assets";
@@ -26,8 +26,6 @@ const {
   bgColor = "3, 7, 19",
   bg,
 } = Astro.props;
-
-console.log(bg);
 
 const bgMetaData: ImageMetadata = bg
   ? {
