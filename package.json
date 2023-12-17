@@ -11,7 +11,8 @@
     "format": "prettier -w ."
   },
   "dependencies": {
-    "astro": "3.6.1"
+    "astro": "3.6.1",
+    "newt-client-js": "^3.2.8"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "6.13.1",

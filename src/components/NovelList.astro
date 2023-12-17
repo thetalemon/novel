@@ -1,6 +1,14 @@
 ---
-import { NOVEL_LIST } from "@/data/novel";
+import { getSimpleNovelList, getSeriesList } from "../lib/newt";
 
+const novels = await getSimpleNovelList();
+const seriesList = await getSeriesList();
+const seriesNovelList = seriesList.map((series) => {
+  return {
+    series: series,
+    novels: novels.filter((novel) => novel.series.slug === series.slug),
+  };
+});
 const isMenu = Astro.url.pathname !== "/";
 ---
 
@@ -56,16 +64,17 @@ const isMenu = Astro.url.pathname !== "/";
 <div class={isMenu ? "menu" : ""}>
   <h2>Novel</h2>
   {
-    NOVEL_LIST.map(({ title, stories }) => (
+    seriesNovelList.map((item) => (
       <>
-        <h3>{title}</h3>
+        <h3>{item.series.title}</h3>
         <ul class="novelList">
-          {stories.map(({ title, href }) => {
-            return Astro.url.pathname === href ? (
-              <li class="current">{title}</li>
+          {item.novels.map((novel) => {
+            const path = `/novels/${novel.slug}`;
+            return Astro.url.pathname === path ? (
+              <li class="current">{novel.title}</li>
             ) : (
               <li>
-                <a href={href}>{title}</a>
+                <a href={path}>{novel.title}</a>
               </li>
             );
           })}
