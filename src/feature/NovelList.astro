@@ -13,13 +13,51 @@ const seriesNovelList = seriesList.map((series) => {
 const isMenu = Astro.url.pathname !== "/";
 ---
 
+
+<div class={isMenu ? "menu" : "topMenu"}>
+  <h2>Novel</h2>
+  {
+    seriesNovelList.map((item) => (
+      <>
+        <h3>{item.series.title}</h3>
+        <ul class="novelList">
+          {item.novels.map((novel) => {
+            const path = `/novel/${novel.slug}/`;
+            return Astro.url.pathname === path ? (
+              <li class="current">{novel.title}</li>
+            ) : (
+              <li>
+                <a href={path}>{novel.title}</a>
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    ))
+  }
+</div>
+
 <style lang="scss">
+  .topMenu {
+    width: 90%;
+    margin: 0 auto;
+    li {
+      text-align: left;
+      margin-left: 1rem;
+    }
+    ul {
+      margin-bottom: 2rem;
+    }
+  }
   .menu {
     margin: 0 auto;
     font-size: 1.2rem;
     border-radius: 8px;
-    color: rgba(55, 55, 55, 0.75);
-
+    // color: rgba(55, 55, 55, 0.75);
+    
+    color: var(--cardTextColor);
+    mix-blend-mode: luminosity;
+    // color: inherit;
     h2 {
       text-align: left;
       font-size: 1.5rem;
@@ -61,26 +99,3 @@ const isMenu = Astro.url.pathname !== "/";
     }
   }
 </style>
-
-<div class={isMenu ? "menu" : ""}>
-  <h2>Novel</h2>
-  {
-    seriesNovelList.map((item) => (
-      <>
-        <h3>{item.series.title}</h3>
-        <ul class="novelList">
-          {item.novels.map((novel) => {
-            const path = `/novel/${novel.slug}/`;
-            return Astro.url.pathname === path ? (
-              <li class="current">{novel.title}</li>
-            ) : (
-              <li>
-                <a href={path}>{novel.title}</a>
-              </li>
-            );
-          })}
-        </ul>
-      </>
-    ))
-  }
-</div>

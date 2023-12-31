@@ -10,34 +10,39 @@ const formatDate = (value: string) =>
 const historyList = await getHistoryList();
 ---
 
+<ul class="root">
+  {
+    historyList.map((item) => (
+      <li>
+        <div class="date">{formatDate(item.date)} </div>
+        <div set:html={item.message}/>
+      </li>
+    ))
+  }
+</ul>
+
 <style lang="scss">
   .root {
-    max-width: 75%;
-    margin: 1em auto;
+    width: 90%;
+    margin: 0 auto;
     li {
       display: flex;
+      margin-left: 1rem;
+      gap: 0.5rem;
+      align-items: baseline;
       p {
         margin: 0;
+      }
+      .date {
+        flex-shrink: 0;
       }
     }
   }
 </style>
 
-<ul class="root">
-  {
-    historyList.map((item) => (
-      <li>
-        {item.novelLink ? (
-          <p>
-            {formatDate(item.date)}
-            <a href={`/novel/${item.novelLink.slug}/`}>{item.title}</a>
-          </p>
-        ) : (
-          <p>
-            {formatDate(item.date)} {item.title}
-          </p>
-        )}
-      </li>
-    ))
+<style lang="scss" is:global>
+  p {
+    margin: 0;
+    text-align: left;
   }
-</ul>
+</style>

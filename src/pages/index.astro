@@ -4,7 +4,7 @@ import History from "@/feature/History.astro";
 import NovelList from "@/feature/NovelList.astro";
 import Icon from "@/components/Icon.astro";
 import { Image } from "astro:assets";
-import BannerImage from "./banner.png";
+import BannerImage from "./_banner.png";
 ---
 
 <DefaultLayout title="北極の とある倉庫">
@@ -17,8 +17,8 @@ import BannerImage from "./banner.png";
   <hr />
   <NovelList />
   <hr />
-  <p>このサイトの背景はBing Image Creatorで生成しています</p>
-  <p>
+  <p>このサイトの背景はBing Image Creator or Adobe Fireflyで生成しています。
+    <br/>
     アイコンは <a href="https://neko.moo.jp/BS/" target="_blank">
       化け猫缶素材屋</a
     > さんからお借りしました
@@ -37,11 +37,12 @@ import BannerImage from "./banner.png";
 </DefaultLayout>
 
 <style lang="scss">
-  h1 {
-    text-align: center;
-  }
   hr {
-    width: 75%;
+    width: 95%;
+  }
+  h1, h2, h3, h4, h5, h6, p {
+    width: 90%;
+    margin: 0 auto;
   }
   .link {
     margin-top: 4rem;

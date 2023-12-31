@@ -16,7 +16,7 @@ const { novel } = Astro.props;
   title={novel.title}
   cardTextColor={novel.textColor}
   cardBgColor={novel.cardBgColor}
-  cardBgColorAlpha={novel.cardBgColorAlpha}
+  cardBgColorAlpha={novel.cardBgColorAlpha ? novel.cardBgColorAlpha : 0.9}
   bgColor={novel.bgColor}
   bg={novel.bg}
 >

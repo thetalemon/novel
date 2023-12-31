@@ -28,6 +28,7 @@ export const getSimpleNovelList = async (): Promise<SimpleNovelItem[]> => {
     ...UIDS,
     query: {
       select: ["title", "slug", "series"],
+      order: ["-_sys.customOrder"],
     },
   });
   return novels;
