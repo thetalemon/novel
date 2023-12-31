@@ -53,11 +53,9 @@ const isMenu = Astro.url.pathname !== "/";
     margin: 0 auto;
     font-size: 1.2rem;
     border-radius: 8px;
-    // color: rgba(55, 55, 55, 0.75);
-    
     color: var(--cardTextColor);
     mix-blend-mode: luminosity;
-    // color: inherit;
+
     h2 {
       text-align: left;
       font-size: 1.5rem;
@@ -76,7 +74,8 @@ const isMenu = Astro.url.pathname !== "/";
         text-align: left;
         margin: 0.5rem 0rem 0.5rem 1.25rem;
         a {
-          color: rgba(54, 125, 167, 0.8);
+          color: var(--cardTextColor);
+          opacity: 0.75;
         }
 
         &.current {
@@ -87,7 +86,7 @@ const isMenu = Astro.url.pathname !== "/";
           &::before {
             content: "";
             display: inline-block;
-            background: rgba(55, 55, 55, 0.75);
+            background: var(--cardTextColor);
             border-radius: 50%;
             width: 0.75rem;
             height: 0.75rem;
