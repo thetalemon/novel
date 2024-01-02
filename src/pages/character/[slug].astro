@@ -1,0 +1,41 @@
+---
+import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import { getCharacterList } from "@/lib/newt/character";
+import { Image } from "astro:assets";
+
+export const getStaticPaths = async () => {
+  const characterList = await getCharacterList();
+  return characterList.map((character) => ({
+    params: { slug: character.slug },
+    props: { character },
+  }));
+};
+const { character } = Astro.props;
+
+const img: ImageMetadata = {
+  src: character.image.src,
+  width: character.image.width,
+  height: character.image.height,
+  format: character.image.fileType.includes("webp") ? "webp" : "png",
+};
+---
+
+<DefaultLayout title={character.name}>
+  <article>
+    <Image src={img} alt={character.name} width={250} height={250} />
+    <h1>{character.name}</h1>
+    <div set:html={character.content} />
+  </article>
+</DefaultLayout>
+
+<style lang="scss">
+  img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 32px;
+  }
+</style>
