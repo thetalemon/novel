@@ -2,7 +2,7 @@ import { newtClient, APP_UID } from "./general";
 import type { NewtImage } from "./general";
 import type { SeriesItem } from "./series";
 
-interface CharacterItem {
+export interface CharacterItem {
   name: string;
   slug: string;
   image: NewtImage;

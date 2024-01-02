@@ -1,0 +1,40 @@
+---
+import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import { getIllustList } from "@/lib/newt/Illust";
+import { Image } from "astro:assets";
+
+export const getStaticPaths = async () => {
+  const illustList = await getIllustList();
+  return illustList.map((illust) => ({
+    params: { slug: illust.slug },
+    props: { illust },
+  }));
+};
+const { illust } = Astro.props;
+
+const img: ImageMetadata = {
+  src: illust.image.src,
+  width: illust.image.width,
+  height: illust.image.height,
+  format: illust.image.fileType.includes("webp") ? "webp" : "png",
+};
+---
+
+<DefaultLayout title={illust.title}>
+  <article>
+    <Image src={img} alt={illust.title} />
+    <h1>{illust.title}</h1>
+    <div set:html={illust.comment} />
+  </article>
+</DefaultLayout>
+
+<style lang="scss">
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 32px;
+  }
+</style>

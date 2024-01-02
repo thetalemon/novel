@@ -6,6 +6,7 @@ import CharacterList from "@/feature/CharacterList.astro";
 import Icon from "@/components/Icon.astro";
 import { Image } from "astro:assets";
 import BannerImage from "./_banner.png";
+import ImageList from "@/feature/ImageList.astro";
 ---
 
 <DefaultLayout title="北極の とある倉庫">
@@ -18,11 +19,14 @@ import BannerImage from "./_banner.png";
   <hr />
   <NovelList />
   <hr />
-  <CharacterList/>  
-  <hr/>
-  <p>このサイトの背景はBing Image Creator or Adobe Fireflyで生成しています。
-    <br/>
-    アイコンは <a href="https://neko.moo.jp/BS/" target="_blank">
+  <ImageList />
+  <hr />
+  <CharacterList />
+  <hr />
+  <p>
+    このサイトの背景はBing Image Creator or Adobe Fireflyで生成しています。
+    <br />
+     アイコンは <a href="https://neko.moo.jp/BS/" target="_blank">
       化け猫缶素材屋</a
     > さんからお借りしました
   </p>
@@ -43,7 +47,13 @@ import BannerImage from "./_banner.png";
   hr {
     width: 95%;
   }
-  h1, h2, h3, h4, h5, h6, p {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
     width: 90%;
     margin: 0 auto;
   }
