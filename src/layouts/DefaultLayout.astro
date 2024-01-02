@@ -43,6 +43,22 @@ const STYLE = styleHelper([
 ]);
 ---
 
+<Layout title={title}>
+  <main style={STYLE}>
+    <div class={`wrapper ${isTop ? "isTop" : ""}`}>
+      <div class="inner">
+        <Card>
+          <slot />
+        </Card>
+      </div>
+      {!isTop && <Menu />}
+    </div>
+    <div class="bgWrapper">
+      <Image src={bgMetaData} alt="背景" class="bg" />
+    </div>
+  </main>
+</Layout>
+
 <style lang="scss">
   main {
     display: flex;
@@ -113,19 +129,3 @@ const STYLE = styleHelper([
     }
   }
 </style>
-
-<Layout title={title}>
-  <main style={STYLE}>
-    <div class={`wrapper ${isTop ? "isTop" : ""}`}>
-      <div class="inner">
-        <Card>
-          <slot />
-        </Card>
-      </div>
-      {!isTop && <Menu />}
-    </div>
-    <div class="bgWrapper">
-      <Image src={bgMetaData} alt="背景" class="bg" />
-    </div>
-  </main>
-</Layout>

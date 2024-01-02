@@ -1,27 +1,27 @@
 ---
-import { getCharacterList } from "@/lib/newt/character";
+import { getIllustList } from "@/lib/newt/Illust";
 import { Image } from "astro:assets";
 
-const characterList = await getCharacterList();
+const illustList = await getIllustList();
 ---
 
 <div class="root">
-  <h2>キャラ一覧</h2>
+  <h2>イラスト一覧</h2>
   <ul>
     {
-      characterList.map((item) => {
-        const path = `/character/${item.slug}/`;
-
+      illustList.map((item) => {
+        const path = `/illust/${item.slug}/`;
         const img: ImageMetadata = {
           src: item.image.src,
           width: item.image.width,
           height: item.image.height,
           format: item.image.fileType.includes("webp") ? "webp" : "png",
         };
+
         return (
           <li>
             <a href={path}>
-              <Image src={img} alt={item.name} width={150} height={150} />
+              <Image src={img} alt={item.title} width={150} height={150} />
             </a>
           </li>
         );
@@ -35,7 +35,6 @@ const characterList = await getCharacterList();
     width: 90%;
     margin: 0 auto;
   }
-
   h2 {
     text-align: left;
     font-size: 1.5rem;
