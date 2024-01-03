@@ -1,6 +1,8 @@
 ---
 import { getHistoryList } from "@/lib/newt/notify";
+import { Image } from "astro:assets";
 import { format } from "date-fns";
+import RssIcon from "@/feature/icons/rss.svg";
 import ja from "date-fns/locale/ja/index.js";
 const formatDate = (value: string) =>
   format(new Date(value), "yyyy-MM-dd", {
@@ -10,21 +12,36 @@ const formatDate = (value: string) =>
 const historyList = await getHistoryList();
 ---
 
-<ul class="root">
-  {
-    historyList.map((item) => (
-      <li>
-        <div class="date">{formatDate(item.date)} </div>
-        <div set:html={item.message}/>
-      </li>
-    ))
-  }
-</ul>
+<div class="root">
+  <h2>
+    更新履歴 <a href="/feed" target="_blank"
+      ><Image src={RssIcon} alt="rss" /></a
+    >
+  </h2>
+  <ul>
+    {
+      historyList.map((item) => (
+        <li>
+          <div class="date">{formatDate(item.date)} </div>
+          <div set:html={item.message} />
+        </li>
+      ))
+    }
+  </ul>
+</div>
 
 <style lang="scss">
   .root {
     width: 90%;
     margin: 0 auto;
+    h2 {
+      img {
+        width: 1rem;
+        height: 1rem;
+        opacity: 0.75;
+        margin-left: 0.5rem;
+      }
+    }
     li {
       display: flex;
       margin-left: 1rem;
