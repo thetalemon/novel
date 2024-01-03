@@ -11,7 +11,6 @@ import {
 export async function GET(context) {
   const posts = await getHistoryList();
   const baseUrl = myUrl;
-  console.log(context.site);
   return rss({
     title: mySiteName,
     description: mySiteDefaultDescription,
