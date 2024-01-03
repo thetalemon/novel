@@ -1,3 +1,7 @@
+<div class="card">
+  <slot />
+</div>
+
 <style>
   .card {
     background: var(--cardBgColor);
@@ -6,9 +10,6 @@
     padding: 16px;
     border-radius: 8px;
     color: var(--cardTextColor);
+    width: calc(100% - 16px * 2);
   }
 </style>
-
-<div class="card">
-  <slot />
-</div>

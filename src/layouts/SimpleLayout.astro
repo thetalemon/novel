@@ -1,0 +1,110 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/Card.astro";
+import type { NewtImage } from "@/lib/newt/general";
+import { styleHelper } from "@/utils/styleHelper";
+import { Image } from "astro:assets";
+import defaultBg from "./top.png";
+import ReturnButton from "@/components/ReturnButton.astro";
+
+export interface Props {
+  title: string;
+  cardTextColor?: string;
+  cardBgColor?: string;
+  cardBgColorAlpha?: number;
+  bgColor?: string;
+  bg?: NewtImage;
+}
+
+const {
+  title,
+  cardTextColor = "9, 51, 58",
+  cardBgColor = "181, 184, 199",
+  cardBgColorAlpha = "0.9",
+  bgColor = "3, 7, 19",
+  bg,
+} = Astro.props;
+
+const bgMetaData: ImageMetadata = bg
+  ? {
+      src: bg.src,
+      width: bg.width,
+      height: bg.height,
+      format: bg.fileType.includes("webp") ? "webp" : "png",
+    }
+  : defaultBg;
+
+const STYLE = styleHelper([
+  { name: "bgColor", value: bgColor },
+  { name: "cardTextColor", value: `rgb(${cardTextColor})` },
+  { name: "cardBgColor", value: `rgba(${cardBgColor},${cardBgColorAlpha})` },
+]);
+---
+
+<Layout title={title}>
+  <main style={STYLE}>
+    <div class="wrapper">
+      <Card>
+        <slot />
+      </Card>
+      <ReturnButton />
+    </div>
+    <div class="bgWrapper">
+      <Image src={bgMetaData} alt="背景" class="bg" />
+    </div>
+  </main>
+</Layout>
+
+<style lang="scss">
+  main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 1;
+    position: relative;
+    background: rgba(var(--bgColor), 1);
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 90%;
+      max-width: 750px;
+    }
+
+    .bgWrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: bottom;
+      align-items: center;
+      z-index: -2;
+      .bg {
+        object-fit: scale-down;
+        object-position: center bottom;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(
+        rgba(var(--bgColor), 1) calc(100vh - 100vw * 0.95),
+        rgba(var(--bgColor), 0) calc(100vh - 100vw * 0.7)
+      );
+      z-index: -1;
+      opacity: 1;
+    }
+  }
+</style>

@@ -5,4 +5,5 @@ export default defineConfig({
   image: {
     domains: ["manas-novel.assets.newt.so"],
   },
+  site: "https://novel.manasas.dev",
 });

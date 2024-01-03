@@ -2,6 +2,8 @@ import { newtClient, APP_UID } from "./general";
 export interface NotifyItem {
   date: string;
   message: string;
+  title: string;
+  slug: string;
 }
 
 const MODEL_UID = "notify";
@@ -14,7 +16,7 @@ export const getHistoryList = async (): Promise<NotifyItem[]> => {
   const { items: series } = await newtClient.getContents<NotifyItem>({
     ...UIDS,
     query: {
-      select: ["date", "message"],
+      select: ["date", "message", "title", "slug"],
     },
   });
 
