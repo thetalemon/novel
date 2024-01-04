@@ -42,16 +42,29 @@ const historyList = await getHistoryList();
         margin-left: 0.5rem;
       }
     }
-    li {
+    ul {
       display: flex;
-      margin-left: 1rem;
+      flex-direction: column;
       gap: 0.5rem;
-      align-items: baseline;
-      p {
+      li {
+        display: flex;
         margin: 0;
-      }
-      .date {
-        flex-shrink: 0;
+        gap: 1rem;
+        align-items: baseline;
+        @media screen and (max-width: 600px) {
+          flex-direction: column;
+          gap: 0;
+          margin: 1rem 0 0 0;
+          .date {
+            font-weight: bold;
+          }
+        }
+        p {
+          margin: 0;
+        }
+        .date {
+          flex-shrink: 0;
+        }
       }
     }
   }
