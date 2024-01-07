@@ -1,5 +1,6 @@
 import rss from "@astrojs/rss";
-import { getHistoryList } from "@/lib/newt/notify";
+import { getHistoryList } from "../lib/newt/notify";
+
 export const myDomain = "novel.manasas.dev";
 export const myUrl = `https://${myDomain}`;
 export const myMainUrl = `https://manasas.dev`;
