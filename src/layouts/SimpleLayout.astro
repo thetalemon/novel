@@ -14,6 +14,7 @@ export interface Props {
   cardBgColorAlpha?: number;
   bgColor?: string;
   bg?: NewtImage;
+  ogImage?: string;
 }
 
 const {
@@ -23,6 +24,7 @@ const {
   cardBgColorAlpha = "0.9",
   bgColor = "3, 7, 19",
   bg,
+  ogImage,
 } = Astro.props;
 
 const bgMetaData: ImageMetadata = bg
@@ -41,7 +43,7 @@ const STYLE = styleHelper([
 ]);
 ---
 
-<Layout title={title}>
+<Layout title={title} ogImage={ogImage}>
   <main style={STYLE}>
     <div class="wrapper">
       <Card>

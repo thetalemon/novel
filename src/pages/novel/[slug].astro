@@ -19,6 +19,7 @@ const { novel } = Astro.props;
   cardBgColorAlpha={novel.cardBgColorAlpha ? novel.cardBgColorAlpha : 0.9}
   bgColor={novel.bgColor}
   bg={novel.bg}
+  ogImage={`https://novel.manasas.dev/novel/og/${novel.slug}.png`}
 >
   <article set:html={novel.body} />
 </DefaultLayout>

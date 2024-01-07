@@ -1,7 +1,7 @@
 ---
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 import { getCharacterList } from "@/lib/newt/character";
-import { Image } from "astro:assets";
+import { Image, imageConfig } from "astro:assets";
 
 export const getStaticPaths = async () => {
   const characterList = await getCharacterList();
@@ -20,7 +20,7 @@ const img: ImageMetadata = {
 };
 ---
 
-<DefaultLayout title={character.name}>
+<DefaultLayout title={character.name} ogImage={img.src}>
   <article>
     <Image src={img} alt={character.name} width={250} height={250} />
     <h1>{character.name}</h1>

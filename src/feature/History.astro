@@ -22,7 +22,9 @@ const historyList = await getHistoryList();
     {
       historyList.map((item) => (
         <li>
-          <div class="date">{formatDate(item.date)} </div>
+          <div class="date">
+            <a href={`/notify/${item.slug}`}>{formatDate(item.date)}</a>
+          </div>
           <div set:html={item.message} />
         </li>
       ))
@@ -64,6 +66,10 @@ const historyList = await getHistoryList();
         }
         .date {
           flex-shrink: 0;
+          a {
+            text-decoration: none;
+            color: inherit;
+          }
         }
       }
     }

@@ -3,9 +3,12 @@ import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
   title: string;
+  ogImage?: string;
 }
 
-const { title } = Astro.props;
+const { title, ogImage } = Astro.props;
+
+const ogp = ogImage ?? "https://novel.manasas.dev/defaultBg.png";
 ---
 
 <style is:global lang="scss">
@@ -78,10 +81,7 @@ const { title } = Astro.props;
     <meta property="og:title" content={title} />
     <meta property="og:url" content="https://novel.manasas.dev" />
     <meta property="og:description" content="まなさすの創作保管庫" />
-    <meta
-      property="og:image"
-      content="https://novel.manasas.dev/defaultBg.png"
-    />
+    <meta property="og:image" content={ogp} />
     <title>{title}</title>
     <ViewTransitions />
   </head>

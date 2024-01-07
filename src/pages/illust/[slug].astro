@@ -20,7 +20,7 @@ const img: ImageMetadata = {
 };
 ---
 
-<DefaultLayout title={illust.title}>
+<DefaultLayout title={illust.title} ogImage={img.src}>
   <article>
     <Image src={img} alt={illust.title} />
     <h1>{illust.title}</h1>

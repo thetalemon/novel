@@ -12,7 +12,10 @@ export const getStaticPaths = async () => {
 const { item } = Astro.props;
 ---
 
-<SimpleLayout title={item.title}>
+<SimpleLayout
+  title={item.title}
+  ogImage={`https://novel.manasas.dev/notify/og/${item.slug}.png`}
+>
   <article>
     <h1>{item.title}</h1>
     <div set:html={item.message} />
