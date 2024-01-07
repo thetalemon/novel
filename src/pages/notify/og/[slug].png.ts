@@ -12,7 +12,6 @@ export async function getStaticPaths() {
 }
 
 export async function GET({ props }: APIContext) {
-  console.log(props.title);
   const body = await getOgImage(props.item.title ?? "No title");
 
   return new Response(body, {

@@ -1,19 +1,18 @@
 import type { APIContext } from "astro";
-import { getHistoryList } from "@/lib/newt/notify";
+import { getDetailNovelList } from "@/lib/newt/novel";
 import { getOgImage } from "@/components/OgImage";
 
 export async function getStaticPaths() {
-  const hisotryList = await getHistoryList();
+  const hisotryList = await getDetailNovelList();
 
-  return hisotryList.map((item) => ({
-    params: { slug: item.slug },
-    props: { item },
+  return hisotryList.map((novel) => ({
+    params: { slug: novel.slug },
+    props: { novel },
   }));
 }
 
 export async function GET({ props }: APIContext) {
-  console.log(props.title);
-  const body = await getOgImage(props.item.title ?? "No title");
+  const body = await getOgImage(props.novel.title ?? "No title");
 
   return new Response(body, {
     headers: {
