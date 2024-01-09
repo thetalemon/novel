@@ -17,9 +17,18 @@ const { item } = Astro.props;
   ogImage={`https://novel.manasas.dev/notify/og/${item.slug}.png`}
 >
   <article>
-    <h1>{item.title}</h1>
+    <img src=`/notify/og/${item.slug}.png` />
     <div set:html={item.message} />
   </article>
 </SimpleLayout>
 
-<style lang="scss"></style>
+<style lang="scss">
+  article {
+    display: flex;
+    flex-direction: column;
+  }
+  img {
+    width: 80%;
+    margin: 0 auto;
+  }
+</style>
