@@ -1,5 +1,5 @@
 ---
-import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import SimpleLayout from "@/layouts/SimpleLayout.astro";
 import { getIllustList } from "@/lib/newt/Illust";
 import { Image } from "astro:assets";
 
@@ -20,13 +20,13 @@ const img: ImageMetadata = {
 };
 ---
 
-<DefaultLayout title={illust.title} ogImage={img.src}>
+<SimpleLayout title={illust.title} ogImage={img.src}>
   <article>
     <Image src={img} alt={illust.title} />
     <h1>{illust.title}</h1>
     <div set:html={illust.comment} />
   </article>
-</DefaultLayout>
+</SimpleLayout>
 
 <style lang="scss">
   img {
