@@ -18,7 +18,7 @@ export async function GET(context: APIContext) {
       const url = `${baseUrl}/notify/${post.slug}`;
       return {
         title: post.title,
-        description: post.message,
+        description: `<img src="https://novel.manasas.dev/notify/og/${post.slug}.png"/> ${post.message}`,
         content: post.message,
         id: url,
         link: url,
