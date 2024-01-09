@@ -4,8 +4,7 @@ import Card from "@/components/Card.astro";
 import Menu from "@/feature/Menu.astro";
 import type { NewtImage } from "@/lib/newt/general";
 import { styleHelper } from "@/utils/styleHelper";
-import { Image } from "astro:assets";
-import defaultBg from "./top.png";
+import ImageBg from "@/components/ImageBg.astro";
 
 export interface Props {
   title: string;
@@ -17,8 +16,6 @@ export interface Props {
   ogImage?: string;
 }
 
-const isTop = Astro.url.pathname === "/";
-
 const {
   title,
   cardTextColor = "9, 51, 58",
@@ -29,15 +26,6 @@ const {
   ogImage,
 } = Astro.props;
 
-const bgMetaData: ImageMetadata = bg
-  ? {
-      src: bg.src,
-      width: bg.width,
-      height: bg.height,
-      format: bg.fileType.includes("webp") ? "webp" : "png",
-    }
-  : defaultBg;
-
 const STYLE = styleHelper([
   { name: "bgColor", value: bgColor },
   { name: "cardTextColor", value: `rgb(${cardTextColor})` },
@@ -47,17 +35,15 @@ const STYLE = styleHelper([
 
 <Layout title={title} ogImage={ogImage}>
   <main style={STYLE}>
-    <div class={`wrapper ${isTop ? "isTop" : ""}`}>
+    <div class="wrapper">
       <div class="inner">
         <Card>
           <slot />
         </Card>
       </div>
-      {!isTop && <Menu />}
+      <Menu />
     </div>
-    <div class="bgWrapper">
-      <Image src={bgMetaData} alt="背景" class="bg" />
-    </div>
+    <ImageBg bg={bg} />
   </main>
 </Layout>
 
@@ -86,32 +72,6 @@ const STYLE = styleHelper([
       flex-shrink: 0;
       @media screen and (min-width: 1000px) {
         margin-right: 260px;
-      }
-    }
-
-    .isTop.wrapper {
-      .inner {
-        @media screen and (min-width: 1000px) {
-          margin-right: 0;
-        }
-      }
-    }
-
-    .bgWrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: bottom;
-      align-items: center;
-      z-index: -2;
-      .bg {
-        object-fit: scale-down;
-        object-position: center bottom;
-        width: 100%;
-        height: 100%;
       }
     }
 

@@ -1,5 +1,5 @@
 ---
-import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import NovelLayout from "@/layouts/NovelLayout.astro";
 import { getDetailNovelList } from "@/lib/newt/novel";
 
 export const getStaticPaths = async () => {
@@ -12,7 +12,7 @@ export const getStaticPaths = async () => {
 const { novel } = Astro.props;
 ---
 
-<DefaultLayout
+<NovelLayout
   title={novel.title}
   cardTextColor={novel.textColor}
   cardBgColor={novel.cardBgColor}
@@ -22,7 +22,7 @@ const { novel } = Astro.props;
   ogImage={`https://novel.manasas.dev/novel/og/${novel.slug}.png`}
 >
   <article set:html={novel.body} />
-</DefaultLayout>
+</NovelLayout>
 
 <style lang="scss">
   h1 {

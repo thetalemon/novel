@@ -1,0 +1,44 @@
+---
+import type { NewtImage } from "@/lib/newt/general";
+import { Image } from "astro:assets";
+import defaultBg from "./top.png";
+
+export interface Props {
+  bg?: NewtImage;
+}
+
+const { bg } = Astro.props;
+
+const bgMetaData: ImageMetadata = bg
+  ? {
+      src: bg.src,
+      width: bg.width,
+      height: bg.height,
+      format: bg.fileType.includes("webp") ? "webp" : "png",
+    }
+  : defaultBg;
+---
+
+<div class="bgWrapper">
+  <Image src={bgMetaData} alt="背景" class="bg" />
+</div>
+
+<style lang="scss">
+  .bgWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: bottom;
+    align-items: center;
+    z-index: -2;
+    .bg {
+      object-fit: scale-down;
+      object-position: center bottom;
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>
