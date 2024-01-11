@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+
+export interface Props {
+  list: {
+    path: string;
+    img: ImageMetadata;
+    alt: string;
+  }[];
+}
+
+const { list } = Astro.props;
+---
+
+<ul>
+  {
+    list.map((item) => {
+      return (
+        <li>
+          <a href={item.path}>
+            <Image src={item.img} alt={item.alt} width={150} height={150} />
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style lang="scss">
+  ul {
+    margin: 0.5rem 0;
+    margin-bottom: 2rem;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+
+    li {
+      margin: 0;
+
+      a {
+        color: var(--cardTextColor);
+        img {
+          height: 150px;
+          width: 150px;
+          object-fit: cover;
+          border-radius: 12px;
+        }
+      }
+    }
+  }
+</style>

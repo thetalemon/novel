@@ -2,11 +2,13 @@
 import SimpleLayout from "@/layouts/SimpleLayout.astro";
 import History from "@/feature/History.astro";
 import NovelList from "@/feature/NovelList.astro";
-import CharacterList from "@/feature/CharacterList.astro";
+import CharacterSection from "@/feature/CharacterSection.astro";
+import BannerSection from "@/feature/BannerSection.astro";
 import Icon from "@/components/Icon.astro";
 import { Image } from "astro:assets";
 import BannerImage from "./_banner.png";
-import ImageList from "@/feature/ImageList.astro";
+import IllustSection from "@/feature/IllustSection.astro";
+import Title from "@/components/Title.astro";
 ---
 
 <SimpleLayout title="北極の とある倉庫">
@@ -18,9 +20,9 @@ import ImageList from "@/feature/ImageList.astro";
   <hr />
   <NovelList />
   <hr />
-  <ImageList />
+  <IllustSection />
   <hr />
-  <CharacterList />
+  <CharacterSection />
   <hr />
   <p>
     ドット絵のアイコンは <a href="https://neko.moo.jp/BS/" target="_blank">
@@ -29,10 +31,7 @@ import ImageList from "@/feature/ImageList.astro";
   </p>
 
   <hr />
-  <h3>バナー</h3>
-  <p>リンクフリー・アンリンクフリー・直リンクNG</p>
-  <p><Image src={BannerImage} alt="バナー" /></p>
-
+  <BannerSection />
   <p class="link">
     <a href="https://manasas.dev" rel="me" target="_blank"
       ><Icon type="profile" /></a

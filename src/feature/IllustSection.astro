@@ -1,0 +1,28 @@
+---
+import { getIllustList } from "@/lib/newt/Illust";
+import { NewtImage2AstroImage } from "@/utils/imageHepler";
+import ListImage from "@/components/ListImage.astro";
+import Title from "@/components/Title.astro";
+
+const illustList = await getIllustList();
+const list = illustList.map((item) => {
+  return {
+    path: `/illust/${item.slug}/`,
+    img: NewtImage2AstroImage(item.image),
+    alt: item.title,
+  };
+});
+---
+
+<div class="root">
+  <Title text="イラスト一覧" />
+  <ListImage list={list} />
+  <a href="https://doodle.manasas.dev/" target="_blank">らくがき置場</a>
+</div>
+
+<style lang="scss">
+  .root {
+    width: 90%;
+    margin: 0 auto;
+  }
+</style>
