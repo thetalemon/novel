@@ -1,4 +1,4 @@
-import { newtClient, APP_UID } from "./general";
+import { APP_UID, newtClient } from "./general";
 
 export interface SeriesItem {
   title: string;

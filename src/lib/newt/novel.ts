@@ -1,5 +1,5 @@
-import { newtClient, APP_UID } from "./general";
 import type { NewtImage } from "./general";
+import { APP_UID, newtClient } from "./general";
 import type { SeriesItem } from "./series";
 
 export interface SimpleNovelItem {

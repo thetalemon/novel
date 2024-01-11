@@ -1,11 +1,11 @@
-import rss from "@astrojs/rss";
-import { getHistoryList } from "@/lib/newt/notify";
-import type { APIContext } from "astro";
 import {
-  myUrl,
-  mySiteName,
   mySiteDefaultDescription,
+  mySiteName,
+  myUrl,
 } from "@/constants/constants";
+import { getHistoryList } from "@/lib/newt/notify";
+import rss from "@astrojs/rss";
+import type { APIContext } from "astro";
 
 export async function GET(context: APIContext) {
   const posts = await getHistoryList();

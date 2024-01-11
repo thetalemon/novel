@@ -1,6 +1,6 @@
-import type { APIContext } from "astro";
-import { getDetailNovelList } from "@/lib/newt/novel";
 import { getOgImage } from "@/components/OgImage";
+import { getDetailNovelList } from "@/lib/newt/novel";
+import type { APIContext } from "astro";
 
 export async function getStaticPaths() {
   const hisotryList = await getDetailNovelList();

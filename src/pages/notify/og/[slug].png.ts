@@ -1,6 +1,6 @@
-import type { APIContext } from "astro";
-import { getHistoryList } from "@/lib/newt/notify";
 import { getOgImage } from "@/components/OgImage";
+import { getHistoryList } from "@/lib/newt/notify";
+import type { APIContext } from "astro";
 
 export async function getStaticPaths() {
   const hisotryList = await getHistoryList();
