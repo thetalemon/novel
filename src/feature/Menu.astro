@@ -1,38 +1,10 @@
 ---
 import Card from "@/components/Card.astro";
-import ReturnButton from "@/components/ReturnButton.astro";
 import NovelList from "@/feature/NovelList.astro";
 ---
 
-<style lang="scss">
-  .menuWrapper {
-    margin-bottom: 40px;
-    width: calc(min(min(100vh, 100vw), 620px) - 24px);
-    @media screen and (min-width: 1000px) {
-      width: fit-content;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translateY(-40%)
-        translateX(calc(min(min(100vh, 100vw), 620px) / 3));
-      display: flex;
-      align-items: center;
-    }
-    .menu {
-      width: 100%;
-      flex-shrink: 0;
-      @media screen and (min-width: 1000px) {
-        width: 240px;
-      }
-    }
-  }
-</style>
-
-<div class="menuWrapper">
-  <div class="menu">
-    <Card>
-      <NovelList />
-    </Card>
-    <ReturnButton />
-  </div>
+<div class="menu">
+  <Card>
+    <NovelList />
+  </Card>
 </div>

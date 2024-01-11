@@ -14,24 +14,18 @@ const { novel } = Astro.props;
 
 <NovelLayout
   title={novel.title}
-  cardTextColor={novel.textColor}
-  cardBgColor={novel.cardBgColor}
-  cardBgColorAlpha={novel.cardBgColorAlpha ? novel.cardBgColorAlpha : 0.9}
-  bgColor={novel.bgColor}
-  bg={novel.bg}
   ogImage={`https://novel.manasas.dev/novel/og/${novel.slug}.png`}
 >
+  <h1>{novel.title}</h1>
   <article set:html={novel.body} />
 </NovelLayout>
 
 <style lang="scss">
-  h1 {
-    text-align: center;
-  }
-  hr {
-    width: 75%;
-  }
   .link {
     margin-top: 2rem;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
   }
 </style>

@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from "astro:transitions";
+import { styleHelper } from "@/utils/styleHelper";
 
 export interface Props {
   title: string;
@@ -9,6 +10,17 @@ export interface Props {
 const { title, ogImage } = Astro.props;
 
 const ogp = ogImage ?? "https://novel.manasas.dev/defaultBg.png";
+
+const cardTextColor = "9, 51, 58";
+const cardBgColor = "181, 184, 199";
+const cardBgColorAlpha = "0.9";
+const bgColor = "3, 7, 19";
+
+const STYLE = styleHelper([
+  { name: "bgColor", value: bgColor },
+  { name: "cardTextColor", value: `rgb(${cardTextColor})` },
+  { name: "cardBgColor", value: `rgba(${cardBgColor},${cardBgColorAlpha})` },
+]);
 ---
 
 <style is:global lang="scss">
@@ -19,6 +31,7 @@ const ogp = ogImage ?? "https://novel.manasas.dev/defaultBg.png";
   body {
     margin: 0;
     color: #212161;
+    background: rgb(var(--bgColor));
   }
 
   h1,
@@ -51,7 +64,6 @@ const ogp = ogImage ?? "https://novel.manasas.dev/defaultBg.png";
   ul {
     list-style: none;
     padding: 0;
-    text-align: center;
     margin: 0;
   }
 
@@ -82,7 +94,7 @@ const ogp = ogImage ?? "https://novel.manasas.dev/defaultBg.png";
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body>
+  <body style={STYLE}>
     <slot />
   </body>
 </html>
