@@ -5,16 +5,15 @@ import NovelList from "@/feature/NovelList.astro";
 import CharacterSection from "@/feature/CharacterSection.astro";
 import BannerSection from "@/feature/BannerSection.astro";
 import Icon from "@/components/Icon.astro";
-import { Image } from "astro:assets";
-import BannerImage from "./_banner.png";
 import IllustSection from "@/feature/IllustSection.astro";
-import Title from "@/components/Title.astro";
 ---
 
 <SimpleLayout title="北極の とある倉庫">
   <h1>北極の とある倉庫</h1>
-  <p>まなさすの創作まとめサイト。</p>
-  <p>🌟 このサイトは性別を超越した装いと愛に溢れています 🌟</p>
+  <div class="topSection">
+    <p>まなさすの創作まとめサイト。</p>
+    <p>🌟 このサイトは性別を超越した装いと愛に溢れています 🌟</p>
+  </div>
   <hr />
   <History />
   <hr />
@@ -40,8 +39,13 @@ import Title from "@/components/Title.astro";
 </SimpleLayout>
 
 <style lang="scss">
-  hr {
-    width: 95%;
+  h1 {
+    text-align: center;
+  }
+  .topSection {
+    p {
+      text-align: center;
+    }
   }
   h1,
   h2,
