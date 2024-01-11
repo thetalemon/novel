@@ -1,6 +1,7 @@
 ---
 import { getCharacterList } from "@/lib/newt/character";
 import { Image } from "astro:assets";
+import { NewtImage2AstroImage } from "@/utils/imageHepler";
 
 const characterList = await getCharacterList();
 ---
@@ -11,13 +12,8 @@ const characterList = await getCharacterList();
     {
       characterList.map((item) => {
         const path = `/character/${item.slug}/`;
+        const img: ImageMetadata = NewtImage2AstroImage(item.image);
 
-        const img: ImageMetadata = {
-          src: item.image.src,
-          width: item.image.width,
-          height: item.image.height,
-          format: item.image.fileType.includes("webp") ? "webp" : "png",
-        };
         return (
           <li>
             <a href={path}>
