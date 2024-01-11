@@ -69,20 +69,5 @@ const STYLE = styleHelper([
         margin-right: 260px;
       }
     }
-
-    &::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(
-        rgba(var(--bgColor), 1) calc(100vh - 100vw * 0.95),
-        rgba(var(--bgColor), 0) calc(100vh - 100vw * 0.7)
-      );
-      z-index: -1;
-      opacity: 1;
-    }
   }
 </style>
