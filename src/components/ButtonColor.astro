@@ -1,0 +1,56 @@
+---
+export interface Props {
+  slug: string;
+  label: string;
+  bgColor: string;
+  cardTextColor: string;
+  cardBgColor: string;
+  linkColor: string;
+}
+import { styleHelper } from "@/utils/styleHelper";
+
+const { slug, label, bgColor, cardTextColor, cardBgColor, linkColor } =
+  Astro.props;
+const STYLE = styleHelper([
+  { name: "bgColor", value: bgColor },
+  { name: "cardTextColor", value: cardTextColor },
+  { name: "cardBgColor", value: cardBgColor },
+  { name: "linkColor", value: linkColor },
+]);
+---
+
+<li>
+  <button
+    style={STYLE}
+    class=`js-buttonColorSelector`
+    data-message="message"
+    data-slug={slug}
+    data-bgcolor={bgColor}
+    data-cardtextcolor={cardTextColor}
+    data-cardbgcolor={cardBgColor}
+    data-linkcolor={linkColor}><span class="inner">{label}</span></button
+  >
+</li>
+
+<style lang="scss">
+  li {
+    button {
+      width: 100%;
+      justify-content: center;
+      padding: 16px;
+      display: flex;
+      border-radius: 8px;
+      background: rgb(var(--bgColor));
+      border: 1px rgb(var(--cardBgColor)) solid;
+      .inner {
+        width: 100%;
+        display: block;
+        height: fit-content;
+        padding: 16px;
+        border-radius: 8px;
+        background: rgba(var(--cardBgColor), 0.9);
+        color: rgb(var(--cardTextColor));
+      }
+    }
+  }
+</style>
