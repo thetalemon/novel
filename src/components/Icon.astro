@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import ReturnImage from "./icons/return.gif";
-import ProfileImage from "./icons/profile.gif";
+import ReturnImage from "@/icons/home.gif";
+import ProfileImage from "@/icons/profile.gif";
 
 export interface Props {
   type: "return" | "profile";
@@ -26,4 +26,4 @@ const item = (function () {
   }
 </style>
 
-<Image src={item.src} alt="item.alt" />
+<Image src={item.src} alt={item.alt} />

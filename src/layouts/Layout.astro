@@ -1,6 +1,8 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import { styleHelper } from "@/utils/styleHelper";
+import Header from "@/components/Header.astro";
+import { COLORS_LIST } from "@/constants/colors";
 
 export interface Props {
   title: string;
@@ -11,15 +13,13 @@ const { title, ogImage } = Astro.props;
 
 const ogp = ogImage ?? "https://novel.manasas.dev/defaultBg.png";
 
-const cardTextColor = "9, 51, 58";
-const cardBgColor = "181, 184, 199";
-const cardBgColorAlpha = "0.9";
-const bgColor = "3, 7, 19";
+const defaultColor = COLORS_LIST[2];
 
 const STYLE = styleHelper([
-  { name: "bgColor", value: bgColor },
-  { name: "cardTextColor", value: `rgb(${cardTextColor})` },
-  { name: "cardBgColor", value: `rgba(${cardBgColor},${cardBgColorAlpha})` },
+  { name: "bgColor", value: defaultColor.bgColor },
+  { name: "cardTextColor", value: defaultColor.cardTextColor },
+  { name: "cardBgColor", value: defaultColor.cardBgColor },
+  { name: "linkColor", value: defaultColor.linkColor },
 ]);
 ---
 
@@ -30,7 +30,6 @@ const STYLE = styleHelper([
 
   body {
     margin: 0;
-    color: #212161;
     background: rgb(var(--bgColor));
   }
 
@@ -72,10 +71,17 @@ const STYLE = styleHelper([
   }
 
   a {
-    color: #367da7;
+    color: rgb(var(--linkColor));
     &:hover {
       text-decoration: none;
     }
+  }
+  button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
   }
 </style>
 
@@ -95,6 +101,7 @@ const STYLE = styleHelper([
     <ViewTransitions />
   </head>
   <body style={STYLE}>
+    <Header />
     <slot />
   </body>
 </html>
