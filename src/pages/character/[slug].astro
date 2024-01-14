@@ -1,8 +1,9 @@
 ---
-import SimpleLayout from "@/layouts/SimpleLayout.astro";
+import Layout from "@/layouts/Layout.astro";
 import { getCharacterList } from "@/lib/newt/character";
 import { Image } from "astro:assets";
 import { NewtImage2AstroImage } from "@/utils/imageHepler";
+import Card from "@/components/Card.astro";
 
 export const getStaticPaths = async () => {
   const characterList = await getCharacterList();
@@ -16,13 +17,13 @@ const { character } = Astro.props;
 const img: ImageMetadata = NewtImage2AstroImage(character.image);
 ---
 
-<SimpleLayout title={character.name} ogImage={img.src}>
-  <article>
+<Layout title={character.name} ogImage={img.src}>
+  <Card>
     <Image src={img} alt={character.name} width={250} height={250} />
     <h1>{character.name}</h1>
     <div set:html={character.content} />
-  </article>
-</SimpleLayout>
+  </Card>
+</Layout>
 
 <style lang="scss">
   img {

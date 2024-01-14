@@ -1,6 +1,14 @@
 ---
-import SimpleLayout from "@/layouts/SimpleLayout.astro";
+import Layout from "@/layouts/Layout.astro";
 import { getHistoryList } from "@/lib/newt/notify";
+import Card from "@/components/Card.astro";
+import { format } from "date-fns";
+import ja from "date-fns/locale/ja/index.js";
+
+const formatDate = (value: string) =>
+  format(new Date(value), "yyyy-MM-dd", {
+    locale: ja,
+  });
 
 export const getStaticPaths = async () => {
   const hisotryList = await getHistoryList();
@@ -12,23 +20,28 @@ export const getStaticPaths = async () => {
 const { item } = Astro.props;
 ---
 
-<SimpleLayout
+<Layout
   title={item.title}
   ogImage={`https://novel.manasas.dev/notify/og/${item.slug}.png`}
 >
-  <article>
-    <img src=`/notify/og/${item.slug}.png` />
-    <div set:html={item.message} />
-  </article>
-</SimpleLayout>
+  <Card>
+    <div class="cardInner">
+      <img src=`/notify/og/${item.slug}.png` />
+      <p class="date">{formatDate(item.date)}</p>
+      <div set:html={item.message} />
+    </div>
+  </Card>
+</Layout>
 
 <style lang="scss">
-  article {
+  .cardInner {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    text-align: center;
   }
   img {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
   }
 </style>

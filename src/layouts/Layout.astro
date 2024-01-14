@@ -3,6 +3,7 @@ import { ViewTransitions } from "astro:transitions";
 import { styleHelper } from "@/utils/styleHelper";
 import Header from "@/components/Header.astro";
 import { COLORS_LIST } from "@/constants/colors";
+import Footer from "@/components/Footer.astro";
 
 export interface Props {
   title: string;
@@ -41,7 +42,7 @@ const STYLE = styleHelper([
   h6,
   p {
     line-height: 1.7;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
   }
 
   h1,
@@ -83,6 +84,23 @@ const STYLE = styleHelper([
     background: transparent;
     cursor: pointer;
   }
+
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(
+      100vh - 40px - 16px * 2 - 42px - 16px * 2 - 37px - 16px * 2
+    );
+    // ヘッダ高 - ヘッダ余白 - 戻る高 - 戻る余白 - フッタ高 - フッタ余白
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 750px;
+  }
 </style>
 
 <html lang="ja">
@@ -102,6 +120,11 @@ const STYLE = styleHelper([
   </head>
   <body style={STYLE}>
     <Header />
-    <slot />
+    <main>
+      <article class="content">
+        <slot />
+      </article>
+    </main>
+    <Footer />
   </body>
 </html>
