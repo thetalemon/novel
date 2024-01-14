@@ -1,0 +1,30 @@
+---
+import Icon from "@/components/Icon.astro";
+const isTop = Astro.url.pathname === "/";
+---
+
+{
+  !isTop && (
+    <div class="returnButton">
+      <a href="/">
+        <Icon type="return" />
+      </a>
+    </div>
+  )
+}
+<footer>© manasas</footer>
+
+<style lang="scss">
+  .returnButton {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+  }
+
+  footer {
+    color: rgb(var(--cardBgColor));
+    text-align: center;
+    padding: 8px 0;
+  }
+</style>

@@ -1,6 +1,8 @@
 ---
-import NovelLayout from "@/layouts/NovelLayout.astro";
+import Layout from "@/layouts/Layout.astro";
 import { getDetailNovelList } from "@/lib/newt/novel";
+import Card from "@/components/Card.astro";
+import Menu from "@/feature/Menu.astro";
 
 export const getStaticPaths = async () => {
   const novels = await getDetailNovelList();
@@ -12,20 +14,25 @@ export const getStaticPaths = async () => {
 const { novel } = Astro.props;
 ---
 
-<NovelLayout
+<Layout
   title={novel.title}
   ogImage={`https://novel.manasas.dev/novel/og/${novel.slug}.png`}
 >
-  <h1>{novel.title}</h1>
-  <article set:html={novel.body} />
-</NovelLayout>
+  <Card>
+    <h1>{novel.title}</h1>
+    <div set:html={novel.body} />
+  </Card>
+  <div class="menuWrapper">
+    <Menu />
+  </div>
+</Layout>
 
 <style lang="scss">
-  .link {
-    margin-top: 2rem;
-  }
   h1 {
     text-align: center;
     margin-bottom: 40px;
+  }
+  .menuWrapper {
+    margin-top: 40px;
   }
 </style>

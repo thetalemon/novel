@@ -1,42 +1,45 @@
 ---
-import SimpleLayout from "@/layouts/SimpleLayout.astro";
+import Layout from "@/layouts/Layout.astro";
 import History from "@/feature/History.astro";
 import NovelList from "@/feature/NovelList.astro";
 import CharacterSection from "@/feature/CharacterSection.astro";
 import BannerSection from "@/feature/BannerSection.astro";
 import Icon from "@/components/Icon.astro";
 import IllustSection from "@/feature/IllustSection.astro";
+import Card from "@/components/Card.astro";
 ---
 
-<SimpleLayout title="北極の とある倉庫">
-  <h1>北極の とある倉庫</h1>
-  <div class="topSection">
-    <p>まなさすの創作まとめサイト。</p>
-    <p>🌟 このサイトは性別を超越した装いと愛に溢れています 🌟</p>
-  </div>
-  <hr />
-  <History />
-  <hr />
-  <NovelList />
-  <hr />
-  <IllustSection />
-  <hr />
-  <CharacterSection />
-  <hr />
-  <p>
-    ドット絵のアイコンは <a href="https://neko.moo.jp/BS/" target="_blank">
-      化け猫缶素材屋</a
-    > さんからお借りしました
-  </p>
+<Layout title="北極の とある倉庫">
+  <Card>
+    <h1>北極の とある倉庫</h1>
+    <div class="topSection">
+      <p>まなさすの創作まとめサイト。</p>
+      <p>🌟 このサイトは性別を超越した装いと愛に溢れています 🌟</p>
+    </div>
+    <hr />
+    <History />
+    <hr />
+    <NovelList />
+    <hr />
+    <IllustSection />
+    <hr />
+    <CharacterSection />
+    <hr />
+    <p>
+      ドット絵のアイコンは <a href="https://neko.moo.jp/BS/" target="_blank">
+        化け猫缶素材屋</a
+      > さんからお借りしました
+    </p>
 
-  <hr />
-  <BannerSection />
-  <p class="link">
-    <a href="https://manasas.dev" rel="me" target="_blank"
-      ><Icon type="profile" /></a
-    >
-  </p>
-</SimpleLayout>
+    <hr />
+    <BannerSection />
+    <p class="link">
+      <a href="https://manasas.dev" rel="me" target="_blank"
+        ><Icon type="profile" /></a
+      >
+    </p>
+  </Card>
+</Layout>
 
 <style lang="scss">
   h1 {
