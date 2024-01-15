@@ -1,12 +1,7 @@
 ---
 import { getHistoryList } from "@/lib/newt/notify";
-import { format } from "date-fns";
+import { getDate } from "@/utils/dateHelper";
 import { Icon } from "astro-icon/components";
-import ja from "date-fns/locale/ja/index.js";
-const formatDate = (value: string) =>
-  format(new Date(value), "yyyy-MM-dd", {
-    locale: ja,
-  });
 
 const historyList = await getHistoryList();
 ---
@@ -20,7 +15,7 @@ const historyList = await getHistoryList();
       historyList.map((item) => (
         <li>
           <div class="date">
-            <a href={`/notify/${item.slug}`}>{formatDate(item.date)}</a>
+            <a href={`/notify/${item.slug}`}>{getDate(item.date)}</a>
           </div>
           <div set:html={item.message} />
         </li>

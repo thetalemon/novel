@@ -2,13 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { getHistoryList } from "@/lib/newt/notify";
 import Card from "@/components/Card.astro";
-import { format } from "date-fns";
-import ja from "date-fns/locale/ja/index.js";
-
-const formatDate = (value: string) =>
-  format(new Date(value), "yyyy-MM-dd", {
-    locale: ja,
-  });
+import { getDate } from "@/utils/dateHelper";
 
 export const getStaticPaths = async () => {
   const hisotryList = await getHistoryList();
@@ -27,7 +21,7 @@ const { item } = Astro.props;
   <Card>
     <div class="cardInner">
       <img src=`/notify/og/${item.slug}.png` />
-      <p class="date">{formatDate(item.date)}</p>
+      <p class="date">{getDate(item.date)}</p>
       <div set:html={item.message} />
     </div>
   </Card>
