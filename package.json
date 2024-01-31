@@ -1,7 +1,7 @@
 {
   "name": "manas-novel",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -12,27 +12,27 @@
   },
   "dependencies": {
     "@astrojs/react": "3.0.9",
-    "@astrojs/rss": "4.0.1",
+    "@astrojs/rss": "4.0.4",
     "@resvg/resvg-js": "2.6.0",
-    "@types/react": "18.2.47",
+    "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
-    "astro": "4.1.2",
-    "astro-icon": "1.0.2",
+    "astro": "4.2.8",
+    "astro-icon": "1.0.4",
     "date-fns": "3.3.1",
-    "newt-client-js": "3.2.8",
+    "newt-client-js": "3.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "satori": "0.10.11",
+    "satori": "0.10.13",
     "typescript": "5.3.3"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "6.14.0",
+    "@typescript-eslint/parser": "6.20.0",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-astro": "0.31.0",
-    "prettier": "3.1.1",
-    "prettier-plugin-astro": "0.12.2",
+    "eslint-plugin-astro": "0.31.4",
+    "prettier": "3.2.4",
+    "prettier-plugin-astro": "0.13.0",
     "prettier-plugin-organize-imports": "3.2.4",
-    "sass": "1.69.5"
+    "sass": "1.70.0"
   }
 }
