@@ -1,4 +1,3 @@
-import react from "@astrojs/react";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 
@@ -7,7 +6,7 @@ export default defineConfig({
     domains: ["manas-novel.assets.newt.so", "novel.manasas.dev"],
   },
   site: "https://novel.manasas.dev",
-  integrations: [react(), icon()],
+  integrations: [icon()],
   vite: {
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
