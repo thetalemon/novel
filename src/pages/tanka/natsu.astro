@@ -1,0 +1,136 @@
+---
+import TankaLayout from '@/layouts/TankaLayout.astro'
+import Card from '@/components/Card.astro'
+---
+
+<script>
+  const prev = document.querySelector('.js-prev')
+  const next = document.querySelector('.js-next')
+  const tankaList = document.querySelectorAll('.tanka-wrapper')
+  let current = 0
+  console.log(tankaList)
+  // tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+
+  prev?.addEventListener('click', () => {
+    console.log(current)
+    if (current < 1) return
+    current--
+    tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+  })
+  next?.addEventListener('click', () => {
+    console.log(current)
+    if (current >= tankaList.length - 1) return
+    current++
+    tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+  })
+
+  document.addEventListener('astro:page-load', () => {
+    tankaList[0].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+    setTimeout(() => {
+      document.querySelector('.load')?.classList.add('hide')
+    }, 180)
+  })
+</script>
+
+<TankaLayout title='北極の とある倉庫'>
+  <div class='load'>
+    <div>loading...</div>
+  </div>
+  <!-- <Card> -->
+  <div class='mainWrapper'>
+    <div class='mainContent js-tankaMain'>
+      <div class='tanka-wrapper'>
+        <div class='tanka'>
+          <p>短歌一 テキスト テスト <br /><span>二行目は 改行したい</span></p>
+        </div>
+      </div>
+      <div class='tanka-wrapper'>
+        <div class='tanka'>
+          <p>短歌二 テキスト テスト <br /><span>二行目は 改行したい</span></p>
+        </div>
+      </div>
+      <div class='tanka-wrapper'>
+        <div class='tanka'>
+          <p>短歌三 テキスト テスト <br /><span>二行目は 改行したい</span></p>
+        </div>
+      </div>
+      <div class='tanka-wrapper'>
+        <div class='tanka'>
+          <p>短歌四 テキスト テスト <br /><span>二行目は 改行したい</span></p>
+        </div>
+      </div>
+      <div class='tanka-wrapper'>
+        <div class='tanka'>
+          <p>短歌五 テキスト テスト <br /><span>二行目は 改行したい</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='controller'>
+    <button class='js-prev'>前へ</button>
+    <button class='js-next'>次へ</button>
+  </div>
+  <!-- </Card> -->
+</TankaLayout>
+
+<style lang='scss'>
+  .load {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(163, 82, 156, 100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    transition: all 1s;
+    &.hide {
+      // opacity: 0;
+      left: 150vw;
+    }
+  }
+  .controller {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.45);
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    gap: 2rem;
+  }
+  .mainWrapper {
+    display: flex;
+    width: 100vw;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .mainContent {
+    display: flex;
+    margin: 0 50vw;
+  }
+  .tanka-wrapper {
+    background: rgba(163, 82, 156, 0.75);
+    margin: 0 1rem;
+    border-radius: 6px;
+  }
+  .tanka {
+    padding: 2rem 7rem;
+    margin: 8px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 4px;
+  }
+  p {
+    writing-mode: vertical-rl;
+    span {
+      margin-top: 7.5rem;
+    }
+  }
+</style>
