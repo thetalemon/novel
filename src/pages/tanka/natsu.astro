@@ -1,6 +1,5 @@
 ---
 import TankaLayout from '@/layouts/TankaLayout.astro'
-import Card from '@/components/Card.astro'
 ---
 
 <script>
@@ -8,20 +7,43 @@ import Card from '@/components/Card.astro'
   const next = document.querySelector('.js-next')
   const tankaList = document.querySelectorAll('.tanka-wrapper')
   let current = 0
-  console.log(tankaList)
-  // tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
 
   prev?.addEventListener('click', () => {
-    console.log(current)
     if (current < 1) return
     current--
     tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
   })
   next?.addEventListener('click', () => {
-    console.log(current)
     if (current >= tankaList.length - 1) return
     current++
     tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+  })
+
+  const currentEl = document.querySelector('.js-current')
+  const redrawCurrent = () => {
+    if (!currentEl) return
+    currentEl.textContent = String(current + 1)
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement
+          if (!target) return
+          current = Number(target.dataset.tankaid) - 1
+          redrawCurrent()
+        }
+      })
+    },
+    {
+      root: document.querySelector('body'),
+      rootMargin: '0px',
+      threshold: 1.0,
+    }
+  )
+  tankaList.forEach((tanka) => {
+    observer.observe(tanka)
   })
 
   document.addEventListener('astro:page-load', () => {
@@ -36,30 +58,29 @@ import Card from '@/components/Card.astro'
   <div class='load'>
     <div>loading...</div>
   </div>
-  <!-- <Card> -->
-  <div class='mainWrapper'>
+  <div class='mainWrapper js-mainWrapper'>
     <div class='mainContent js-tankaMain'>
-      <div class='tanka-wrapper'>
+      <div class='tanka-wrapper' data-tankaid='1'>
         <div class='tanka'>
           <p>短歌一 テキスト テスト <br /><span>二行目は 改行したい</span></p>
         </div>
       </div>
-      <div class='tanka-wrapper'>
+      <div class='tanka-wrapper' data-tankaid='2'>
         <div class='tanka'>
           <p>短歌二 テキスト テスト <br /><span>二行目は 改行したい</span></p>
         </div>
       </div>
-      <div class='tanka-wrapper'>
+      <div class='tanka-wrapper' data-tankaid='3'>
         <div class='tanka'>
           <p>短歌三 テキスト テスト <br /><span>二行目は 改行したい</span></p>
         </div>
       </div>
-      <div class='tanka-wrapper'>
+      <div class='tanka-wrapper' data-tankaid='4'>
         <div class='tanka'>
           <p>短歌四 テキスト テスト <br /><span>二行目は 改行したい</span></p>
         </div>
       </div>
-      <div class='tanka-wrapper'>
+      <div class='tanka-wrapper' data-tankaid='5'>
         <div class='tanka'>
           <p>短歌五 テキスト テスト <br /><span>二行目は 改行したい</span></p>
         </div>
@@ -69,9 +90,9 @@ import Card from '@/components/Card.astro'
 
   <div class='controller'>
     <button class='js-prev'>前へ</button>
+    <div class='js-current'></div>
     <button class='js-next'>次へ</button>
   </div>
-  <!-- </Card> -->
 </TankaLayout>
 
 <style lang='scss'>
@@ -90,7 +111,6 @@ import Card from '@/components/Card.astro'
     font-size: 2rem;
     transition: all 1s;
     &.hide {
-      // opacity: 0;
       left: 150vw;
     }
   }
