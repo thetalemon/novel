@@ -6,6 +6,8 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
   const prev = document.querySelector('.js-prev')
   const next = document.querySelector('.js-next')
   const tankaList = document.querySelectorAll('.tanka-wrapper')
+  const tankaMainElement = document.querySelector('.js-tankaMain')
+  const MainWrapperElement = document.querySelector('.js-MainWrapper')
   let current = 0
 
   prev?.addEventListener('click', () => {
@@ -21,6 +23,7 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
 
   const currentEl = document.querySelector('.js-current')
   const redrawCurrent = () => {
+    redrawBar()
     if (!currentEl) return
     currentEl.textContent = String(current + 1)
   }
@@ -39,7 +42,7 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
     {
       root: document.querySelector('body'),
       rootMargin: '0px',
-      threshold: 1.0,
+      threshold: 0.8,
     }
   )
   tankaList.forEach((tanka) => {
@@ -52,6 +55,25 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
       document.querySelector('.load')?.classList.add('hide')
     }, 180)
   })
+
+  if (tankaMainElement)
+    tankaMainElement.addEventListener('wheel', (event) => {
+      const e = event as WheelEvent
+      if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return
+      e.preventDefault()
+      tankaMainElement.scrollLeft += e.deltaY
+    })
+
+  const barElement = document.querySelector('.js-bar')
+  const width = MainWrapperElement?.scrollWidth
+  const length = tankaList.length
+  const oneBar = width && length ? width / length : undefined
+  // currentに合わせてのびる
+  const redrawBar = () => {
+    if (!barElement || length === 0) return
+    const elm = barElement as HTMLDivElement
+    elm.style.width = `${(current + 1) * (100 / length - 1)}%`
+  }
 </script>
 
 <TankaLayout title='北極の とある倉庫'>
@@ -59,6 +81,7 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
     <div>loading...</div>
   </div>
   <div class='mainWrapper js-mainWrapper'>
+    <div class='prev js-prev'></div>
     <div class='mainContent js-tankaMain'>
       <div class='tanka-wrapper' data-tankaid='1'>
         <div class='tanka'>
@@ -86,12 +109,12 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
         </div>
       </div>
     </div>
+    <div class='next js-next'></div>
   </div>
 
-  <div class='controller'>
-    <button class='js-prev'>前へ</button>
-    <div class='js-current'></div>
-    <button class='js-next'>次へ</button>
+  <div class='controller js-bar'>
+    <!-- <p></p> -->
+    <!-- <div class='js-current'></div> -->
   </div>
 </TankaLayout>
 
@@ -116,24 +139,50 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
   }
   .controller {
     margin-top: 2rem;
-    background: rgba(255, 255, 255, 0.45);
+    background: linear-gradient(
+      90deg,
+      rgba(161, 27, 150, 0.5) 0%,
+      rgba(182, 70, 171, 0.5) 10%,
+      rgba(201, 112, 192, 0.5) 40%,
+      rgba(236, 162, 229, 0.5) 100%
+    );
     padding: 0.5rem 0;
     display: flex;
     justify-content: center;
-    width: 100vw;
     gap: 2rem;
+    transition: all ease-out 1s;
   }
   .mainWrapper {
     display: flex;
-    width: 100vw;
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
-      display: none;
+    position: relative;
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      background: rgba(163, 82, 156, 0.5);
+      cursor: pointer;
+      width: 20px;
+      height: 30px;
+      clip-path: polygon(0 0, 45% 50%, 0 100%);
+    }
+
+    .prev {
+      left: 0;
+      transform: rotate(180deg) translateY(50%);
+    }
+
+    .next {
+      right: 0;
+      transform: rotate(0) translateY(-50%);
     }
   }
   .mainContent {
     display: flex;
-    margin: 0 50vw;
+    margin: 0 1rem;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .tanka-wrapper {
     background: rgba(163, 82, 156, 0.75);
