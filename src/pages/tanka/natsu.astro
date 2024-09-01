@@ -1,13 +1,13 @@
 ---
 import TankaLayout from '@/layouts/TankaLayout.astro'
+import TankaCard from '@/components/tanka/Card.astro'
 ---
 
 <script>
   const prev = document.querySelector('.js-prev')
   const next = document.querySelector('.js-next')
-  const tankaList = document.querySelectorAll('.tanka-wrapper')
+  const tankaList = document.querySelectorAll('.js-tankaCard')
   const tankaMainElement = document.querySelector('.js-tankaMain')
-  const MainWrapperElement = document.querySelector('.js-MainWrapper')
   let current = 0
 
   prev?.addEventListener('click', () => {
@@ -65,9 +65,7 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
     })
 
   const barElement = document.querySelector('.js-bar')
-  const width = MainWrapperElement?.scrollWidth
   const length = tankaList.length
-  const oneBar = width && length ? width / length : undefined
   // currentに合わせてのびる
   const redrawBar = () => {
     if (!barElement || length === 0) return
@@ -80,42 +78,34 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
   <div class='load'>
     <div>loading...</div>
   </div>
-  <div class='mainWrapper js-mainWrapper'>
+  <div class='mainWrapper'>
     <div class='prev js-prev'></div>
     <div class='mainContent js-tankaMain'>
-      <div class='tanka-wrapper' data-tankaid='1'>
-        <div class='tanka'>
-          <p>短歌一 テキスト テスト <br /><span>二行目は 改行したい</span></p>
-        </div>
-      </div>
-      <div class='tanka-wrapper' data-tankaid='2'>
-        <div class='tanka'>
-          <p>短歌二 テキスト テスト <br /><span>二行目は 改行したい</span></p>
-        </div>
-      </div>
-      <div class='tanka-wrapper' data-tankaid='3'>
-        <div class='tanka'>
-          <p>短歌三 テキスト テスト <br /><span>二行目は 改行したい</span></p>
-        </div>
-      </div>
-      <div class='tanka-wrapper' data-tankaid='4'>
-        <div class='tanka'>
-          <p>短歌四 テキスト テスト <br /><span>二行目は 改行したい</span></p>
-        </div>
-      </div>
-      <div class='tanka-wrapper' data-tankaid='5'>
-        <div class='tanka'>
-          <p>短歌五 テキスト テスト <br /><span>二行目は 改行したい</span></p>
-        </div>
-      </div>
+      <TankaCard id='1'>
+        <span slot='first-line'>短歌一 テキスト テスト</span>
+        <span slot='second-line'>二行目は 改行したい</span>
+      </TankaCard>
+      <TankaCard id='2'>
+        <span slot='first-line'>短歌二 テキスト テスト</span>
+        <span slot='second-line'>二行目は 改行したい</span>
+      </TankaCard>
+      <TankaCard id='3'>
+        <span slot='first-line'>短歌三 テキスト テスト</span>
+        <span slot='second-line'>二行目は 改行したい</span>
+      </TankaCard>
+      <TankaCard id='4'>
+        <span slot='first-line'>短歌四 テキスト テスト</span>
+        <span slot='second-line'>二行目は 改行したい</span>
+      </TankaCard>
+      <TankaCard id='5'>
+        <span slot='first-line'>短歌五 テキスト テスト</span>
+        <span slot='second-line'>二行目は 改行したい</span>
+      </TankaCard>
     </div>
     <div class='next js-next'></div>
   </div>
 
-  <div class='controller js-bar'>
-    <!-- <p></p> -->
-    <!-- <div class='js-current'></div> -->
-  </div>
+  <div class='controller js-bar'></div>
 </TankaLayout>
 
 <style lang='scss'>
@@ -182,24 +172,6 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
     overflow-y: scroll;
     &::-webkit-scrollbar {
       display: none;
-    }
-  }
-  .tanka-wrapper {
-    background: rgba(163, 82, 156, 0.75);
-    margin: 0 1rem;
-    border-radius: 6px;
-  }
-  .tanka {
-    padding: 2rem 7rem;
-    margin: 8px;
-    position: relative;
-    background: rgba(255, 255, 255, 0.75);
-    border-radius: 4px;
-  }
-  p {
-    writing-mode: vertical-rl;
-    span {
-      margin-top: 7.5rem;
     }
   }
 </style>

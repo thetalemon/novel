@@ -1,0 +1,42 @@
+---
+export interface Props {
+  id: string
+}
+
+const { id } = Astro.props
+---
+
+<div class='tanka js-tankaCard' data-tankaid={id}>
+  <div class='tanka-inner'>
+    <p>
+      <slot name='first-line' />
+      <br />
+      <span>
+        <slot name='second-line' />
+      </span>
+    </p>
+  </div>
+</div>
+
+<style lang='scss'>
+  .tanka {
+    background: rgba(163, 82, 156, 0.75);
+    margin: 0 1rem;
+    border-radius: 6px;
+
+    .tanka-inner {
+      padding: 2rem 7em;
+      margin: 8px;
+      position: relative;
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 4px;
+
+      p {
+        writing-mode: vertical-rl;
+        span {
+          margin-top: 7.5rem;
+        }
+      }
+    }
+  }
+</style>
