@@ -6,25 +6,25 @@ import { Icon } from 'astro-icon/components'
 const historyList = await getHistoryList()
 ---
 
-<div class='root'>
+<div class="root">
   <h2>
-    更新履歴 <a href='/feed.xml' target='_blank'><Icon name='rss' /></a>
+    更新履歴 <a href="/feed.xml" target="_blank"><Icon name="rss" /></a>
   </h2>
   <ul>
     {
       historyList.map((item) => (
         <li>
-          <div class='date'>
+          <div class="date">
             <a href={`/notify/${item.slug}`}>{getDate(item.date)}</a>
           </div>
-          <div class='historyItem' set:html={item.message} />
+          <div class="historyItem" set:html={item.message} />
         </li>
       ))
     }
   </ul>
 </div>
 
-<style lang='scss'>
+<style lang="scss">
   .root {
     width: 90%;
     margin: 0 auto;
@@ -66,7 +66,7 @@ const historyList = await getHistoryList()
   }
 </style>
 
-<style lang='scss' is:global>
+<style lang="scss" is:global>
   .historyItem {
     p {
       margin: 0;

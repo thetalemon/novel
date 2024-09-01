@@ -1,11 +1,11 @@
 module.exports = {
-  plugins: ["prettier-plugin-astro", "prettier-plugin-organize-imports"],
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-organize-imports'],
   overrides: [
     {
-      files: "*.astro",
+      files: '*.astro',
       options: {
-        parser: "astro",
+        parser: 'astro',
       },
     },
   ],
-};
+}

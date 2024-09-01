@@ -1,30 +1,30 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
-import { styleHelper } from '@/utils/styleHelper'
-import Header from '@/components/Header.astro'
-import { COLORS_LIST } from '@/constants/colors'
-import Footer from '@/components/Footer.astro'
+import { ViewTransitions } from "astro:transitions";
+import { styleHelper } from "@/utils/styleHelper";
+import Header from "@/components/Header.astro";
+import { COLORS_LIST } from "@/constants/colors";
+import Footer from "@/components/Footer.astro";
 
 export interface Props {
-  title: string
-  ogImage?: string
+  title: string;
+  ogImage?: string;
 }
 
-const { title, ogImage } = Astro.props
+const { title, ogImage } = Astro.props;
 
-const ogp = ogImage ?? 'https://novel.manasas.dev/defaultBg.png'
+const ogp = ogImage ?? "https://novel.manasas.dev/defaultBg.png";
 
-const defaultColor = COLORS_LIST[2]
+const defaultColor = COLORS_LIST[2];
 
 const STYLE = styleHelper([
-  { name: 'bgColor', value: defaultColor.bgColor },
-  { name: 'cardTextColor', value: defaultColor.cardTextColor },
-  { name: 'cardBgColor', value: defaultColor.cardBgColor },
-  { name: 'linkColor', value: defaultColor.linkColor },
-])
+  { name: "bgColor", value: defaultColor.bgColor },
+  { name: "cardTextColor", value: defaultColor.cardTextColor },
+  { name: "cardBgColor", value: defaultColor.cardBgColor },
+  { name: "linkColor", value: defaultColor.linkColor },
+]);
 ---
 
-<style is:global lang='scss'>
+<style is:global lang="scss">
   html {
     font-family: system-ui, sans-serif;
   }
@@ -104,25 +104,25 @@ const STYLE = styleHelper([
   }
 </style>
 
-<html lang='ja'>
+<html lang="ja">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.ico' />
-    <meta name='generator' content={Astro.generator} />
-    <meta name='description' content='まなさすの創作保管庫' />
-    <meta property='og:site_name' content='北極の とある倉庫' />
-    <meta property='og:title' content={title} />
-    <meta property='og:url' content='https://novel.manasas.dev' />
-    <meta property='og:description' content='まなさすの創作保管庫' />
-    <meta property='og:image' content={ogp} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="まなさすの創作保管庫" />
+    <meta property="og:site_name" content="北極の とある倉庫" />
+    <meta property="og:title" content={title} />
+    <meta property="og:url" content="https://novel.manasas.dev" />
+    <meta property="og:description" content="まなさすの創作保管庫" />
+    <meta property="og:image" content={ogp} />
     <title>{title}</title>
     <ViewTransitions />
   </head>
   <body style={STYLE}>
     <Header />
     <main>
-      <article class='content'>
+      <article class="content">
         <slot />
       </article>
     </main>
