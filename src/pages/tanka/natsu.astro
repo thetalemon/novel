@@ -1,9 +1,16 @@
 ---
 import TankaLayout from '@/layouts/TankaLayout.astro'
 import TankaCard from '@/components/tanka/Card.astro'
+import Bar from '@/components/tanka/Bar.astro'
+import PrevNext from '@/components/tanka/PrevNext.astro'
+import Loading from '@/components/tanka/Load.astro'
 ---
 
 <script>
+  // TODO: 今は短歌ページが１つなのでここに書くがどこかで共通利用できるようにする
+  // Layoutに寄せるか……？Layoutにしてはファットなように思う
+  // そもそものベースのLayoutがファット過ぎてるのかもしれない
+
   const prev = document.querySelector('.js-prev')
   const next = document.querySelector('.js-next')
   const tankaList = document.querySelectorAll('.js-tankaCard')
@@ -15,18 +22,12 @@ import TankaCard from '@/components/tanka/Card.astro'
     current--
     tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
   })
+
   next?.addEventListener('click', () => {
     if (current >= tankaList.length - 1) return
     current++
     tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
   })
-
-  const currentEl = document.querySelector('.js-current')
-  const redrawCurrent = () => {
-    redrawBar()
-    if (!currentEl) return
-    currentEl.textContent = String(current + 1)
-  }
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -35,7 +36,7 @@ import TankaCard from '@/components/tanka/Card.astro'
           const target = entry.target as HTMLElement
           if (!target) return
           current = Number(target.dataset.tankaid) - 1
-          redrawCurrent()
+          redrawBar()
         }
       })
     },
@@ -45,6 +46,7 @@ import TankaCard from '@/components/tanka/Card.astro'
       threshold: 0.8,
     }
   )
+
   tankaList.forEach((tanka) => {
     observer.observe(tanka)
   })
@@ -75,11 +77,8 @@ import TankaCard from '@/components/tanka/Card.astro'
 </script>
 
 <TankaLayout title='北極の とある倉庫'>
-  <div class='load'>
-    <div>loading...</div>
-  </div>
+  <Loading />
   <div class='mainWrapper'>
-    <div class='prev js-prev'></div>
     <div class='mainContent js-tankaMain'>
       <TankaCard id='1'>
         <span slot='first-line'>短歌一 テキスト テスト</span>
@@ -102,76 +101,23 @@ import TankaCard from '@/components/tanka/Card.astro'
         <span slot='second-line'>二行目は 改行したい</span>
       </TankaCard>
     </div>
-    <div class='next js-next'></div>
+    <PrevNext />
   </div>
 
-  <div class='controller js-bar'></div>
+  <Bar />
 </TankaLayout>
 
 <style lang='scss'>
-  .load {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    background: rgba(163, 82, 156, 100);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 2rem;
-    transition: all 1s;
-    &.hide {
-      left: 150vw;
-    }
-  }
-  .controller {
-    margin-top: 2rem;
-    background: linear-gradient(
-      90deg,
-      rgba(161, 27, 150, 0.5) 0%,
-      rgba(182, 70, 171, 0.5) 10%,
-      rgba(201, 112, 192, 0.5) 40%,
-      rgba(236, 162, 229, 0.5) 100%
-    );
-    padding: 0.5rem 0;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    transition: all ease-out 1s;
-  }
   .mainWrapper {
     display: flex;
     position: relative;
-    .prev,
-    .next {
-      position: absolute;
-      top: 50%;
-      background: rgba(163, 82, 156, 0.5);
-      cursor: pointer;
-      width: 20px;
-      height: 30px;
-      clip-path: polygon(0 0, 45% 50%, 0 100%);
-    }
-
-    .prev {
-      left: 0;
-      transform: rotate(180deg) translateY(50%);
-    }
-
-    .next {
-      right: 0;
-      transform: rotate(0) translateY(-50%);
-    }
-  }
-  .mainContent {
-    display: flex;
-    margin: 0 1rem;
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
-      display: none;
+    .mainContent {
+      display: flex;
+      margin: 0 1rem;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 </style>

@@ -1,0 +1,32 @@
+---
+export interface Props {
+  id: string
+}
+
+const { id } = Astro.props
+---
+
+<div class='load'>
+  <div>loading...</div>
+</div>
+
+<style lang='scss'>
+  .load {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(163, 82, 156, 100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    transition: all 1s;
+    &.hide {
+      left: 150vw;
+    }
+  }
+</style>
