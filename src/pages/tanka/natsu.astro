@@ -3,7 +3,7 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
 import TankaCard from '@/components/tanka/Card.astro'
 import Bar from '@/components/tanka/Bar.astro'
 import PrevNext from '@/components/tanka/PrevNext.astro'
-import Loading from '@/components/tanka/Load.astro'
+import Load from '@/components/tanka/Load.astro'
 ---
 
 <script>
@@ -77,28 +77,36 @@ import Loading from '@/components/tanka/Load.astro'
 </script>
 
 <TankaLayout title='北極の とある倉庫'>
-  <Loading />
+  <Load />
   <div class='mainWrapper'>
     <div class='mainContent js-tankaMain'>
       <TankaCard id='1'>
-        <span slot='first-line'>短歌一 テキスト テスト</span>
-        <span slot='second-line'>二行目は 改行したい</span>
+        <span slot='first-line'>退屈な　日々はあまりに　早く過ぎ</span>
+        <span slot='second-line'>うだる暑さに　動かぬ身体</span>
       </TankaCard>
       <TankaCard id='2'>
-        <span slot='first-line'>短歌二 テキスト テスト</span>
-        <span slot='second-line'>二行目は 改行したい</span>
+        <span slot='first-line'>唐突に　きみがいうから　どうしたら </span>
+        <span slot='second-line'>おろおろして　右往左往して</span>
       </TankaCard>
       <TankaCard id='3'>
-        <span slot='first-line'>短歌三 テキスト テスト</span>
-        <span slot='second-line'>二行目は 改行したい</span>
+        <span slot='first-line'>きみにあう　準備を進める　カバンには</span>
+        <span slot='second-line'>光るライトと　きみへのチケット</span>
       </TankaCard>
       <TankaCard id='4'>
-        <span slot='first-line'>短歌四 テキスト テスト</span>
-        <span slot='second-line'>二行目は 改行したい</span>
+        <span slot='first-line'>すこしだけ　勇気をだして　踏み出して</span>
+        <span slot='second-line'>だから出会えて　幸せになれて</span>
       </TankaCard>
       <TankaCard id='5'>
-        <span slot='first-line'>短歌五 テキスト テスト</span>
-        <span slot='second-line'>二行目は 改行したい</span>
+        <span slot='first-line'>ほんとはね　疑ってたの　きみのこと</span>
+        <span slot='second-line'>この世なんかに　いないんじゃないかって</span>
+      </TankaCard>
+      <TankaCard id='6'>
+        <span slot='first-line'>きみがいる　本当にいる　それならさ</span>
+        <span slot='second-line'>がんばってみても　いいかなって</span>
+      </TankaCard>
+      <TankaCard id='7'>
+        <span slot='first-line'>また会える　その日目指して　鍛えるから</span>
+        <span slot='second-line'>再戦よろしく　おねがいします🐉</span>
       </TankaCard>
     </div>
     <PrevNext />

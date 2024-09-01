@@ -25,7 +25,13 @@ const { id } = Astro.props
     border-radius: 6px;
 
     .tanka-inner {
-      padding: 2rem 7em;
+      width: 60vw;
+      max-width: 250px;
+      height: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
       margin: 8px;
       position: relative;
       background: rgba(255, 255, 255, 0.75);
@@ -33,8 +39,9 @@ const { id } = Astro.props
 
       p {
         writing-mode: vertical-rl;
+        line-height: 2rem;
         span {
-          margin-top: 7.5rem;
+          margin-top: 2.5rem;
         }
       }
     }
