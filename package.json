@@ -1,7 +1,7 @@
 {
   "name": "manas-novel",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -11,18 +11,18 @@
     "format": "prettier -w ."
   },
   "dependencies": {
-    "@astrojs/react": "^3.6.2",
+    "@astrojs/react": "3.6.2",
     "@astrojs/rss": "4.0.7",
     "@resvg/resvg-js": "2.6.2",
-    "astro": "4.14.5",
+    "astro": "4.15.2",
     "astro-icon": "1.1.1",
     "date-fns": "3.6.0",
-    "newt-client-js": "3.3.4",
+    "newt-client-js": "3.3.5",
     "satori": "0.10.14",
     "typescript": "5.5.4"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "8.2.0",
+    "@typescript-eslint/parser": "8.4.0",
     "eslint": "9.9.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-astro": "1.2.3",
@@ -33,6 +33,6 @@
   },
   "volta": {
     "node": "22.6.0",
-    "npm": "10.8.2"
+    "npm": "10.8.3"
   }
 }
