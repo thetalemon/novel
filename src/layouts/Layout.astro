@@ -1,27 +1,27 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-import { styleHelper } from "@/utils/styleHelper";
-import Header from "@/components/Header.astro";
-import { COLORS_LIST } from "@/constants/colors";
-import Footer from "@/components/Footer.astro";
+import { ViewTransitions } from 'astro:transitions'
+import { styleHelper } from '@/utils/styleHelper'
+import Header from '@/components/Header.astro'
+import { COLORS_LIST } from '@/constants/colors'
+import Footer from '@/components/Footer.astro'
 
 export interface Props {
-  title: string;
-  ogImage?: string;
+  title: string
+  ogImage?: string
 }
 
-const { title, ogImage } = Astro.props;
+const { title, ogImage } = Astro.props
 
-const ogp = ogImage ?? "https://novel.manasas.dev/defaultBg.png";
+const ogp = ogImage ?? 'https://novel.manasas.dev/defaultBg.png'
 
-const defaultColor = COLORS_LIST[2];
+const defaultColor = COLORS_LIST[2]
 
 const STYLE = styleHelper([
-  { name: "bgColor", value: defaultColor.bgColor },
-  { name: "cardTextColor", value: defaultColor.cardTextColor },
-  { name: "cardBgColor", value: defaultColor.cardBgColor },
-  { name: "linkColor", value: defaultColor.linkColor },
-]);
+  { name: 'bgColor', value: defaultColor.bgColor },
+  { name: 'cardTextColor', value: defaultColor.cardTextColor },
+  { name: 'cardBgColor', value: defaultColor.cardBgColor },
+  { name: 'linkColor', value: defaultColor.linkColor },
+])
 ---
 
 <style is:global lang="scss">

@@ -1,20 +1,20 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import { getCharacterList } from "@/lib/newt/character";
-import { Image } from "astro:assets";
-import { NewtImage2AstroImage } from "@/utils/imageHepler";
-import Card from "@/components/Card.astro";
+import Layout from '@/layouts/Layout.astro'
+import { getCharacterList } from '@/lib/newt/character'
+import { Image } from 'astro:assets'
+import { NewtImage2AstroImage } from '@/utils/imageHepler'
+import Card from '@/components/Card.astro'
 
 export const getStaticPaths = async () => {
-  const characterList = await getCharacterList();
+  const characterList = await getCharacterList()
   return characterList.map((character) => ({
     params: { slug: character.slug },
     props: { character },
-  }));
-};
-const { character } = Astro.props;
+  }))
+}
+const { character } = Astro.props
 
-const img: ImageMetadata = NewtImage2AstroImage(character.image);
+const img: ImageMetadata = NewtImage2AstroImage(character.image)
 ---
 
 <Layout title={character.name} ogImage={img.src}>

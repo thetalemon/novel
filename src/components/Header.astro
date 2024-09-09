@@ -1,65 +1,65 @@
 ---
-import ButtonColor from "@/components/ButtonColor.astro";
-import { COLORS_LIST } from "@/constants/colors";
-import { Icon } from "astro-icon/components";
+import ButtonColor from '@/components/ButtonColor.astro'
+import { COLORS_LIST } from '@/constants/colors'
+import { Icon } from 'astro-icon/components'
 ---
 
 <script>
-  import { COLORS_LIST } from "@/constants/colors";
+  import { COLORS_LIST } from '@/constants/colors'
 
   const setColor = (slug: string) => {
-    const ElementBody = document.querySelector("body");
-    const target = COLORS_LIST.filter((color) => color.slug === slug)[0];
+    const ElementBody = document.querySelector('body')
+    const target = COLORS_LIST.filter((color) => color.slug === slug)[0]
     const COLOR_VARIABLE_LIST = [
-      { name: "bgColor", value: target.bgColor },
-      { name: "cardTextColor", value: target.cardTextColor },
-      { name: "cardBgColor", value: target.cardBgColor },
-      { name: "linkColor", value: target.linkColor },
-    ];
+      { name: 'bgColor', value: target.bgColor },
+      { name: 'cardTextColor', value: target.cardTextColor },
+      { name: 'cardBgColor', value: target.cardBgColor },
+      { name: 'linkColor', value: target.linkColor },
+    ]
 
     COLOR_VARIABLE_LIST.forEach((item) => {
       if (item.value) {
-        ElementBody?.style.setProperty(`--${item.name}`, item.value);
+        ElementBody?.style.setProperty(`--${item.name}`, item.value)
       }
-    });
-  };
+    })
+  }
 
   const setMenu = () => {
-    const slug = localStorage.getItem("color") ?? "night";
-    setColor(slug);
+    const slug = localStorage.getItem('color') ?? 'night'
+    setColor(slug)
     const ElementButtonOpen =
-      document.querySelector<HTMLButtonElement>(".js-openMenu");
-    const ElementMenu = document.querySelector<HTMLDivElement>(".js-menu");
+      document.querySelector<HTMLButtonElement>('.js-openMenu')
+    const ElementMenu = document.querySelector<HTMLDivElement>('.js-menu')
     if (ElementButtonOpen !== null) {
-      ElementButtonOpen.addEventListener("click", () => {
-        ElementMenu?.classList.add("visible");
-      });
+      ElementButtonOpen.addEventListener('click', () => {
+        ElementMenu?.classList.add('visible')
+      })
     }
     const ElementButtonClose =
-      document.querySelector<HTMLButtonElement>(".js-closeMenu");
+      document.querySelector<HTMLButtonElement>('.js-closeMenu')
     if (ElementButtonClose !== null) {
-      ElementButtonClose.addEventListener("click", () => {
-        ElementMenu?.classList.remove("visible");
-      });
+      ElementButtonClose.addEventListener('click', () => {
+        ElementMenu?.classList.remove('visible')
+      })
     }
     const ElementButtonList = document.querySelectorAll<HTMLButtonElement>(
-      ".js-buttonColorSelector",
-    );
+      '.js-buttonColorSelector',
+    )
 
     ElementButtonList.forEach((item) => {
       if (item && item.dataset.slug) {
-        const slug = item.dataset.slug;
-        item?.addEventListener("click", () => {
-          localStorage.setItem("color", slug);
-          setColor(slug);
-          ElementMenu?.classList.remove("visible");
-        });
+        const slug = item.dataset.slug
+        item?.addEventListener('click', () => {
+          localStorage.setItem('color', slug)
+          setColor(slug)
+          ElementMenu?.classList.remove('visible')
+        })
       }
-    });
-  };
+    })
+  }
 
-  setMenu();
-  document.addEventListener("astro:after-swap", setMenu);
+  setMenu()
+  document.addEventListener('astro:after-swap', setMenu)
 </script>
 
 <header>
@@ -90,7 +90,7 @@ import { Icon } from "astro-icon/components";
 </header>
 
 <style lang="scss">
-  [data-icon="colors"] {
+  [data-icon='colors'] {
     width: 32px;
     height: 32px;
     color: rgb(var(--cardBgColor));

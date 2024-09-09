@@ -1,19 +1,19 @@
 ---
-import { getSimpleNovelList } from "@/lib/newt/novel";
-import { getSeriesList } from "@/lib/newt/series";
+import { getSimpleNovelList } from '@/lib/newt/novel'
+import { getSeriesList } from '@/lib/newt/series'
 
-const novels = await getSimpleNovelList();
-const seriesList = await getSeriesList();
+const novels = await getSimpleNovelList()
+const seriesList = await getSeriesList()
 const seriesNovelList = seriesList.map((series) => {
   return {
     series: series,
     novels: novels.filter((novel) => novel.series.slug === series.slug),
-  };
-});
-const isMenu = Astro.url.pathname !== "/";
+  }
+})
+const isMenu = Astro.url.pathname !== '/'
 ---
 
-<div class={isMenu ? "menu" : "topMenu"}>
+<div class={isMenu ? 'menu' : 'topMenu'}>
   <h2>Novel</h2>
   {
     seriesNovelList.map((item) => (
@@ -21,14 +21,14 @@ const isMenu = Astro.url.pathname !== "/";
         <h3>{item.series.title}</h3>
         <ul class="novelList">
           {item.novels.map((novel) => {
-            const path = `/novel/${novel.slug}/`;
+            const path = `/novel/${novel.slug}/`
             return Astro.url.pathname === path ? (
               <li class="current">{novel.title}</li>
             ) : (
               <li>
                 <a href={path}>{novel.title}</a>
               </li>
-            );
+            )
           })}
         </ul>
       </>
@@ -73,7 +73,7 @@ const isMenu = Astro.url.pathname !== "/";
           margin-left: 0;
 
           &::before {
-            content: "";
+            content: '';
             display: inline-block;
             background: rgb(var(--cardTextColor));
             border-radius: 50%;

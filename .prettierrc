@@ -1,5 +1,25 @@
 {
+  "semi": false,
   "singleQuote": true,
-  "trailingComma": "all",
-  "semi": false
+  "plugins": ["prettier-plugin-astro", "prettier-plugin-organize-imports"],
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "printWidth": 360
+      }
+    },
+    {
+      "files": ["*.css", "*.scss"],
+      "options": {
+        "singleQuote": false
+      }
+    },
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ]
 }

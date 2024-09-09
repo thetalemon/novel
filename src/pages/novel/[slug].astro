@@ -1,17 +1,17 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import { getDetailNovelList } from "@/lib/newt/novel";
-import Card from "@/components/Card.astro";
-import Menu from "@/feature/Menu.astro";
+import Layout from '@/layouts/Layout.astro'
+import { getDetailNovelList } from '@/lib/newt/novel'
+import Card from '@/components/Card.astro'
+import Menu from '@/feature/Menu.astro'
 
 export const getStaticPaths = async () => {
-  const novels = await getDetailNovelList();
+  const novels = await getDetailNovelList()
   return novels.map((novel) => ({
     params: { slug: novel.slug },
     props: { novel },
-  }));
-};
-const { novel } = Astro.props;
+  }))
+}
+const { novel } = Astro.props
 ---
 
 <Layout

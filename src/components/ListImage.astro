@@ -1,15 +1,15 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets'
 
 export interface Props {
   list: {
-    path: string;
-    img: ImageMetadata;
-    alt: string;
-  }[];
+    path: string
+    img: ImageMetadata
+    alt: string
+  }[]
 }
 
-const { list } = Astro.props;
+const { list } = Astro.props
 ---
 
 <ul>
@@ -21,7 +21,7 @@ const { list } = Astro.props;
             <Image src={item.img} alt={item.alt} width={150} height={150} />
           </a>
         </li>
-      );
+      )
     })
   }
 </ul>

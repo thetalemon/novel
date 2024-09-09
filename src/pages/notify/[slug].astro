@@ -1,17 +1,17 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import { getHistoryList } from "@/lib/newt/notify";
-import Card from "@/components/Card.astro";
-import { getDate } from "@/utils/dateHelper";
+import Layout from '@/layouts/Layout.astro'
+import { getHistoryList } from '@/lib/newt/notify'
+import Card from '@/components/Card.astro'
+import { getDate } from '@/utils/dateHelper'
 
 export const getStaticPaths = async () => {
-  const hisotryList = await getHistoryList();
+  const hisotryList = await getHistoryList()
   return hisotryList.map((item) => ({
     params: { slug: item.slug },
     props: { item },
-  }));
-};
-const { item } = Astro.props;
+  }))
+}
+const { item } = Astro.props
 ---
 
 <Layout

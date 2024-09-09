@@ -1,22 +1,22 @@
 ---
 export interface Props {
-  slug: string;
-  label: string;
-  bgColor: string;
-  cardTextColor: string;
-  cardBgColor: string;
-  linkColor: string;
+  slug: string
+  label: string
+  bgColor: string
+  cardTextColor: string
+  cardBgColor: string
+  linkColor: string
 }
-import { styleHelper } from "@/utils/styleHelper";
+import { styleHelper } from '@/utils/styleHelper'
 
 const { slug, label, bgColor, cardTextColor, cardBgColor, linkColor } =
-  Astro.props;
+  Astro.props
 const STYLE = styleHelper([
-  { name: "bgColor", value: bgColor },
-  { name: "cardTextColor", value: cardTextColor },
-  { name: "cardBgColor", value: cardBgColor },
-  { name: "linkColor", value: linkColor },
-]);
+  { name: 'bgColor', value: bgColor },
+  { name: 'cardTextColor', value: cardTextColor },
+  { name: 'cardBgColor', value: cardBgColor },
+  { name: 'linkColor', value: linkColor },
+])
 ---
 
 <li>

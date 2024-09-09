@@ -1,17 +1,17 @@
 ---
-import { getCharacterList } from "@/lib/newt/character";
-import { NewtImage2AstroImage } from "@/utils/imageHepler";
-import ListImage from "@/components/ListImage.astro";
-import Title from "@/components/Title.astro";
+import { getCharacterList } from '@/lib/newt/character'
+import { NewtImage2AstroImage } from '@/utils/imageHepler'
+import ListImage from '@/components/ListImage.astro'
+import Title from '@/components/Title.astro'
 
-const characterList = await getCharacterList();
+const characterList = await getCharacterList()
 const list = characterList.map((item) => {
   return {
     path: `/character/${item.slug}/`,
     img: NewtImage2AstroImage(item.image),
     alt: item.name,
-  };
-});
+  }
+})
 ---
 
 <div class="root">
