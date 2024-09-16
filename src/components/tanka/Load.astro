@@ -1,5 +1,20 @@
-<div class="load">
-  <div>loading...</div>
+---
+import { Image } from 'astro:assets'
+import ImgLoading from '@/img/Loading.svg'
+---
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(() => {
+      document.querySelector('.js-load')?.classList.add('hide')
+    }, 180)
+  })
+</script>
+
+<div class="js-load load">
+  <div>
+    <Image src={ImgLoading} alt="loading" width={290} />
+  </div>
 </div>
 
 <style lang="scss">

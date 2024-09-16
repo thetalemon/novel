@@ -3,81 +3,9 @@ import TankaLayout from '@/layouts/TankaLayout.astro'
 import TankaCard from '@/components/tanka/Card.astro'
 import Bar from '@/components/tanka/Bar.astro'
 import PrevNext from '@/components/tanka/PrevNext.astro'
-import Load from '@/components/tanka/Load.astro'
 ---
 
-<script>
-  // TODO: 今は短歌ページが１つなのでここに書くがどこかで共通利用できるようにする
-  // Layoutに寄せるか……？Layoutにしてはファットなように思う
-  // そもそものベースのLayoutがファット過ぎてるのかもしれない
-
-  const prev = document.querySelector('.js-prev')
-  const next = document.querySelector('.js-next')
-  const tankaList = document.querySelectorAll('.js-tankaCard')
-  const tankaMainElement = document.querySelector('.js-tankaMain')
-  let current = 0
-
-  prev?.addEventListener('click', () => {
-    if (current < 1) return
-    current--
-    tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
-  })
-
-  next?.addEventListener('click', () => {
-    if (current >= tankaList.length - 1) return
-    current++
-    tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
-  })
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const target = entry.target as HTMLElement
-          if (!target) return
-          current = Number(target.dataset.tankaid) - 1
-          redrawBar()
-        }
-      })
-    },
-    {
-      root: document.querySelector('body'),
-      rootMargin: '0px',
-      threshold: 0.8,
-    },
-  )
-
-  tankaList.forEach((tanka) => {
-    observer.observe(tanka)
-  })
-
-  document.addEventListener('astro:page-load', () => {
-    tankaList[0].scrollIntoView({ behavior: 'smooth', inline: 'center' })
-    setTimeout(() => {
-      document.querySelector('.load')?.classList.add('hide')
-    }, 180)
-  })
-
-  if (tankaMainElement)
-    tankaMainElement.addEventListener('wheel', (event) => {
-      const e = event as WheelEvent
-      if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return
-      e.preventDefault()
-      tankaMainElement.scrollLeft += e.deltaY
-    })
-
-  const barElement = document.querySelector('.js-bar')
-  const length = tankaList.length
-  // currentに合わせてのびる
-  const redrawBar = () => {
-    if (!barElement || length === 0) return
-    const elm = barElement as HTMLDivElement
-    elm.style.width = `${(current + 1) * (100 / length - 1)}%`
-  }
-</script>
-
 <TankaLayout title="夏の推し活短歌 | 北極のとある倉庫">
-  <Load />
   <h1 class="title">推し活短歌 SUMMER TOUR 2024</h1>
   <div class="mainWrapper">
     <div class="mainContent js-tankaMain">

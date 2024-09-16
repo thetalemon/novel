@@ -4,6 +4,7 @@ import { styleHelper } from '@/utils/styleHelper'
 import Header from '@/components/Header.astro'
 import { COLORS_LIST } from '@/constants/colors'
 import Footer from '@/components/Footer.astro'
+import Load from '@/components/tanka/Load.astro'
 
 export interface Props {
   title: string
@@ -23,6 +24,96 @@ const STYLE = styleHelper([
   { name: 'linkColor', value: defaultColor.linkColor },
 ])
 ---
+
+<script>
+  const prev = document.querySelector('.js-prev')
+  const next = document.querySelector('.js-next')
+  const tankaList = document.querySelectorAll('.js-tankaCard')
+  const tankaMainElement = document.querySelector('.js-tankaMain')
+  let current = 0
+
+  prev?.addEventListener('click', () => {
+    if (current < 1) return
+    current--
+    tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+  })
+
+  next?.addEventListener('click', () => {
+    if (current >= tankaList.length - 1) return
+    current++
+    tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+  })
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement
+          if (!target) return
+          current = Number(target.dataset.tankaid) - 1
+          redrawBar()
+        }
+      })
+    },
+    {
+      root: document.querySelector('body'),
+      rootMargin: '0px',
+      threshold: 0.8,
+    }
+  )
+
+  tankaList.forEach((tanka) => {
+    observer.observe(tanka)
+  })
+
+  document.addEventListener('astro:page-load', () => {
+    tankaList[0].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+  })
+
+  if (tankaMainElement)
+    tankaMainElement.addEventListener('wheel', (event) => {
+      const e = event as WheelEvent
+      if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return
+      e.preventDefault()
+      tankaMainElement.scrollLeft += e.deltaY
+    })
+
+  const barElement = document.querySelector('.js-bar')
+  const length = tankaList.length
+  // currentに合わせてのびる
+  const redrawBar = () => {
+    if (!barElement || length === 0) return
+    const elm = barElement as HTMLDivElement
+    elm.style.width = `${(current + 1) * (100 / length - 1)}%`
+  }
+</script>
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="まなさすの創作保管庫" />
+    <meta property="og:site_name" content="北極の とある倉庫" />
+    <meta property="og:title" content={title} />
+    <meta property="og:url" content="https://novel.manasas.dev" />
+    <meta property="og:description" content="まなさすの創作保管庫" />
+    <meta property="og:image" content={ogp} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body style={STYLE}>
+    <Header />
+    <main>
+      <Load />
+      <article class="content">
+        <slot />
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
 
 <style is:global lang="scss">
   html {
@@ -103,29 +194,3 @@ const STYLE = styleHelper([
     max-width: 360px;
   }
 </style>
-
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="まなさすの創作保管庫" />
-    <meta property="og:site_name" content="北極の とある倉庫" />
-    <meta property="og:title" content={title} />
-    <meta property="og:url" content="https://novel.manasas.dev" />
-    <meta property="og:description" content="まなさすの創作保管庫" />
-    <meta property="og:image" content={ogp} />
-    <title>{title}</title>
-    <ViewTransitions />
-  </head>
-  <body style={STYLE}>
-    <Header />
-    <main>
-      <article class="content">
-        <slot />
-      </article>
-    </main>
-    <Footer />
-  </body>
-</html>
