@@ -5,6 +5,7 @@ import Header from '@/components/Header.astro'
 import { COLORS_LIST } from '@/constants/colors'
 import Footer from '@/components/Footer.astro'
 import Load from '@/components/tanka/Load.astro'
+import '@/styles/global.scss'
 
 export interface Props {
   title: string
@@ -115,78 +116,7 @@ const STYLE = styleHelper([
   </body>
 </html>
 
-<style is:global lang="scss">
-  html {
-    font-family: system-ui, sans-serif;
-  }
-
-  body {
-    margin: 0;
-    background: rgb(var(--bgColor));
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    line-height: 1.7;
-    margin: 1rem 0;
-  }
-
-  h1,
-  h2 {
-    margin: 0 0 0.5rem;
-  }
-
-  h3 {
-    margin: 0 0 0.5rem;
-  }
-
-  hr {
-    border: none;
-    border-top: 2px double #cccccc;
-    margin: 1.5rem auto;
-    width: 95%;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  li {
-    margin: 0.5rem 0;
-  }
-
-  a {
-    color: rgb(var(--linkColor));
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
-  button {
-    padding: 0;
-    margin: 0;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-  }
-
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(
-      100vh - 40px - 16px * 2 - 42px - 16px * 2 - 37px - 16px * 2
-    );
-    // ヘッダ高 - ヘッダ余白 - 戻る高 - 戻る余白 - フッタ高 - フッタ余白
-  }
-
+<style lang="scss">
   .content {
     display: flex;
     flex-direction: column;
