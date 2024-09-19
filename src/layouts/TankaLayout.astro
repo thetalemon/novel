@@ -33,16 +33,20 @@ const STYLE = styleHelper([
   const tankaMainElement = document.querySelector('.js-tankaMain')
   let current = 0
 
+  const scrollToTankaByid = (id: number) => {
+    tankaList[id].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+  }
+
   prev?.addEventListener('click', () => {
     if (current < 1) return
     current--
-    tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+    scrollToTankaByid(current)
   })
 
   next?.addEventListener('click', () => {
     if (current >= tankaList.length - 1) return
     current++
-    tankaList[current].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+    scrollToTankaByid(current)
   })
 
   const observer = new IntersectionObserver(
@@ -68,20 +72,20 @@ const STYLE = styleHelper([
   })
 
   document.addEventListener('astro:page-load', () => {
-    tankaList[0].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+    scrollToTankaByid(0)
   })
 
-  if (tankaMainElement)
+  if (tankaMainElement) {
     tankaMainElement.addEventListener('wheel', (event) => {
       const e = event as WheelEvent
       if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return
       e.preventDefault()
       tankaMainElement.scrollLeft += e.deltaY
     })
+  }
 
   const barElement = document.querySelector('.js-bar')
   const length = tankaList.length
-  // currentに合わせてのびる
   const redrawBar = () => {
     if (!barElement || length === 0) return
     const elm = barElement as HTMLDivElement
