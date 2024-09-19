@@ -6,6 +6,7 @@ import { COLORS_LIST } from '@/constants/colors'
 import Footer from '@/components/Footer.astro'
 import Load from '@/components/tanka/Load.astro'
 import '@/styles/global.scss'
+import Bar from '@/components/tanka/Bar.astro'
 
 export interface Props {
   title: string
@@ -114,6 +115,7 @@ const STYLE = styleHelper([
       <Load />
       <article class="content">
         <slot />
+        <Bar />
       </article>
     </main>
     <Footer />
