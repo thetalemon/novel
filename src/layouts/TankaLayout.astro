@@ -3,6 +3,7 @@ import { ViewTransitions } from 'astro:transitions'
 import { styleHelper } from '@/utils/styleHelper'
 import Header from '@/components/Header.astro'
 import { COLORS_LIST } from '@/constants/colors'
+import { mySiteName } from '@/constants/constants'
 import Footer from '@/components/Footer.astro'
 import Load from '@/components/tanka/Load.astro'
 import '@/styles/global.scss'
@@ -16,6 +17,7 @@ export interface Props {
 const { title, ogImage } = Astro.props
 
 const ogp = ogImage ?? 'https://novel.manasas.dev/defaultBg.png'
+const pageTitle = title ? `${title} | ${mySiteName}` : mySiteName
 
 const defaultColor = COLORS_LIST[2]
 
@@ -101,12 +103,12 @@ const STYLE = styleHelper([
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="まなさすの創作保管庫" />
-    <meta property="og:site_name" content="北極の とある倉庫" />
-    <meta property="og:title" content={title} />
+    <meta property="og:site_name" content={mySiteName} />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:url" content="https://novel.manasas.dev" />
     <meta property="og:description" content="まなさすの創作保管庫" />
     <meta property="og:image" content={ogp} />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
     <ViewTransitions />
   </head>
   <body style={STYLE}>
