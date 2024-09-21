@@ -10,12 +10,13 @@ import IllustSection from '@/feature/IllustSection.astro'
 import Card from '@/components/Card.astro'
 import { Image } from 'astro:assets'
 import TitleLogo from '@/img/titleLogo.svg'
+import { mySiteName } from '@/constants/constants'
 ---
 
-<Layout title="北極の とある倉庫">
+<Layout title={mySiteName}>
   <Card>
     <h1 class="title">
-      <Image src={TitleLogo} alt="北極の とある倉庫" height={75} />
+      <Image src={TitleLogo} alt={mySiteName} height={75} />
     </h1>
     <div class="topSection">
       <p>まなさすの創作まとめサイト。</p>
