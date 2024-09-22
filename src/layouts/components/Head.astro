@@ -1,6 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions'
-import { mySiteName } from '@/constants/constants'
+import { mySiteName, mySiteDefaultDescription } from '@/constants/constants'
 
 export interface Props {
   title: string
@@ -19,11 +19,11 @@ const pageTitle =
   <meta name="viewport" content="width=device-width" />
   <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
   <meta name="generator" content={Astro.generator} />
-  <meta name="description" content="まなさすの創作保管庫" />
+  <meta name="description" content={mySiteDefaultDescription} />
   <meta property="og:site_name" content={mySiteName} />
   <meta property="og:title" content={pageTitle} />
   <meta property="og:url" content="https://novel.manasas.dev" />
-  <meta property="og:description" content="まなさすの創作保管庫" />
+  <meta property="og:description" content={mySiteDefaultDescription} />
   <meta property="og:image" content={ogp} />
   <title>{pageTitle}</title>
   <ViewTransitions />

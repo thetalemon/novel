@@ -1,7 +1,7 @@
 ---
 import { styleHelper } from '@/utils/styleHelper'
 import Header from '@/components/Header.astro'
-import Head from '@/layouts/components/head.astro'
+import Head from '@/layouts/components/Head.astro'
 import { COLORS_LIST } from '@/constants/colors'
 import Footer from '@/components/Footer.astro'
 import Load from '@/components/tanka/Load.astro'
@@ -29,7 +29,6 @@ const STYLE = styleHelper([
   const prev = document.querySelector('.js-prev')
   const next = document.querySelector('.js-next')
   const tankaList = document.querySelectorAll('.js-tankaCard')
-  const tankaMainElement = document.querySelector('.js-tankaMain')
   let current = 0
 
   const scrollToTankaByid = (id: number) => {
@@ -74,6 +73,7 @@ const STYLE = styleHelper([
     scrollToTankaByid(0)
   })
 
+  const tankaMainElement = document.querySelector('.js-tankaMain')
   if (tankaMainElement) {
     tankaMainElement.addEventListener('wheel', (event) => {
       const e = event as WheelEvent
