@@ -1,0 +1,17 @@
+---
+import { styleHelper } from '@/utils/styleHelper'
+import { COLORS_LIST } from '@/constants/colors'
+
+const defaultColor = COLORS_LIST[2]
+
+const STYLE = styleHelper([
+  { name: 'bgColor', value: defaultColor.bgColor },
+  { name: 'cardTextColor', value: defaultColor.cardTextColor },
+  { name: 'cardBgColor', value: defaultColor.cardBgColor },
+  { name: 'linkColor', value: defaultColor.linkColor },
+])
+---
+
+<body style={STYLE}>
+  <slot />
+</body>

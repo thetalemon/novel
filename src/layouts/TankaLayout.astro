@@ -1,8 +1,7 @@
 ---
-import { styleHelper } from '@/utils/styleHelper'
 import Header from '@/components/Header.astro'
 import Head from '@/layouts/components/Head.astro'
-import { COLORS_LIST } from '@/constants/colors'
+import Body from '@/layouts/components/Body.astro'
 import Footer from '@/components/Footer.astro'
 import Load from '@/components/tanka/Load.astro'
 import '@/styles/global.scss'
@@ -14,15 +13,6 @@ export interface Props {
 }
 
 const { title, ogImage } = Astro.props
-
-const defaultColor = COLORS_LIST[2]
-
-const STYLE = styleHelper([
-  { name: 'bgColor', value: defaultColor.bgColor },
-  { name: 'cardTextColor', value: defaultColor.cardTextColor },
-  { name: 'cardBgColor', value: defaultColor.cardBgColor },
-  { name: 'linkColor', value: defaultColor.linkColor },
-])
 ---
 
 <script>
@@ -94,7 +84,7 @@ const STYLE = styleHelper([
 
 <html lang="ja">
   <Head title={title} ogImage={ogImage} />
-  <body style={STYLE}>
+  <Body>
     <Header />
     <main>
       <Load />
@@ -104,7 +94,7 @@ const STYLE = styleHelper([
       </article>
     </main>
     <Footer />
-  </body>
+  </Body>
 </html>
 
 <style lang="scss">
