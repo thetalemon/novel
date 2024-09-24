@@ -6,7 +6,7 @@ export interface Props {
 const { id } = Astro.props
 ---
 
-<div class="tanka js-tankaCard" data-tankaid={id}>
+<li class="tanka js-tankaCard" data-tankaid={id}>
   <div class="tanka-inner">
     <p>
       <slot name="first-line" />
@@ -16,7 +16,7 @@ const { id } = Astro.props
       </span>
     </p>
   </div>
-</div>
+</li>
 
 <style lang="scss">
   .tanka {

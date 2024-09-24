@@ -1,0 +1,33 @@
+---
+import TankaCard from '@/components/tanka/Card.astro'
+import type { Tanka } from '@/types/tanka'
+import { jsTankaMain } from '@/classes/tanka'
+
+export interface Props {
+  tankaList: Tanka[]
+}
+
+const { tankaList } = Astro.props
+---
+
+<ul class=`mainContent ${jsTankaMain}`>
+  {
+    tankaList.map((tanka, index) => (
+      <TankaCard id={String(index + 1)}>
+        <span slot="first-line">{tanka.first}</span>
+        <span slot="second-line">{tanka.second}</span>
+      </TankaCard>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  .mainContent {
+    display: flex;
+    margin: 0 1rem;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+</style>

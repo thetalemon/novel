@@ -16,6 +16,7 @@ const { title, ogImage } = Astro.props
 ---
 
 <script>
+  import { jsTankaMain } from '@/classes/tanka'
   const prev = document.querySelector('.js-prev')
   const next = document.querySelector('.js-next')
   const tankaList = document.querySelectorAll('.js-tankaCard')
@@ -63,7 +64,7 @@ const { title, ogImage } = Astro.props
     scrollToTankaByid(0)
   })
 
-  const tankaMainElement = document.querySelector('.js-tankaMain')
+  const tankaMainElement = document.querySelector(`.${jsTankaMain}`)
   if (tankaMainElement) {
     tankaMainElement.addEventListener('wheel', (event) => {
       const e = event as WheelEvent
