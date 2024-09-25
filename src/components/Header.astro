@@ -43,7 +43,7 @@ import { Icon } from 'astro-icon/components'
       })
     }
     const ElementButtonList = document.querySelectorAll<HTMLButtonElement>(
-      '.js-buttonColorSelector',
+      '.js-buttonColorSelector'
     )
 
     ElementButtonList.forEach((item) => {
@@ -64,7 +64,7 @@ import { Icon } from 'astro-icon/components'
 
 <header>
   <div class="inner">
-    <button class="js-openMenu buttonOpen">
+    <button class="js-openMenu buttonOpen" aria-label="メニューボタン">
       <Icon name="colors" />
     </button>
 

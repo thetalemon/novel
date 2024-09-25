@@ -5,7 +5,7 @@ export const COLORS_LIST = [
     bgColor: '3, 7, 19',
     cardTextColor: '9, 51, 58',
     cardBgColor: '181, 184, 199',
-    linkColor: '54, 125, 167',
+    linkColor: '24, 55, 107',
   },
   {
     slug: 'light',
@@ -13,7 +13,7 @@ export const COLORS_LIST = [
     bgColor: '203, 199, 207',
     cardTextColor: '44, 32, 51',
     cardBgColor: '251, 245, 255',
-    linkColor: '140, 144, 166',
+    linkColor: '100, 104, 126',
   },
   {
     slug: 'deep-ocean',
@@ -21,7 +21,7 @@ export const COLORS_LIST = [
     bgColor: '7, 24, 37',
     cardTextColor: '204, 221, 235',
     cardBgColor: '9, 47, 77',
-    linkColor: '117, 144, 165',
+    linkColor: '127, 154, 185',
   },
   {
     slug: 'dark-forest',
@@ -29,6 +29,6 @@ export const COLORS_LIST = [
     bgColor: '39, 52, 43',
     cardTextColor: '5, 55, 22',
     cardBgColor: '150, 184, 162',
-    linkColor: '7, 112, 43',
+    linkColor: '52, 52, 22',
   },
 ]
