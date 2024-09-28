@@ -1,7 +1,7 @@
 {
   "name": "manas-novel",
   "type": "module",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -29,7 +29,7 @@
     "eslint-plugin-astro": "1.2.4",
     "prettier": "3.3.3",
     "prettier-plugin-astro": "0.14.1",
-    "sass": "1.79.3"
+    "sass": "1.79.4"
   },
   "volta": {
     "node": "22.6.0",
