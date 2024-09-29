@@ -1,0 +1,36 @@
+---
+import { allTankaList } from '@/data/tanka/index'
+import TankaLayout from '@/layouts/TankaLayout.astro'
+import TankaList from '@/components/tanka/List.astro'
+import PrevNext from '@/components/tanka/PrevNext.astro'
+
+export const getStaticPaths = async () => {
+  return allTankaList.map((tanka) => ({
+    params: { slug: tanka.slug },
+    props: { tanka },
+  }))
+}
+const { tanka } = Astro.props
+---
+
+<TankaLayout title={tanka.name}>
+  <h1 class="title">{tanka.name}</h1>
+  <div class="mainWrapper">
+    <TankaList tankaList={tanka.tankaList} />
+    <PrevNext />
+  </div>
+</TankaLayout>
+
+<style lang="scss">
+  .mainWrapper {
+    display: flex;
+    position: relative;
+  }
+
+  .title {
+    color: white;
+    font-weight: 200;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+</style>
