@@ -10,7 +10,7 @@ export interface Props {
 const { tankaList } = Astro.props
 ---
 
-<ul class=`mainContent ${jsTankaMain}`>
+<ul class=`mainContent ${jsTankaMain.getClassName()}`>
   {
     tankaList.map((tanka, index) => (
       <TankaCard id={String(index + 1)}>

@@ -1,5 +1,3 @@
-export const jsTankaMain = 'js-tankaMain'
+import { ClassName } from '@/classes/index'
 
-// ここに定義するクラス名たちを
-// className.get()ならクラス名(className)
-// className.getSelector()ならセレクタ名（.className）をとれるようにしたい
+export const jsTankaMain = new ClassName('js-tankaMain')
