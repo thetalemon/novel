@@ -9,7 +9,7 @@ export interface Props {
 
 const { title, ogImage } = Astro.props
 
-const ogp = ogImage ?? 'https://novel.manasas.dev/defaultBg.png'
+const ogp = ogImage ?? 'https://novel.manasas.dev/default.png'
 const pageTitle =
   title && title !== mySiteName ? `${title} | ${mySiteName}` : mySiteName
 ---
