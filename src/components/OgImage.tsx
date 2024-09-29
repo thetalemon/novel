@@ -1,8 +1,7 @@
 import { Resvg } from '@resvg/resvg-js'
 import satori from 'satori'
 
-// const MY_URL = 'https://novel.manasas.dev'
-const MY_URL = 'http://localhost:4321/'
+const MY_URL = 'https://novel.manasas.dev'
 const fontFamily = 'Zen+Kurenaido'
 const SITE_TITLE = '北極の とある倉庫'
 
