@@ -64,7 +64,7 @@ const { title, ogImage } = Astro.props
     scrollToTankaByid(0)
   })
 
-  const tankaMainElement = document.querySelector(jsTankaMain.getSelector())
+  const tankaMainElement = jsTankaMain.getElement()
   if (tankaMainElement) {
     tankaMainElement.addEventListener('wheel', (event) => {
       const e = event as WheelEvent

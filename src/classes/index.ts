@@ -5,7 +5,7 @@ export class ClassName {
     return this.className
   }
 
-  getSelector() {
-    return '.' + this.className
+  getElement() {
+    return document.querySelector('.' + this.className)
   }
 }
