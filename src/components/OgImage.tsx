@@ -1,7 +1,8 @@
 import { Resvg } from '@resvg/resvg-js'
 import satori from 'satori'
 
-const MY_URL = 'https://novel.manasas.dev'
+// const MY_URL = 'https://novel.manasas.dev'
+const MY_URL = 'http://localhost:4321/'
 const fontFamily = 'Zen+Kurenaido'
 const SITE_TITLE = '北極の とある倉庫'
 
@@ -31,10 +32,10 @@ export async function getOgImage(text: string) {
           fontSize: 50,
           fontStyle: 'normal',
           fontWeight: 'bold',
-          color: '#44617b',
+          color: '#fff',
           padding: '0 64px',
           lineHeight: 1.3,
-          marginBottom: '32px',
+          marginBottom: '40px',
           wordWrap: 'break-word',
         }}
       >
@@ -48,7 +49,7 @@ export async function getOgImage(text: string) {
           textAlign: 'right',
           display: 'flex',
           justifyContent: 'flex-end',
-          color: '#44617b',
+          color: '#fff',
           padding: '0 64px',
           lineHeight: 1.3,
         }}
