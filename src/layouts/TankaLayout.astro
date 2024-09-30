@@ -16,14 +16,18 @@ const { title, ogImage } = Astro.props
 ---
 
 <script>
-  import { jsTankaMain } from '@/classes/tanka'
-  const prev = document.querySelector('.js-prev')
-  const next = document.querySelector('.js-next')
-  const tankaList = document.querySelectorAll('.js-tankaCard')
+  import { TankaMain, Prev, Next, TankaCard } from '@/classes/tanka'
+  const prev = Prev.getElement()
+  const next = Next.getElement()
+  const tankaCardList = TankaCard.getAllElements()
+  const tankaCardListLength = tankaCardList.length
   let current = 0
 
   const scrollToTankaByid = (id: number) => {
-    tankaList[id].scrollIntoView({ behavior: 'smooth', inline: 'center' })
+    tankaCardList[id].scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+    })
   }
 
   prev?.addEventListener('click', () => {
@@ -33,7 +37,7 @@ const { title, ogImage } = Astro.props
   })
 
   next?.addEventListener('click', () => {
-    if (current >= tankaList.length - 1) return
+    if (current >= tankaCardListLength - 1) return
     current++
     scrollToTankaByid(current)
   })
@@ -56,7 +60,7 @@ const { title, ogImage } = Astro.props
     }
   )
 
-  tankaList.forEach((tanka) => {
+  tankaCardList.forEach((tanka) => {
     observer.observe(tanka)
   })
 
@@ -64,22 +68,19 @@ const { title, ogImage } = Astro.props
     scrollToTankaByid(0)
   })
 
-  const tankaMainElement = jsTankaMain.getElement()
-  if (tankaMainElement) {
-    tankaMainElement.addEventListener('wheel', (event) => {
-      const e = event as WheelEvent
-      if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return
-      e.preventDefault()
-      tankaMainElement.scrollLeft += e.deltaY
-    })
-  }
+  const tankaMainElement = TankaMain.getElement()
+  tankaMainElement?.addEventListener('wheel', (event) => {
+    const e = event as WheelEvent
+    if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return
+    e.preventDefault()
+    tankaMainElement.scrollLeft += e.deltaY
+  })
 
   const barElement = document.querySelector('.js-bar')
-  const length = tankaList.length
   const redrawBar = () => {
-    if (!barElement || length === 0) return
+    if (!barElement || tankaCardListLength === 0) return
     const elm = barElement as HTMLDivElement
-    elm.style.width = `${(current + 1) * (100 / length - 1)}%`
+    elm.style.width = `${(current + 1) * (100 / tankaCardListLength - 1)}%`
   }
 </script>
 

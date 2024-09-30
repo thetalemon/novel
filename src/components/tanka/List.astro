@@ -1,7 +1,7 @@
 ---
 import TankaCard from '@/components/tanka/Card.astro'
 import type { Tanka } from '@/types/tanka'
-import { jsTankaMain } from '@/classes/tanka'
+import { TankaMain } from '@/classes/tanka'
 
 export interface Props {
   tankaList: Tanka[]
@@ -10,7 +10,7 @@ export interface Props {
 const { tankaList } = Astro.props
 ---
 
-<ul class=`mainContent ${jsTankaMain.getClassName()}`>
+<ul class=`mainContent ${TankaMain.getClassName()}`>
   {
     tankaList.map((tanka, index) => (
       <TankaCard id={String(index + 1)}>

@@ -1,4 +1,6 @@
 ---
+import { TankaCard } from '@/classes/tanka'
+
 export interface Props {
   id: string
 }
@@ -6,7 +8,7 @@ export interface Props {
 const { id } = Astro.props
 ---
 
-<li class="tanka js-tankaCard" data-tankaid={id}>
+<li class=`tanka ${TankaCard.getClassName()}` data-tankaid={id}>
   <div class="tanka-inner">
     <p>
       <slot name="first-line" />

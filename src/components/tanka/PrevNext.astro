@@ -1,5 +1,10 @@
-<div class="prev js-prev"></div>
-<div class="next js-next"></div>
+---
+import { Prev, Next } from '@/classes/tanka'
+---
+
+<div class=`prev ${Prev.getClassName()}`></div>
+<div class=`next ${Next.getClassName()}`></div>
+
 <style lang="scss">
   .prev,
   .next {

@@ -8,4 +8,8 @@ export class ClassName {
   getElement() {
     return document.querySelector('.' + this.className)
   }
+
+  getAllElements() {
+    return document.querySelectorAll('.' + this.className)
+  }
 }
