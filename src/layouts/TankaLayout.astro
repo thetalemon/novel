@@ -16,7 +16,7 @@ const { title, ogImage } = Astro.props
 ---
 
 <script>
-  import { TankaMain, Prev, Next, TankaCard } from '@/classes/tanka'
+  import { TankaMain, Prev, Next, TankaCard, BarElement } from '@/classes/tanka'
   const prev = Prev.getElement()
   const next = Next.getElement()
   const tankaCardList = TankaCard.getAllElements()
@@ -76,7 +76,7 @@ const { title, ogImage } = Astro.props
     tankaMainElement.scrollLeft += e.deltaY
   })
 
-  const barElement = document.querySelector('.js-bar')
+  const barElement = BarElement.getElement()
   const redrawBar = () => {
     if (!barElement || tankaCardListLength === 0) return
     const elm = barElement as HTMLDivElement

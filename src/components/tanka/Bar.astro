@@ -1,4 +1,8 @@
-<div class="controller js-bar"></div>
+---
+import { BarElement } from '@/classes/tanka'
+---
+
+<div class=`controller ${BarElement.getClassName()}`></div>
 
 <style lang="scss">
   .controller {
