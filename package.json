@@ -1,7 +1,7 @@
 {
   "name": "manas-novel",
   "type": "module",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -15,7 +15,7 @@
     "@astrojs/rss": "4.0.7",
     "@astrojs/sitemap": "3.1.6",
     "@resvg/resvg-js": "2.6.2",
-    "astro": "4.15.9",
+    "astro": "4.15.10",
     "astro-icon": "1.1.1",
     "date-fns": "4.1.0",
     "newt-client-js": "3.3.5",

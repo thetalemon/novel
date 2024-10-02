@@ -1,10 +1,17 @@
+---
+import { allTankaList } from '@/data/tanka/index'
+---
+
 <div class="topMenu">
   <h2>短歌</h2>
-  <h3>推し活短歌</h3>
   <ul class="novelList">
-    <li>
-      <a href="/tanka/2024summer">SUMMER TOUR 2024</a>
-    </li>
+    {
+      allTankaList.map((tanka) => (
+        <li>
+          <a href={`/tanka/${tanka.slug}`}>{tanka.name}</a>
+        </li>
+      ))
+    }
   </ul>
 </div>
 
