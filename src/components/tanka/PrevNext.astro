@@ -2,28 +2,44 @@
 import { Prev, Next } from '@/classes/tanka'
 ---
 
-<div class=`prev ${Prev.getClassName()}`></div>
-<div class=`next ${Next.getClassName()}`></div>
+<div class=`arrow-wrapper prev ${Prev.getClassName()}`>
+  <div class=`arrow prev`></div>
+</div>
+<div class=`arrow-wrapper next ${Next.getClassName()}`>
+  <div class=`arrow next`></div>
+</div>
 
 <style lang="scss">
-  .prev,
-  .next {
+  .arrow-wrapper {
+    height: 100%;
     position: absolute;
-    top: 50%;
-    background: rgba(163, 82, 156, 0.5);
-    cursor: pointer;
-    width: 20px;
-    height: 30px;
-    clip-path: polygon(0 0, 45% 50%, 0 100%);
-  }
+    width: 50px;
 
-  .prev {
-    left: 0;
-    transform: rotate(180deg) translateY(50%);
-  }
+    &.prev {
+      left: 0;
+    }
+    &.next {
+      right: 0;
+    }
 
-  .next {
-    right: 0;
-    transform: rotate(0) translateY(-50%);
+    .arrow {
+      position: absolute;
+      top: 50%;
+      background: rgba(163, 82, 156, 0.5);
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      clip-path: polygon(0 0, 45% 50%, 0 100%);
+
+      &.prev {
+        left: 0;
+        transform: rotate(180deg) translateY(50%);
+      }
+
+      &.next {
+        right: 0;
+        transform: rotate(0) translateY(-50%);
+      }
+    }
   }
 </style>
