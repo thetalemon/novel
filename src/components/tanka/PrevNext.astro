@@ -3,10 +3,10 @@ import { Prev, Next } from '@/classes/tanka'
 ---
 
 <div class=`arrow-wrapper prev ${Prev.getClassName()}`>
-  <div class=`arrow prev`></div>
+  <div class='arrow'></div>
 </div>
 <div class=`arrow-wrapper next ${Next.getClassName()}`>
-  <div class=`arrow next`></div>
+  <div class='arrow'></div>
 </div>
 
 <style lang="scss">
@@ -14,13 +14,6 @@ import { Prev, Next } from '@/classes/tanka'
     height: 100%;
     position: absolute;
     width: 50px;
-
-    &.prev {
-      left: 0;
-    }
-    &.next {
-      right: 0;
-    }
 
     .arrow {
       position: absolute;
@@ -30,13 +23,20 @@ import { Prev, Next } from '@/classes/tanka'
       width: 30px;
       height: 30px;
       clip-path: polygon(0 0, 45% 50%, 0 100%);
+    }
 
-      &.prev {
+    
+    &.prev {
+      left: 0;
+      .arrow {
         left: 0;
         transform: rotate(180deg) translateY(50%);
       }
+    }
 
-      &.next {
+    &.next {
+      right: 0;
+      .arrow {
         right: 0;
         transform: rotate(0) translateY(-50%);
       }
