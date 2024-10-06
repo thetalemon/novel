@@ -17,71 +17,71 @@ const { title, ogImage } = Astro.props
 
 <script>
   import { TankaMain, Prev, Next, TankaCard, BarElement } from '@/classes/tanka'
-  const prev = Prev.getElement()
-  const next = Next.getElement()
-  const tankaCardList = TankaCard.getAllElements()
-  const tankaCardListLength = tankaCardList.length
-  let current = 0
-
-  const scrollToTankaByid = (id: number) => {
-    tankaCardList[id].scrollIntoView({
-      behavior: 'smooth',
-      inline: 'center',
-    })
-  }
-
-  prev?.addEventListener('click', () => {
-    if (current < 1) return
-    current--
-    scrollToTankaByid(current)
-  })
-
-  next?.addEventListener('click', () => {
-    if (current >= tankaCardListLength - 1) return
-    current++
-    scrollToTankaByid(current)
-  })
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const target = entry.target as HTMLElement
-          if (!target) return
-          current = Number(target.dataset.tankaid) - 1
-          redrawBar()
-        }
-      })
-    },
-    {
-      root: document.querySelector('body'),
-      rootMargin: '0px',
-      threshold: 0.8,
-    },
-  )
-
-  tankaCardList.forEach((tanka) => {
-    observer.observe(tanka)
-  })
-
   document.addEventListener('astro:page-load', () => {
+    const prev = Prev.getElement()
+    const next = Next.getElement()
+    const tankaCardList = TankaCard.getAllElements()
+    const tankaCardListLength = tankaCardList.length
+    let current = 0
+
+    const scrollToTankaByid = (id: number) => {
+      tankaCardList[id].scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+      })
+    }
+
+    prev?.addEventListener('click', () => {
+      if (current < 1) return
+      current--
+      scrollToTankaByid(current)
+    })
+
+    next?.addEventListener('click', () => {
+      if (current >= tankaCardListLength - 1) return
+      current++
+      scrollToTankaByid(current)
+    })
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const target = entry.target as HTMLElement
+            if (!target) return
+            current = Number(target.dataset.tankaid) - 1
+            redrawBar()
+          }
+        })
+      },
+      {
+        root: document.querySelector('body'),
+        rootMargin: '0px',
+        threshold: 0.8,
+      },
+    )
+
+    tankaCardList.forEach((tanka) => {
+      observer.observe(tanka)
+    })
+
     scrollToTankaByid(0)
-  })
 
-  const tankaMainElement = TankaMain.getElement()
-  tankaMainElement?.addEventListener('wheel', (event) => {
-    const e = event as WheelEvent
-    if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return
-    e.preventDefault()
-    tankaMainElement.scrollLeft += e.deltaY
-  })
+    const tankaMainElement = TankaMain.getElement()
+    tankaMainElement?.addEventListener('wheel', (event) => {
+      const e = event as WheelEvent
+      if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return
+      e.preventDefault()
+      tankaMainElement.scrollLeft += e.deltaY
+    })
 
-  const barElement = BarElement.getElement()
-  const redrawBar = () => {
-    if (!barElement || tankaCardListLength === 0) return
-    const elm = barElement as HTMLDivElement
-    elm.style.width = `${(current + 1) * (100 / tankaCardListLength - 1)}%`
-  }
+    const barElement = BarElement.getElement()
+    const redrawBar = () => {
+      if (!barElement || tankaCardListLength === 0) return
+      const elm = barElement as HTMLDivElement
+      elm.style.width = `${(current + 1) * (100 / tankaCardListLength - 1)}%`
+    }
+  })
 </script>
 
 <html lang="ja">
