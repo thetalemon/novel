@@ -1,7 +1,6 @@
 import react from '@astrojs/react'
 import icon from 'astro-icon'
 import { defineConfig } from 'astro/config'
-
 import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({

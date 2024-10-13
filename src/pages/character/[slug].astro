@@ -1,27 +1,35 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import { getCharacterList } from '@/lib/newt/character'
 import { Image } from 'astro:assets'
-import { NewtImage2AstroImage } from '@/utils/imageHepler'
 import Card from '@/components/Card.astro'
+import { allCharacterList } from '@/data/character/index'
 
 export const getStaticPaths = async () => {
-  const characterList = await getCharacterList()
-  return characterList.map((character) => ({
+  return allCharacterList.map((character) => ({
     params: { slug: character.slug },
     props: { character },
   }))
 }
 const { character } = Astro.props
-
-const img: ImageMetadata = NewtImage2AstroImage(character.image)
 ---
 
-<Layout title={character.name} ogImage={img.src}>
+<Layout title={character.name} ogImage={character.ogpPath}>
   <Card>
-    <Image src={img} alt={character.name} width={250} height={250} />
+    <Image src={character.img} alt={character.name} width={250} height={250} />
     <h1>{character.name}</h1>
-    <div set:html={character.content} />
+    <div set:html={character.text} />
+    {
+      character.related && character.related.length > 0 && (
+          <h2>関連キャラクター</h2>
+          <ul>
+            {character.related.map((related) => (
+              <li>
+                <a href={`/character/${related.slug}`}>{related.name}</a>
+              </li>
+            ))}
+          </ul>
+      )
+    }
   </Card>
 </Layout>
 
@@ -34,5 +42,9 @@ const img: ImageMetadata = NewtImage2AstroImage(character.image)
     margin: 0 auto;
     display: block;
     margin-bottom: 32px;
+  }
+  h2 {
+    margin-top: 32px;
+    font-size: 1.25rem;
   }
 </style>
