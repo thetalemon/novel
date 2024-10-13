@@ -1,0 +1,86 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import Card from '@/components/Card.astro'
+import { Image } from 'astro:assets'
+import { mySiteName } from '@/constants/constants'
+import Title from '@/components/Title.astro'
+import ImageLink from '@/components/ImageLink.astro'
+import BannerImage from '@/img/banner.png'
+import { SearchLinks } from '@/data/link/search'
+import { DoumeiLinks } from '@/data/link/doumei'
+---
+
+<Layout title={mySiteName}>
+  <Card>
+    <div class="inner">
+      <h1>リンク集</h1>
+      <Title text="このサイト" />
+      <p>
+        リンクフリー・アンリンクフリー・直リンクNG<br />
+        サイト名: 北極の とある倉庫<br />
+        サイトアドレス: https://novel.manasas.dev/
+      </p>
+      <Image src={BannerImage} alt="バナー" />
+    </div>
+    <hr />
+    <div class="inner">
+      <Title text="サーチ" />
+      <ul>
+        {
+          SearchLinks.map((link) => (
+            <li>
+              <ImageLink
+                href={link.href}
+                src={link.src}
+                width={link.width}
+                height={link.height}
+                alt={link.alt}
+                target="_blank"
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <hr />
+    <div class="inner">
+      <Title text="同盟" />
+      <ul>
+        {
+          DoumeiLinks.map((link) => (
+            <li>
+              <ImageLink
+                href={link.href}
+                src={link.src}
+                width={link.width}
+                height={link.height}
+                alt={link.alt}
+                target="_blank"
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Card>
+</Layout>
+
+<style lang="scss">
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5px;
+  }
+  p {
+    line-height: 1.2;
+  }
+  .inner {
+    width: 90%;
+    margin: 0 auto;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+</style>
