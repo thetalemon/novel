@@ -16,6 +16,10 @@ import Ahiru from '@/img/banners/ahiru.png'
 import Seiheki from '@/img/banners/seiheki.png'
 import JiSaitoAi from '@/img/banners/jisaitoai.png'
 import SiteCustom from '@/img/banners/sitecustom.png'
+import SousakuChara from '@/img/banners/sousakuChara.gif'
+import SousakuBiyori from '@/img/banners/sousakuBiyori.gif'
+import Onsousui from '@/img/banners/onsousui.gif'
+import Jimaku from '@/img/banners/jimaku.gif'
 
 export const DoumeiLinks = [
   {
@@ -96,6 +100,13 @@ export const DoumeiLinks = [
     alt: '雑食同盟',
   },
   {
+    href: 'https://orijinal.ikaduchi.com/',
+    src: SousakuChara,
+    width: 75,
+    height: 10,
+    alt: '創作キャラ同盟',
+  },
+  {
     href: 'https://holydragoon.jp/site_love_union',
     src: SiteSuki,
     width: 40,
@@ -115,6 +126,27 @@ export const DoumeiLinks = [
     width: 32,
     height: 32,
     alt: '向上心',
+  },
+  {
+    href: 'https://sousakubiyori.michikusa.jp/',
+    src: SousakuBiyori,
+    width: 32,
+    height: 32,
+    alt: '創作日和',
+  },
+  {
+    href: 'https://originalstory.syanari.com/',
+    src: Onsousui,
+    width: 32,
+    height: 32,
+    alt: 'オンライン創作ストーリー製作推進事業部',
+  },
+  {
+    href: 'https://mofu.ifdef.jp/j/',
+    src: Jimaku,
+    width: 32,
+    height: 32,
+    alt: '字幕派。',
   },
   {
     href: 'https://sozaikuzu.blogspot.com/p/doumei.html',
