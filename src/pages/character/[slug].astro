@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro'
 import { Image } from 'astro:assets'
 import Card from '@/components/Card.astro'
 import { allCharacterList } from '@/data/character/index'
+import { myUrl } from '@/constants/constants'
 
 export const getStaticPaths = async () => {
   return allCharacterList.map((character) => ({
@@ -11,9 +12,10 @@ export const getStaticPaths = async () => {
   }))
 }
 const { character } = Astro.props
+const ogpPath = `${myUrl}${character.img.src}`
 ---
 
-<Layout title={character.name} ogImage={character.ogpPath}>
+<Layout title={character.name} ogImage={ogpPath}>
   <Card>
     <Image src={character.img} alt={character.name} width={250} height={250} />
     <h1>{character.name}</h1>
