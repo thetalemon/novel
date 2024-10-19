@@ -3,6 +3,8 @@ import { getIllustList } from '@/lib/newt/Illust'
 import ListImage from '@/components/ListImage.astro'
 import { NewtImage2AstroImage } from '@/utils/imageHepler'
 import Title from '@/components/Title.astro'
+import ImgDoodleBanner from '@/img/doodle.png'
+import { Image } from 'astro:assets'
 
 const illustList = await getIllustList()
 const list = illustList.map((item) => {
@@ -17,12 +19,17 @@ const list = illustList.map((item) => {
 <div class="root">
   <Title text="イラスト一覧" />
   <ListImage list={list} />
-  <a href="https://doodle.manasas.dev/" target="_blank">らくがき置場</a>
+  <a href="https://doodle.manasas.dev/" target="_blank">
+    <Image src={ImgDoodleBanner} alt="北極の らくがき倉庫" width={300} />
+  </a>
 </div>
 
 <style lang="scss">
   .root {
     width: 90%;
     margin: 0 auto;
+    img {
+      border: 1px solid #ccc;
+    }
   }
 </style>
