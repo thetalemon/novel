@@ -1,0 +1,35 @@
+---
+import ImageLink from '@/components/ImageLink.astro'
+import type { LinkImage } from '@/types/link'
+export interface Props {
+  list: LinkImage[]
+}
+
+const { list } = Astro.props
+---
+
+<ul>
+  {
+    list.map((link) => (
+      <li>
+        <ImageLink
+          href={link.href}
+          src={link.src}
+          width={link.width}
+          height={link.height}
+          alt={link.alt}
+          target="_blank"
+        />
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+</style>

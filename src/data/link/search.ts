@@ -1,8 +1,9 @@
 import Lony from '@/img/banners/lony.png'
 import Compass from '@/img/banners/compass.png'
 import Echoes from '@/img/banners/echoes.png'
+import type { LinkImage } from '@/types/link'
 
-export const SearchLinks = [
+export const SearchLinks: LinkImage[] = [
   {
     href: 'https://lony.jp',
     src: Lony,

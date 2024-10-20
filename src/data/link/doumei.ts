@@ -20,8 +20,9 @@ import SousakuChara from '@/img/banners/sousakuChara.gif'
 import SousakuBiyori from '@/img/banners/sousakuBiyori.gif'
 import Onsousui from '@/img/banners/onsousui.gif'
 import Jimaku from '@/img/banners/jimaku.gif'
+import type { LinkImage } from '@/types/link'
 
-export const DoumeiLinks = [
+export const DoumeiLinks: LinkImage[] = [
   {
     href: 'https://flanet.web.fc2.com/union/site_enjoy/',
     src: ReiwaKojinSite,
