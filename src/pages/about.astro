@@ -8,6 +8,7 @@ import ImageLinkList from '@/components/ImageLinkList.astro'
 import BannerImage from '@/img/banner.png'
 import { SearchLinks } from '@/data/link/search'
 import { DoumeiLinks } from '@/data/link/doumei'
+import { SozaiLinks } from '@/data/link/sozai'
 ---
 
 <Layout title={mySiteName}>
@@ -44,6 +45,11 @@ import { DoumeiLinks } from '@/data/link/doumei'
           </li>
         </ul>
       </p>
+    </div>
+    <hr />
+    <div class="inner" id="link">
+      <Title text="素材お借りしました" />
+      <ImageLinkList list={SozaiLinks} />
     </div>
     <hr />
     <div class="inner">

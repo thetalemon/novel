@@ -4,11 +4,11 @@ import History from '@/feature/History.astro'
 import NovelList from '@/feature/NovelList.astro'
 import TankaList from '@/feature/TankaList.astro'
 import CharacterSection from '@/feature/CharacterSection.astro'
-import Icon from '@/components/Icon.astro'
 import IllustSection from '@/feature/IllustSection.astro'
 import Card from '@/components/Card.astro'
 import { Image } from 'astro:assets'
 import TitleLogo from '@/img/titleLogo.svg'
+import Clap from '@/img/clap.gif'
 import { mySiteName } from '@/constants/constants'
 ---
 
@@ -34,18 +34,16 @@ import { mySiteName } from '@/constants/constants'
     <IllustSection />
     <hr />
     <CharacterSection />
-    <hr />
-    <p>
-      ドット絵のアイコンは <a href="https://neko.moo.jp/BS/" target="_blank">
-        化け猫缶素材屋</a
-      > さんからお借りしました
-    </p>
-    <hr />
-    <p class="link">
-      <a href="https://manasas.dev" rel="me" target="_blank"
-        ><Icon type="profile" /></a
-      >
-    </p>
+    <div class="link">
+      <p>
+        <a href="/about#link">Link</a>
+      </p>
+      <p>
+        <a href="https://wavebox.me/wave/1zpw4z8irp585mvq/" target="_blank"
+          ><Image src={Clap} alt="はくしゅ" height={16} /></a
+        >
+      </p>
+    </div>
   </Card>
 </Layout>
 
@@ -62,11 +60,6 @@ import { mySiteName } from '@/constants/constants'
     }
   }
   h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
   p {
     width: 90%;
     margin: 0 auto;

@@ -1,7 +1,7 @@
 // シリーズ: 龍の子
 
-import Sui from '@/pages/character/img/sui.png'
-import Momo from '@/pages/character/img/momo.png'
+import Sui from '@/img/character/sui.png'
+import Momo from '@/img/character/momo.png'
 
 const SUI = {
   name: 'スイ',
