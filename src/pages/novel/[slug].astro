@@ -22,9 +22,7 @@ const { novel } = Astro.props
     <h1>{novel.title}</h1>
     <div class="novel" set:html={novel.body} />
   </Card>
-  <div class="menuWrapper">
-    <Menu />
-  </div>
+  <Menu class="menu" />
 </Layout>
 
 <style lang="scss">
@@ -32,12 +30,13 @@ const { novel } = Astro.props
     text-align: center;
     margin-bottom: 40px;
   }
-  .menuWrapper {
-    margin-top: 40px;
-  }
 </style>
 
 <style lang="scss" is:global>
+  .menu {
+    margin-top: 40px;
+  }
+
   .novel {
     img {
       width: 100%;
