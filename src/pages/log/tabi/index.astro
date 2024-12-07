@@ -1,0 +1,31 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import Card from '@/components/Card.astro'
+---
+
+<Layout title="旅といちにち">
+  <Card>
+    <h1>旅といちにち ジャーナル</h1>
+    <p>
+      <a href="https://talto.cc/projects/MrdhuX04PSJ-lafZjUEql" target="_blank">
+        旅といちにち
+      </a>
+      のプレイログです。時々増えます。
+    </p>
+    <ul>
+      <li>
+        <a href={`/log/tabi/day0`}>0日目</a>
+      </li>
+      <li>
+        <a href={`/log/tabi/day1`}>1日目</a>
+      </li>
+    </ul>
+  </Card>
+</Layout>
+
+<style lang="scss">
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+</style>
