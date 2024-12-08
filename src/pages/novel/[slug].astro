@@ -2,7 +2,7 @@
 import Layout from '@/layouts/Layout.astro'
 import { getDetailNovelList } from '@/lib/newt/novel'
 import Card from '@/components/Card.astro'
-import Menu from '@/feature/Menu.astro'
+import Menu from '@/components/feature/Menu.astro'
 
 export const getStaticPaths = async () => {
   const novels = await getDetailNovelList()
