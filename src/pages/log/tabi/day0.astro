@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import Card from '@/components/Card.astro'
+import TabiTop from '@/components/log/TabiTop.astro'
 ---
 
 <Layout title="旅といちにち 0日目">
@@ -20,7 +21,7 @@ import Card from '@/components/Card.astro'
     <p class="next">
       Next: <a href="/log/tabi/day1">1日目</a>
     </p>
-    <p class="logTop"><a href="/log/tabi">旅といちにち</a></p>
+    <TabiTop />
   </Card>
 </Layout>
 
@@ -38,9 +39,5 @@ import Card from '@/components/Card.astro'
   .next {
     margin-top: 48px;
     text-align: center;
-  }
-  .logTop {
-    text-align: center;
-    margin-top: 24px;
   }
 </style>
