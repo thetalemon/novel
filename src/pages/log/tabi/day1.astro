@@ -2,11 +2,14 @@
 import Layout from '@/layouts/Layout.astro'
 import Card from '@/components/Card.astro'
 import TabiTop from '@/components/log/TabiTop.astro'
+import Title from '@/components/log/Title.astro'
+
+const title = '旅といちにち 1日目'
 ---
 
-<Layout title="旅といちにち 1日目">
+<Layout title={title}>
   <Card>
-    <h1>旅といちにち 1日目</h1>
+    <Title text={title} />
     <div class="main">
       <p>
         旅に出てすぐ山岳地帯についた。あの集落は山の上にあるから、どっちに行っても山岳なのだ。少しでもハンドリングを間違えたら転げ落ちて戻ってはこれないだろう。旅のはじまりからスリリングでいいじゃないか。そう思いながらギリギリを走っていく。

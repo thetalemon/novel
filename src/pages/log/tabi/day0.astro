@@ -2,11 +2,14 @@
 import Layout from '@/layouts/Layout.astro'
 import Card from '@/components/Card.astro'
 import TabiTop from '@/components/log/TabiTop.astro'
+import Title from '@/components/log/Title.astro'
+
+const title = '旅といちにち 0日目'
 ---
 
-<Layout title="旅といちにち 0日目">
+<Layout title={title}>
   <Card>
-    <h1>旅といちにち 0日目</h1>
+    <Title text={title} />
     <p>旅に出ることにした。</p>
     <p>
       ここにいてもどうしようもないような閉塞感に襲われたから、旅に出ることにした。
