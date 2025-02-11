@@ -2,11 +2,5 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "prettier.documentSelectors": ["**/*.astro"],
-  "cSpell.words": [
-    "Maru",
-    "ogbg",
-    "tabi",
-    "textbbox",
-    "textsize"
-  ]
+  "cSpell.words": ["Maru", "ogbg", "resvg", "tabi", "textbbox", "textsize"]
 }
