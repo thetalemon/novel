@@ -81,11 +81,7 @@ export async function getOgImage(text: string) {
   return resvg.render().asPng()
 }
 
-async function fetchFont(
-  text: string,
-  font: string,
-  weight: number,
-): Promise<ArrayBuffer> {
+async function fetchFont(text: string, font: string): Promise<ArrayBuffer> {
   const API = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(
     text,
   )}`
