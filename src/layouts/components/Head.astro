@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 import { mySiteName, mySiteDefaultDescription } from '@/constants/constants'
 
 export interface Props {
@@ -26,5 +26,5 @@ const pageTitle =
   <meta property="og:description" content={mySiteDefaultDescription} />
   <meta property="og:image" content={ogp} />
   <title>{pageTitle}</title>
-  <ViewTransitions />
+  <ClientRouter />
 </head>
