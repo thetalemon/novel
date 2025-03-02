@@ -6,8 +6,8 @@ const fontFamily = 'Zen+Kurenaido'
 const SITE_TITLE = '北極の とある倉庫'
 
 export async function getOgImage(text: string) {
-  const fontNormal = await fetchFont(SITE_TITLE + MY_URL, fontFamily, 400)
-  const fontBold = await fetchFont(SITE_TITLE + text, fontFamily, 700)
+  const fontNormal = await fetchFont(SITE_TITLE + MY_URL, fontFamily)
+  const fontBold = await fetchFont(SITE_TITLE + text, fontFamily)
 
   const svg = await satori(
     <div
