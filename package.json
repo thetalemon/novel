@@ -22,7 +22,7 @@
     "date-fns": "4.1.0",
     "newt-client-js": "3.3.8",
     "satori": "0.12.1",
-    "typescript": "5.7.3"
+    "typescript": "5.8.2"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "8.26.1",
