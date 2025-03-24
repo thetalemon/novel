@@ -1,7 +1,7 @@
 // シリーズ: 龍の子
 
-import Sui from '@/img/character/sui.png'
-import Momo from '@/img/character/momo.png'
+import Sui from './sui.png'
+import Momo from './momo.png'
 
 const SUI = {
   name: 'スイ',
@@ -17,7 +17,7 @@ const MOMO = {
   text: '龍神の最初の子であり、スイの姉。\n猪突猛進でとりあえず動いてみるタイプ。カンはいいが、深く考えるのは苦手。',
 }
 
-export const RyuCaracterList = [
+export const RyuCharacterList = [
   {
     ...SUI,
     related: [MOMO],

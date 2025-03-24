@@ -1,6 +1,6 @@
 // シリーズ: ちいさな安らぎがここにありますように
 
-import Cecil from '@/img/character/cecil.png'
+import Cecil from './cecil.png'
 
 export const yasuragiCharacterList = [
   {
