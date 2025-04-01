@@ -12,6 +12,7 @@ const { title, ogImage } = Astro.props
 const ogp = ogImage ?? 'https://novel.manasas.dev/default.png'
 const pageTitle =
   title && title !== mySiteName ? `${title} | ${mySiteName}` : mySiteName
+const path = Astro.url
 ---
 
 <head>
@@ -22,7 +23,7 @@ const pageTitle =
   <meta name="description" content={mySiteDefaultDescription} />
   <meta property="og:site_name" content={mySiteName} />
   <meta property="og:title" content={pageTitle} />
-  <meta property="og:url" content="https://novel.manasas.dev" />
+  <meta property="og:url" content={path} />
   <meta property="og:description" content={mySiteDefaultDescription} />
   <meta property="og:image" content={ogp} />
   <title>{pageTitle}</title>
