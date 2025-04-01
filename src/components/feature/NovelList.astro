@@ -10,13 +10,33 @@ const seriesNovelList = seriesList.map((series) => {
     novels: novels.filter((novel) => novel.series.slug === series.slug),
   }
 })
+const appendNovelList = [
+  {
+    series: {
+      title: 'ちぐはぐをゆるして',
+      slug: 'tighag',
+    },
+    novels: [
+      {
+        title: '4月の嘘は伝わらない',
+        slug: '2025april1',
+        series: {
+          title: 'ちぐはぐをゆるして',
+          slug: 'tighag',
+        },
+      },
+    ],
+  },
+]
+
+const AllNovelList = seriesNovelList.concat(appendNovelList)
 const isMenu = Astro.url.pathname !== '/'
 ---
 
 <div class={isMenu ? 'menu' : 'topMenu'}>
   <h2>Novel</h2>
   {
-    seriesNovelList.map((item) => (
+    AllNovelList.map((item) => (
       <>
         <h3>{item.series.title}</h3>
         <ul class="novelList">
