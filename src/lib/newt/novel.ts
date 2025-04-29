@@ -1,4 +1,3 @@
-import type { NewtImage } from './general'
 import { APP_UID, newtClient } from './general'
 import type { SeriesItem } from './series'
 
@@ -10,11 +9,6 @@ export interface SimpleNovelItem {
 
 interface DetailNovelItem extends SimpleNovelItem {
   body: string
-  bg: NewtImage
-  bgColor: string
-  textColor: string
-  cardBgColor: string
-  cardBgColorAlpha: number
 }
 
 const MODEL_UID = 'novel'
@@ -38,17 +32,7 @@ export const getDetailNovelList = async (): Promise<DetailNovelItem[]> => {
   const { items: novels } = await newtClient.getContents<DetailNovelItem>({
     ...UIDS,
     query: {
-      select: [
-        'title',
-        'slug',
-        'series',
-        'body',
-        'bg',
-        'bgColor',
-        'textColor',
-        'cardBgColor',
-        'cardBgColorAlpha',
-      ],
+      select: ['title', 'slug', 'series', 'body'],
     },
   })
 

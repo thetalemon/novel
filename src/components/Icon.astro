@@ -1,22 +1,12 @@
 ---
 import { Image } from 'astro:assets'
 import ReturnImage from '@/icons/home.gif'
-import ProfileImage from '@/icons/profile.gif'
 
 export interface Props {
   type: 'return' | 'profile'
 }
 
-const { type } = Astro.props
-
-const item = (function () {
-  switch (type) {
-    case 'return':
-      return { src: ReturnImage, alt: 'トップに戻る' }
-    case 'profile':
-      return { src: ProfileImage, alt: 'メインサイトに行く' }
-  }
-})()
+const item = { src: ReturnImage, alt: 'トップに戻る' }
 ---
 
 <style lang="scss">

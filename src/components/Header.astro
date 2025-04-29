@@ -1,19 +1,18 @@
 ---
-import ButtonColor from '@/components/ButtonColor.astro'
-import { COLORS_LIST } from '@/constants/colors'
 import { Icon } from 'astro-icon/components'
 ---
 
 <script>
   import { COLORS_LIST } from '@/constants/colors'
+  type ColorMode = 'light' | 'dark'
 
-  const setColor = (slug: string) => {
+  const setColor = (slug: ColorMode) => {
+    console.log('setColor', slug)
     const ElementBody = document.querySelector('body')
     const target = COLORS_LIST.filter((color) => color.slug === slug)[0]
     const COLOR_VARIABLE_LIST = [
       { name: 'bgColor', value: target.bgColor },
-      { name: 'cardTextColor', value: target.cardTextColor },
-      { name: 'cardBgColor', value: target.cardBgColor },
+      { name: 'textColor', value: target.textColor },
       { name: 'linkColor', value: target.linkColor },
     ]
 
@@ -25,14 +24,34 @@ import { Icon } from 'astro-icon/components'
   }
 
   const setMenu = () => {
-    const slug = localStorage.getItem('color') ?? 'night'
-    setColor(slug)
-    const ElementButtonOpen =
-      document.querySelector<HTMLButtonElement>('.js-openMenu')
+    const getColorMode = () => {
+      const lsColorMode = localStorage.getItem('color')
+      console.log('lsColorMode', lsColorMode)
+      if (!lsColorMode) return 'dark' as ColorMode
+      if (['dark', 'light'].includes(lsColorMode)) {
+        return lsColorMode as ColorMode
+      }
+      return 'dark' as ColorMode
+    }
+    let currentColorMode = getColorMode()
+    setColor(currentColorMode)
+    const ElementButtonOpen = document.querySelector<HTMLButtonElement>(
+      '.js-colorModeChange',
+    )
     const ElementMenu = document.querySelector<HTMLDivElement>('.js-menu')
     if (ElementButtonOpen !== null) {
       ElementButtonOpen.addEventListener('click', () => {
-        ElementMenu?.classList.add('visible')
+        if (currentColorMode === 'dark') {
+          console.log('change to light')
+          currentColorMode = 'light'
+          localStorage.setItem('color', 'light')
+          setColor('light')
+        } else {
+          console.log('change to dark')
+          currentColorMode = 'dark'
+          localStorage.setItem('color', 'dark')
+          setColor('dark')
+        }
       })
     }
     const ElementButtonClose =
@@ -42,20 +61,6 @@ import { Icon } from 'astro-icon/components'
         ElementMenu?.classList.remove('visible')
       })
     }
-    const ElementButtonList = document.querySelectorAll<HTMLButtonElement>(
-      '.js-buttonColorSelector',
-    )
-
-    ElementButtonList.forEach((item) => {
-      if (item && item.dataset.slug) {
-        const slug = item.dataset.slug
-        item?.addEventListener('click', () => {
-          localStorage.setItem('color', slug)
-          setColor(slug)
-          ElementMenu?.classList.remove('visible')
-        })
-      }
-    })
   }
 
   setMenu()
@@ -64,46 +69,30 @@ import { Icon } from 'astro-icon/components'
 
 <header>
   <div class="inner">
-    <button class="js-openMenu buttonOpen" aria-label="メニューボタン">
-      <Icon name="colors" />
+    <button
+      class="js-colorModeChange buttonOpen"
+      aria-label="ダークモード・ライトモード変更"
+    >
+      <Icon name="sun" />
     </button>
-
-    <div class="menu js-menu">
-      <p>カラーモード変更</p>
-      <ul>
-        {
-          COLORS_LIST.map((item) => (
-            <ButtonColor
-              slug={item.slug}
-              label={item.label}
-              bgColor={item.bgColor}
-              cardTextColor={item.cardTextColor}
-              cardBgColor={item.cardBgColor}
-              linkColor={item.linkColor}
-            />
-          ))
-        }
-      </ul>
-      <button class="js-closeMenu close">とじる</button>
-    </div>
   </div>
 </header>
 
 <style lang="scss">
-  [data-icon='colors'] {
+  [data-icon='sun'],
+  [data-icon='moon'] {
     width: 32px;
     height: 32px;
-    color: rgb(var(--cardBgColor));
+    color: rgb(var(--textColor));
   }
   .close {
-    color: rgb(var(--cardTextColor));
+    color: rgb(var(--textColor));
     margin: 16px 0;
   }
   .menu {
-    color: rgb(var(--cardTextColor));
+    color: rgb(var(--textColor));
     position: absolute;
-    border: 2px solid rgb(var(--cardTextColor));
-    background: rgb(var(--cardBgColor));
+    border: 2px solid rgb(var(--textColor));
     z-index: 100;
     top: 0;
     right: 0;
