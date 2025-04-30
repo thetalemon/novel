@@ -1,5 +1,5 @@
 ---
-import Icon from '@/components/Icon.astro'
+import { Icon } from 'astro-icon/components'
 const isTop = Astro.url.pathname === '/'
 ---
 
@@ -7,7 +7,7 @@ const isTop = Astro.url.pathname === '/'
   !isTop && (
     <div class="returnButton">
       <a href="/">
-        <Icon type="return" />
+        <Icon name="home" />
       </a>
     </div>
   )
@@ -22,15 +22,17 @@ const isTop = Astro.url.pathname === '/'
     display: flex;
     justify-content: center;
     padding: 16px 0;
+    [data-icon='home'] {
+      width: 24px;
+      height: 24px;
+      color: rgb(var(--linkColor));
+    }
   }
 
   footer {
-    margin-top: 40px;
     text-align: center;
-    padding: 2px 0;
+    padding: 16px 0px;
     a {
-      mix-blend-mode: luminosity;
-      color: rgb(var(--linkColor));
       text-decoration: none;
     }
   }
