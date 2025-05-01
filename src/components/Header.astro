@@ -4,10 +4,10 @@ import { Icon } from 'astro-icon/components'
 
 <script>
   import { COLORS_LIST } from '@/constants/colors'
-  type ColorMode = 'light' | 'dark'
+  const COLOR_MODE = COLORS_LIST.map((color) => color.slug)
+  type ColorMode = (typeof COLOR_MODE)[number]
 
   const setColor = (slug: ColorMode) => {
-    console.log('setColor', slug)
     const ElementBody = document.querySelector('body')
     const target = COLORS_LIST.filter((color) => color.slug === slug)[0]
     const COLOR_VARIABLE_LIST = [
@@ -17,60 +17,44 @@ import { Icon } from 'astro-icon/components'
     ]
 
     COLOR_VARIABLE_LIST.forEach((item) => {
-      if (item.value) {
-        ElementBody?.style.setProperty(`--${item.name}`, item.value)
-      }
+      ElementBody?.style.setProperty(`--${item.name}`, item.value)
     })
   }
 
-  const setMenu = () => {
+  const setColorMode = () => {
     const getColorMode = () => {
       const lsColorMode = localStorage.getItem('color')
-      console.log('lsColorMode', lsColorMode)
-      if (!lsColorMode) return 'dark' as ColorMode
-      if (['dark', 'light'].includes(lsColorMode)) {
+      if (!lsColorMode) return COLOR_MODE[0] as ColorMode
+      if (COLOR_MODE.includes(lsColorMode)) {
         return lsColorMode as ColorMode
       }
-      return 'dark' as ColorMode
+      return COLOR_MODE[0] as ColorMode
     }
+
     let currentColorMode = getColorMode()
     setColor(currentColorMode)
-    const ElementButtonOpen = document.querySelector<HTMLButtonElement>(
+    const ElementChangeColorMode = document.querySelector<HTMLButtonElement>(
       '.js-colorModeChange',
     )
-    const ElementMenu = document.querySelector<HTMLDivElement>('.js-menu')
-    if (ElementButtonOpen !== null) {
-      ElementButtonOpen.addEventListener('click', () => {
-        if (currentColorMode === 'dark') {
-          console.log('change to light')
-          currentColorMode = 'light'
-          localStorage.setItem('color', 'light')
-          setColor('light')
-        } else {
-          console.log('change to dark')
-          currentColorMode = 'dark'
-          localStorage.setItem('color', 'dark')
-          setColor('dark')
-        }
-      })
-    }
-    const ElementButtonClose =
-      document.querySelector<HTMLButtonElement>('.js-closeMenu')
-    if (ElementButtonClose !== null) {
-      ElementButtonClose.addEventListener('click', () => {
-        ElementMenu?.classList.remove('visible')
+
+    if (ElementChangeColorMode !== null) {
+      ElementChangeColorMode.addEventListener('click', () => {
+        const setMode = currentColorMode === 'dark' ? 'light' : 'dark'
+        currentColorMode = setMode
+        localStorage.setItem('color', setMode)
+        setColor(setMode)
       })
     }
   }
 
-  setMenu()
-  document.addEventListener('astro:after-swap', setMenu)
+  setColorMode()
+  document.addEventListener('astro:after-swap', setColorMode)
 </script>
 
 <header>
   <div class="inner">
     <button
-      class="js-colorModeChange buttonOpen"
+      class="js-colorModeChange buttonColorMode"
       aria-label="ダークモード・ライトモード変更"
     >
       <Icon name="sun" />
@@ -79,64 +63,22 @@ import { Icon } from 'astro-icon/components'
 </header>
 
 <style lang="scss">
-  [data-icon='sun'],
-  [data-icon='moon'] {
-    width: 32px;
-    height: 32px;
-    color: rgb(var(--textColor));
-  }
-  .close {
-    color: rgb(var(--textColor));
-    margin: 16px 0;
-  }
-  .menu {
-    color: rgb(var(--textColor));
-    position: absolute;
-    border: 2px solid rgb(var(--textColor));
-    z-index: 100;
-    top: 0;
-    right: 0;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    transition: transform 0.5s;
-    padding: 8px 16px;
-    transform: translateY(-180%);
-
-    &.visible {
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    p {
-      margin: 8px 0 16px 0;
-    }
-
-    ul {
-      column-gap: 16px;
-      width: 100%;
-    }
-  }
   header {
-    --header-inner-height: 40px;
     display: flex;
     justify-content: center;
-    margin: 16px 0 16px;
+    margin: 16px 0;
     .inner {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
       width: 80%;
       max-width: 750px;
-      position: relative;
-      height: var(--header-inner-height);
-      position: relative;
-      .buttonOpen {
-        position: absolute;
-        right: 0;
-        img {
-          width: var(--header-inner-height);
-          height: var(--header-inner-height);
-        }
+
+      [data-icon='sun'],
+      [data-icon='moon'] {
+        width: 32px;
+        height: 32px;
+        color: rgb(var(--textColor));
       }
     }
   }
