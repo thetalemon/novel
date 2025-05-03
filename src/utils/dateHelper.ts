@@ -1,7 +1,7 @@
-import { format } from 'date-fns'
+import { format, parse } from 'date-fns'
 import { ja } from 'date-fns/locale'
 
 export const getDate = (value: string) =>
-  format(new Date(value), 'yyyy-MM-dd', {
+  format(parse(value, 'yyyyMMdd', new Date()), 'yyyy-MM-dd', {
     locale: ja,
   })

@@ -1,12 +1,10 @@
 import { getOgImage } from '@/components/OgImage'
-import { getHistoryList } from '@/lib/newt/notify'
 import type { APIContext } from 'astro'
+import { HistoryList } from '@/data/history'
 
 export async function getStaticPaths() {
-  const hisotryList = await getHistoryList()
-
-  return hisotryList.map((item) => ({
-    params: { slug: item.slug },
+  return HistoryList.map((item) => ({
+    params: { slug: item.date },
     props: { item },
   }))
 }

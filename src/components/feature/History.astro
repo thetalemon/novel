@@ -1,25 +1,24 @@
 ---
-import { getHistoryList } from '@/lib/newt/notify'
+import { HistoryList } from '@/data/history'
 import { getDate } from '@/utils/dateHelper'
 import { Icon } from 'astro-icon/components'
-
-const historyList = await getHistoryList()
 ---
 
 <div class="root">
   <h2>
-    更新履歴 <a href="/feed.xml" target="_blank" aria-label="RSS"
-      ><Icon name="rss" /></a
-    >
+    更新履歴
+    <a href="/feed.xml" target="_blank" aria-label="RSS">
+      <Icon name="rss" />
+    </a>
   </h2>
   <ul>
     {
-      historyList.map((item) => (
+      HistoryList.map((item) => (
         <li>
           <div class="date">
-            <a href={`/notify/${item.slug}`}>{getDate(item.date)}</a>
+            <a href={`/notify/${item.date}`}>{getDate(item.date)}</a>
           </div>
-          <div class="historyItem" set:html={item.message} />
+          <div class="historyItem" set:html={item.description} />
         </li>
       ))
     }

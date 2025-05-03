@@ -1,13 +1,12 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import { getHistoryList } from '@/lib/newt/notify'
 import Card from '@/components/Card.astro'
 import { getDate } from '@/utils/dateHelper'
+import { HistoryList } from '@/data/history'
 
 export const getStaticPaths = async () => {
-  const hisotryList = await getHistoryList()
-  return hisotryList.map((item) => ({
-    params: { slug: item.slug },
+  return HistoryList.map((item) => ({
+    params: { slug: item.date },
     props: { item },
   }))
 }
@@ -16,13 +15,13 @@ const { item } = Astro.props
 
 <Layout
   title={item.title}
-  ogImage={`https://novel.manasas.dev/notify/og/${item.slug}.png`}
+  ogImage={`https://novel.manasas.dev/notify/og/${item.date}.png`}
 >
   <Card>
     <div class="cardInner">
-      <img src=`/notify/og/${item.slug}.png` />
+      <img src=`/notify/og/${item.date}.png` />
       <p class="date">{getDate(item.date)}</p>
-      <div set:html={item.message} />
+      <div set:html={item.description} />
     </div>
   </Card>
 </Layout>
