@@ -1,6 +1,14 @@
-import type { CharacterItem } from './character'
 import type { NewtImage } from './general'
 import { APP_UID, newtClient } from './general'
+import type { SeriesItem } from './series'
+
+interface CharacterItem {
+  name: string
+  slug: string
+  image: NewtImage
+  content: string
+  series: SeriesItem
+}
 
 interface IllustItem {
   title: string
