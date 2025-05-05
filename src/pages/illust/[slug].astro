@@ -1,27 +1,25 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import { getIllustList } from '@/lib/newt/Illust'
 import { Image } from 'astro:assets'
-import { NewtImage2AstroImage } from '@/utils/imageHepler'
 import Card from '@/components/Card.astro'
+import { ILLUST_LIST } from '@/data/illust'
+import { myUrl } from '@/constants/constants'
 
 export const getStaticPaths = async () => {
-  const illustList = await getIllustList()
-  return illustList.map((illust) => ({
+  return ILLUST_LIST.map((illust) => ({
     params: { slug: illust.slug },
     props: { illust },
   }))
 }
 const { illust } = Astro.props
-
-const img: ImageMetadata = NewtImage2AstroImage(illust.image)
+const ogpPath = `${myUrl}${illust.img.src}`
 ---
 
-<Layout title={illust.title} ogImage={img.src}>
+<Layout title={illust.title} ogImage={ogpPath}>
   <Card>
-    <Image src={img} alt={illust.title} />
+    <Image src={illust.img} alt={illust.title} />
     <h1>{illust.title}</h1>
-    <div set:html={illust.comment} />
+    <div set:html={illust.text} />
   </Card>
 </Layout>
 

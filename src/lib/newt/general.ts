@@ -7,11 +7,3 @@ export const newtClient = createClient({
 })
 
 export const APP_UID = 'novel'
-
-export interface NewtImage {
-  altText: string
-  src: string
-  height: number
-  width: number
-  fileType: string
-}
