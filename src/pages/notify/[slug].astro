@@ -15,11 +15,11 @@ const { item } = Astro.props
 
 <Layout
   title={item.title}
-  ogImage={`https://novel.manasas.dev/notify/og/${item.date}.png`}
+  ogImage={`https://novel.manasas.dev/og/notify/img/${item.date}.png`}
 >
   <Card>
     <div class="cardInner">
-      <img src=`/notify/og/${item.date}.png` />
+      <img src=`/og/notify/img/${item.date}.png` />
       <p class="date">{getDate(item.date)}</p>
       <div set:html={item.description} />
     </div>
