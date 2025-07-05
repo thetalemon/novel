@@ -11,6 +11,12 @@ import { Image } from 'astro:assets'
 import TitleLogo from '@/img/titleLogo.svg'
 import Clap from '@/img/clap.gif'
 import { mySiteName } from '@/constants/constants'
+import Title from '@/components/Title.astro'
+import ImageLinkList from '@/components/ImageLinkList.astro'
+import { SearchLinks } from '@/data/link/search'
+import { DoumeiLinks } from '@/data/link/doumei'
+import { SozaiLinks } from '@/data/link/sozai'
+import BannerImage from '@/img/banner.png'
 ---
 
 <Layout title={mySiteName}>
@@ -21,9 +27,20 @@ import { mySiteName } from '@/constants/constants'
     <div class="topSection">
       <p>まなさすの創作まとめサイト。</p>
       <p>🌟 このサイトは性別を超越した装いと愛に溢れています 🌟</p>
+    </div>
+    <hr />
+    <div class="inner">
+      <Title text="このサイトについて" />
       <p>
-        <a href="/about">このサイトについて & リンク集</a>
+        一次創作メイン。<br />
+        性別不定多いです。同性愛あります。世界滅びます。<br />
       </p>
+      <p>
+        リンクはご自由にどうぞ。バナーはお持ち帰りで。<br />
+        サイト名: 北極の とある倉庫<br />
+        サイトアドレス: https://novel.manasas.dev/
+      </p>
+      <Image src={BannerImage} alt="バナー" />
     </div>
     <hr />
     <History />
@@ -39,13 +56,43 @@ import { mySiteName } from '@/constants/constants'
     <CharacterSection />
     <div class="link">
       <p>
-        <a href="/about#link">Link</a>
-      </p>
-      <p>
         <a href="https://wavebox.me/wave/1zpw4z8irp585mvq/" target="_blank"
           ><Image src={Clap} alt="はくしゅ" height={16} /></a
         >
       </p>
+    </div>
+    <hr />
+    <div class="inner">
+      <Title text="管理人" />
+      <p>まなさす</p>
+      <Title text="SNS" />
+      <p>
+        <ul>
+          <li>
+            <a href="https://fedibird.com/@thetalemon/" target="_blank"
+              >fedibird（本拠地）</a
+            >
+          </li>
+          <li>
+            <a href="https://bsky.app/profile/manasas.dev" target="_blank"
+              >Bluesky</a
+            >
+          </li>
+        </ul>
+      </p>
+    </div>
+    <hr />
+    <div class="inner" id="link">
+      <Title text="素材お借りしました" />
+      <ImageLinkList list={SozaiLinks} />
+    </div>
+    <div class="inner">
+      <Title text="サーチ" />
+      <ImageLinkList list={SearchLinks} />
+    </div>
+    <div class="inner">
+      <Title text="同盟" />
+      <ImageLinkList list={DoumeiLinks} />
     </div>
   </Card>
 </Layout>
@@ -70,5 +117,17 @@ import { mySiteName } from '@/constants/constants'
   .link {
     margin-top: 3rem;
     text-align: center;
+  }
+  .inner {
+    width: 90%;
+    margin: 0 auto 2rem auto;
+
+    h1,
+    p {
+      width: 100%;
+      margin: 0 auto;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
   }
 </style>
