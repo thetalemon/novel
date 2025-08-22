@@ -20,6 +20,11 @@ import SousakuChara from '@/img/banners/sousakuChara.gif'
 import SousakuBiyori from '@/img/banners/sousakuBiyori.gif'
 import Onsousui from '@/img/banners/onsousui.gif'
 import Jimaku from '@/img/banners/jimaku.gif'
+import Ouchi from '@/img/banners/ouchi.gif'
+import Nfm from '@/img/banners/nfm.webp'
+import Yurui from '@/img/banners/yurui.png'
+import Kaisou from '@/img/banners/kaisou.png'
+
 import type { LinkImage } from '@/types/link'
 
 export const DoumeiLinks: LinkImage[] = [
@@ -87,6 +92,13 @@ export const DoumeiLinks: LinkImage[] = [
     alt: '性癖に正直なサイト',
   },
   {
+    href: 'https://emd.lsv.jp/yuru-union/',
+    src: Kaisou,
+    width: 88,
+    height: 31,
+    alt: '階層癖',
+  },
+  {
     href: 'https://unionmatome.web.fc2.com/jikoman/index.html',
     src: Heki,
     width: 110,
@@ -122,6 +134,13 @@ export const DoumeiLinks: LinkImage[] = [
     alt: '遅筆同盟',
   },
   {
+    href: 'https://pupupudoumei.web.fc2.com/ouchi/',
+    src: Ouchi,
+    width: 32,
+    height: 32,
+    alt: 'おうちにいます',
+  },
+  {
     href: 'https://rs.skr.jp/aspiration/',
     src: Koujyoshin,
     width: 32,
@@ -148,6 +167,20 @@ export const DoumeiLinks: LinkImage[] = [
     width: 32,
     height: 32,
     alt: '字幕派。',
+  },
+  {
+    href: 'https://echoes.o0o0.jp/nfm',
+    src: Nfm,
+    width: 32,
+    height: 32,
+    alt: 'Nor for me',
+  },
+  {
+    href: 'https://emd.lsv.jp/yuru-union/',
+    src: Yurui,
+    width: 32,
+    height: 32,
+    alt: 'ゆるいサイト',
   },
   {
     href: 'https://sozaikuzu.blogspot.com/p/doumei.html',

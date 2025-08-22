@@ -35,12 +35,6 @@ import BannerImage from '@/img/banner.png'
         一次創作メイン。<br />
         性別不定多いです。同性愛あります。世界滅びます。<br />
       </p>
-      <p>
-        リンクはご自由にどうぞ。バナーはお持ち帰りで。<br />
-        サイト名: 北極の とある倉庫<br />
-        サイトアドレス: https://novel.manasas.dev/
-      </p>
-      <Image src={BannerImage} alt="バナー" />
     </div>
     <hr />
     <History />
@@ -54,13 +48,6 @@ import BannerImage from '@/img/banner.png'
     <IllustSection />
     <hr />
     <CharacterSection />
-    <div class="link">
-      <p>
-        <a href="https://wavebox.me/wave/1zpw4z8irp585mvq/" target="_blank"
-          ><Image src={Clap} alt="はくしゅ" height={16} /></a
-        >
-      </p>
-    </div>
     <hr />
     <div class="inner">
       <Title text="管理人" />
@@ -82,6 +69,15 @@ import BannerImage from '@/img/banner.png'
       </p>
     </div>
     <hr />
+    <div class="inner">
+      <p>
+        リンクはご自由にどうぞ。バナーはお持ち帰りで。<br />
+        サイト名: 北極の とある倉庫<br />
+        サイトアドレス: https://novel.manasas.dev/
+      </p>
+      <Image src={BannerImage} alt="バナー" />
+    </div>
+    <hr />
     <div class="inner" id="link">
       <Title text="素材お借りしました" />
       <ImageLinkList list={SozaiLinks} />
@@ -95,6 +91,13 @@ import BannerImage from '@/img/banner.png'
       <ImageLinkList list={DoumeiLinks} />
     </div>
   </Card>
+  <div class="link">
+    <p>
+      <a href="https://wavebox.me/wave/1zpw4z8irp585mvq/" target="_blank"
+        ><Image src={Clap} alt="はくしゅ" height={16} /></a
+      >
+    </p>
+  </div>
 </Layout>
 
 <style lang="scss">
