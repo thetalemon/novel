@@ -28,7 +28,7 @@ def create_og_image(
     """
     # 背景画像の読み込みとリサイズ
     try:
-        background = Image.open("../../../og/ogbg.png")
+        background = Image.open("./ogbg.png")
         background = background.resize((width, height), Image.Resampling.LANCZOS)
     except Exception as e:
         print(f"背景画像の読み込みエラー: {e}")
@@ -42,7 +42,7 @@ def create_og_image(
     # フォントの読み込み
     try:
         # フォントファイルのパスを指定
-        font_path = "../../../og/ZenKurenaido-Regular.ttf"
+        font_path = "./ZenKurenaido-Regular.ttf"
         title_font = ImageFont.truetype(font_path, 60)
         site_name_font = ImageFont.truetype(font_path, 40)  # サイト名用のフォント
     except Exception as e:
@@ -95,7 +95,7 @@ def create_og_image(
 def generate_all_og_images():
     """index.jsonのデータを使用して全てのOG画像を生成する関数"""
     # index.jsonのパス
-    index_path = "../../../data/history/data.json"
+    index_path = "../../src/data/history/data.json"
     
     try:
         # index.jsonを読み込む
@@ -111,7 +111,7 @@ def generate_all_og_images():
             
             if date and title:
                 # 出力パスを設定
-                output_path = f"img/{date}.png"
+                output_path = f"../../public/og/img/{date}.png"
                 
                 # 既にファイルが存在する場合はスキップ
                 if os.path.exists(output_path):
