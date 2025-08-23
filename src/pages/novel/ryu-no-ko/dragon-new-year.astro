@@ -1,0 +1,94 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import Card from '@/components/Card.astro'
+import Menu from '@/components/feature/Menu.astro'
+
+const title = '龍と新年'
+---
+
+<Layout
+  title={title}
+  ogImage={`https://novel.manasas.dev/og/novel/ryu-no-ko/dragon-new-year.png`}
+>
+  <Card>
+    <h1>{title}</h1>
+    <div class="novel">
+      <p>
+        龍は子を成さない。代わりに龍は、龍の素質のある者を子として、龍に育てる。
+      </p>
+
+      <p>
+        モモとスイは、同じ龍に育てられた姉妹だ。明るく行動的なモモ。賢く冷静沈着なスイ。一見対照的な2人は、龍から贈られた黄金の瞳を持っている。
+      </p>
+
+      <p>
+        龍は子と認めた者に、力を与える。龍の子の瞳は、龍の力の影響で、親と同じ色に変化する。元々他人であるモモとスイにとって、同じ色の瞳だけが、姉妹の証なのだ。
+      </p>
+
+      <p>
+        「ねえ、モモ」<br />
+        「どうしたの、スイ」<br />
+        「不安だよ」
+      </p>
+
+      <p>
+        来年は12年に1度の龍の年。龍の年には、龍は地上に降りて、人々を見守るお役目がある。モモとスイも親に付き添って地上に降りなければならない。
+      </p>
+
+      <p>
+        「スイは心配性だね」<br />
+        「モモは心配じゃないの？」<br />
+        「だって、何回もやったでしょう？」<br />
+        「そうだけど、」<br />
+        「大丈夫だよ。龍神様もいるし、隣に私もいるんだから」
+      </p>
+
+      <p>モモはぎゅ、とスイの手を握った。</p>
+
+      <p>「そっか。そうだよね」</p>
+
+      <p>スイもモモの手を握り返す。</p>
+
+      <p>
+        「そうだよ。いつかはひとりだちしないといけないけど…………今はまだ、ふたりでいようね」
+      </p>
+
+      <p>
+        モモがそう言うと、スイもこくりと頷いた。そしてふたりは手をつないで、一歩を踏み出す。
+      </p>
+
+      <p>次の1年を見守るために。</p>
+    </div>
+  </Card>
+  <Menu class="menu" />
+</Layout>
+
+<style lang="scss">
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  hr {
+    width: 100%;
+    border: 1px #ccc solid;
+  }
+  .novel {
+    margin: 0 1rem;
+    @media screen and (max-width: 768px) {
+      margin: 0;
+    }
+    p {
+      margin: 2rem 0;
+      line-height: 2;
+    }
+    img {
+      width: 100%;
+    }
+  }
+</style>
+
+<style lang="scss" is:global>
+  .menu {
+    margin-top: 40px;
+  }
+</style>

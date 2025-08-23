@@ -1,6 +1,8 @@
 ---
 import { getSimpleNovelList } from '@/lib/newt/novel'
 import { getSeriesList } from '@/lib/newt/series'
+import { Image } from 'astro:assets'
+import RyuNoKo from '@/data/novel/ryu-no-ko/banner.png'
 
 const novels = await getSimpleNovelList()
 const seriesList = await getSeriesList()
@@ -29,7 +31,9 @@ const appendNovelList = [
   },
 ]
 
-const AllNovelList = seriesNovelList.concat(appendNovelList)
+const AllNovelList = seriesNovelList
+  .concat(appendNovelList)
+  .filter((item) => item.series.title !== '龍の子')
 const isMenu = Astro.url.pathname !== '/'
 ---
 
@@ -54,6 +58,11 @@ const isMenu = Astro.url.pathname !== '/'
       </>
     ))
   }
+  <h3>
+    <a href="/novel/ryu-no-ko"
+      ><Image src={RyuNoKo} alt="龍の子" height={40} width={200} /></a
+    >
+  </h3>
 </div>
 
 <style lang="scss">
