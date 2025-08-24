@@ -1,0 +1,71 @@
+---
+import Header from '@/components/Header.astro'
+import Head from '@/layouts/components/Head.astro'
+import Body from '@/layouts/components/Body.astro'
+import Footer from '@/components/Footer.astro'
+import Card from '@/components/Card.astro'
+import Menu from '@/components/feature/Menu.astro'
+import '@/styles/global.scss'
+
+export interface Props {
+  title: string
+  ogImage?: string
+}
+
+const { title, ogImage } = Astro.props
+---
+
+<html lang="ja">
+  <Head title={title} ogImage={ogImage} />
+  <Body>
+    <Header />
+    <main>
+      <article class="content">
+        <Card>
+          <h1>{title}</h1>
+          <div class="novel">
+            <slot />
+          </div>
+        </Card>
+        <Menu class="menu" />
+      </article>
+    </main>
+    <Footer />
+  </Body>
+</html>
+
+<style lang="scss">
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 750px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  hr {
+    width: 100%;
+    border: 1px #ccc solid;
+  }
+  .novel {
+    margin: 0 1rem;
+    @media screen and (max-width: 768px) {
+      margin: 0;
+    }
+    p {
+      margin: 2rem 0;
+      line-height: 2;
+    }
+    img {
+      width: 100%;
+    }
+  }
+</style>
+
+<style lang="scss" is:global>
+  .menu {
+    margin-top: 40px;
+  }
+</style>
