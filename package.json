@@ -17,7 +17,7 @@
     "@astrojs/rss": "4.0.12",
     "@astrojs/sitemap": "3.6.0",
     "@resvg/resvg-js": "2.6.2",
-    "astro": "5.14.1",
+    "astro": "5.14.5",
     "astro-icon": "1.1.5",
     "date-fns": "4.1.0",
     "newt-client-js": "3.3.10",
@@ -32,7 +32,7 @@
     "prettier-plugin-astro": "0.14.1",
     "sass-embedded": "1.93.2",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.46.0",
-    "@typescript-eslint/parser": "8.46.0"
+    "typescript-eslint": "8.46.1",
+    "@typescript-eslint/parser": "8.46.1"
   }
 }
