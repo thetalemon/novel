@@ -2,6 +2,7 @@
 import { getSimpleNovelList } from '@/lib/newt/novel'
 import { getSeriesList } from '@/lib/newt/series'
 import { Image } from 'astro:assets'
+import NovelItem from '@/components/NovelItem.astro'
 import RyuNoKo from '@/data/novel/ryu-no-ko/banner.png'
 
 const novels = await getSimpleNovelList()
@@ -12,28 +13,8 @@ const seriesNovelList = seriesList.map((series) => {
     novels: novels.filter((novel) => novel.series.slug === series.slug),
   }
 })
-const appendNovelList = [
-  {
-    series: {
-      title: 'ちぐはぐをゆるして',
-      slug: 'tighag',
-    },
-    novels: [
-      {
-        title: '4月の嘘は伝わらない',
-        slug: '2025april1',
-        series: {
-          title: 'ちぐはぐをゆるして',
-          slug: 'tighag',
-        },
-      },
-    ],
-  },
-]
 
 const AllNovelList = seriesNovelList
-  .concat(appendNovelList)
-  .filter((item) => item.series.title !== '龍の子')
 const isMenu = Astro.url.pathname !== '/'
 ---
 
@@ -45,23 +26,21 @@ const isMenu = Astro.url.pathname !== '/'
         <h3>{item.series.title}</h3>
         <ul class="novelList">
           {item.novels.map((novel) => {
-            const path = `/novel/${novel.slug}/`
-            return Astro.url.pathname === path ? (
-              <li class="current">{novel.title}</li>
-            ) : (
-              <li>
-                <a href={path}>{novel.title}</a>
-              </li>
-            )
+            return <NovelItem slug={novel.slug} title={novel.title} />
           })}
         </ul>
       </>
     ))
   }
+  <h3>ちぐはぐをゆるして</h3>
+  <ul>
+    <NovelItem slug="tighag" title="ちぐはぐをゆるして" />
+  </ul>
+  <ul class="novelList"></ul>
   <h3>
-    <a href="/novel/ryu-no-ko"
-      ><Image src={RyuNoKo} alt="龍の子" height={40} width={200} /></a
-    >
+    <a href="/novel/ryu-no-ko">
+      <Image src={RyuNoKo} alt="龍の子" height={40} width={200} />
+    </a>
   </h3>
 </div>
 
@@ -69,9 +48,6 @@ const isMenu = Astro.url.pathname !== '/'
   .topMenu {
     width: 90%;
     margin: 0 auto;
-    li {
-      margin-left: 1rem;
-    }
     ul {
       margin-bottom: 2rem;
     }
@@ -93,26 +69,6 @@ const isMenu = Astro.url.pathname !== '/'
 
     ul {
       margin: 0.5rem 0;
-      li {
-        margin: 0.5rem 0rem 0.5rem 1.25rem;
-
-        &.current {
-          display: flex;
-          align-items: center;
-          margin-left: 0;
-
-          &::before {
-            content: '';
-            display: inline-block;
-            background: rgb(var(--textColor));
-            border-radius: 50%;
-            width: 0.75rem;
-            height: 0.75rem;
-            flex-shrink: 0;
-            margin-right: 0.5rem;
-          }
-        }
-      }
     }
   }
 </style>

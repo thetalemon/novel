@@ -1,0 +1,42 @@
+---
+export interface Props {
+  slug: string
+  title: string
+}
+
+const { slug, title } = Astro.props
+const path = `/novel/${slug}/`
+---
+
+{
+  Astro.url.pathname === path ? (
+    <li class="current">{title}</li>
+  ) : (
+    <li>
+      <a href={path}>{title}</a>
+    </li>
+  )
+}
+
+<style lang="scss">
+  li {
+    margin: 0.5rem 0rem 0.5rem 1.25rem;
+
+    &.current {
+      display: flex;
+      align-items: center;
+      margin-left: 0;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        background: rgb(var(--textColor));
+        border-radius: 50%;
+        width: 0.75rem;
+        height: 0.75rem;
+        flex-shrink: 0;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+</style>
