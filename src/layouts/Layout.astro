@@ -3,6 +3,7 @@ import Header from '@/components/Header.astro'
 import Head from '@/layouts/components/Head.astro'
 import Body from '@/layouts/components/Body.astro'
 import Footer from '@/components/Footer.astro'
+import Card from '@/components/Card.astro'
 import '@/styles/global.scss'
 
 export interface Props {
@@ -19,7 +20,9 @@ const { title, ogImage } = Astro.props
     <Header />
     <main>
       <article class="content">
-        <slot />
+        <Card>
+          <slot />
+        </Card>
       </article>
     </main>
     <Footer />
