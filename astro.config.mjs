@@ -10,9 +10,6 @@ export default defineConfig({
   site: 'https://novel.manasas.dev',
   integrations: [react(), icon(), sitemap()],
   vite: {
-    optimizeDeps: {
-      exclude: ['@resvg/resvg-js'],
-    },
     css: {
       preprocessorOptions: {
         scss: {
