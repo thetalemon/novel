@@ -5,12 +5,7 @@ import { Icon } from 'astro-icon/components'
 ---
 
 <div class="root">
-  <h2>
-    更新履歴
-    <a href="/feed.xml" target="_blank" aria-label="RSS">
-      <Icon name="rss" />
-    </a>
-  </h2>
+  <h2>更新履歴</h2>
   <ul>
     {
       HistoryList.map((item) => (
@@ -29,15 +24,6 @@ import { Icon } from 'astro-icon/components'
   .root {
     width: 90%;
     margin: 0 auto;
-    h2 {
-      [data-icon='rss'] {
-        width: 1rem;
-        height: 1rem;
-        opacity: 0.75;
-        margin-left: 0.5rem;
-        color: rgb(var(--textColor));
-      }
-    }
     ul {
       display: flex;
       flex-direction: column;
