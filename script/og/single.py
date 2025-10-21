@@ -115,7 +115,7 @@ if __name__ == "__main__":
     title = " ".join(sys.argv[1:])
     
     # デフォルトの出力パス（同じディレクトリにog_image.pngとして保存）
-    output_path = "og_image.png"
+    output_path = title + ".png"
     
     # OG画像を生成
     create_og_image(

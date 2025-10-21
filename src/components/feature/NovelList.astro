@@ -1,37 +1,24 @@
 ---
-import { getSimpleNovelList } from '@/lib/newt/novel'
-import { getSeriesList } from '@/lib/newt/series'
 import { Image } from 'astro:assets'
 import NovelItem from '@/components/NovelItem.astro'
 import RyuNoKo from '@/data/novel/ryu-no-ko/banner.png'
 
-const novels = await getSimpleNovelList()
-const seriesList = await getSeriesList()
-const seriesNovelList = seriesList.map((series) => {
-  return {
-    series: series,
-    novels: novels.filter((novel) => novel.series.slug === series.slug),
-  }
-})
-
-const AllNovelList = seriesNovelList
 const isMenu = Astro.url.pathname !== '/'
 ---
 
 <div class={isMenu ? 'menu' : 'topMenu'}>
   <h2>Novel</h2>
-  {
-    AllNovelList.map((item) => (
-      <>
-        <h3>{item.series.title}</h3>
-        <ul class="novelList">
-          {item.novels.map((novel) => {
-            return <NovelItem slug={novel.slug} title={novel.title} />
-          })}
-        </ul>
-      </>
-    ))
-  }
+  <h3>朱を交える</h3>
+  <ul>
+    <NovelItem slug="syumaji/shinsyunoichinichi" title="真朱の1日-夏の手前-" />
+  </ul>
+  <h3>人生に二度はない</h3>
+  <ul>
+    <NovelItem
+      slug="nidohanai/naiteiinoha"
+      title="泣いていいのは、私ではない。"
+    />
+  </ul>
   <h3>水のたまゆら</h3>
   <ul>
     <NovelItem slug="tamayura/tamayura" title="はじまり" />
