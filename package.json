@@ -19,7 +19,6 @@
     "astro": "5.14.7",
     "astro-icon": "1.1.5",
     "date-fns": "4.1.0",
-    "newt-client-js": "3.3.10",
     "satori": "0.18.3"
   },
   "devDependencies": {

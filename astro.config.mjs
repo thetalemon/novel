@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
   image: {
-    domains: ['manas-novel.assets.newt.so', 'novel.manasas.dev'],
+    domains: ['novel.manasas.dev'],
   },
   site: 'https://novel.manasas.dev',
   integrations: [react(), icon(), sitemap()],
