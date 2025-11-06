@@ -1,0 +1,120 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import History from '@/components/feature/History.astro'
+import NovelList from '@/components/feature/NovelList.astro'
+import TankaList from '@/components/feature/TankaList.astro'
+import CharacterSection from '@/components/feature/CharacterSection.astro'
+import Log from '@/components/feature/Log.astro'
+import IllustSection from '@/components/feature/IllustSection.astro'
+import Card from '@/components/Card.astro'
+import { Image } from 'astro:assets'
+import TitleLogo from '@/img/titleLogo.svg'
+import Clap from '@/img/clap.gif'
+import { mySiteName } from '@/constants/constants'
+import Title from '@/components/Title.astro'
+import BannerImage from '@/img/banner.png'
+---
+
+<Layout title={mySiteName}>
+  <Card>
+    <h1 class="title">
+      <Image src={TitleLogo} alt={mySiteName} height={75} />
+    </h1>
+    <div class="topSection">
+      <p>まなさすの創作まとめサイト。</p>
+      <p>🌟 このサイトは性別を超越した装いと愛に溢れています 🌟</p>
+    </div>
+    <hr />
+    <div class="inner">
+      <Title text="このサイトについて" />
+      <p>
+        一次創作メイン。<br />
+        性別不定多いです。同性愛あります。世界滅びます。<br />
+      </p>
+    </div>
+    <hr />
+    <History />
+    <hr />
+    <NovelList />
+    <hr />
+    <Log />
+    <hr />
+    <TankaList />
+    <hr />
+    <IllustSection />
+    <hr />
+    <CharacterSection />
+    <hr />
+    <div class="inner">
+      <Title text="管理人" />
+      <p>まなさす</p>
+      <Title text="SNS" />
+      <p>
+        <ul>
+          <li>
+            <a href="https://fedibird.com/@thetalemon/" target="_blank"
+              >fedibird（本拠地）</a
+            >
+          </li>
+          <li>
+            <a href="https://bsky.app/profile/manasas.dev" target="_blank"
+              >Bluesky</a
+            >
+          </li>
+        </ul>
+      </p>
+    </div>
+    <hr />
+    <div class="inner">
+      <p>
+        リンクはご自由にどうぞ。バナーはお持ち帰りで。<br />
+        サイト名: 北極の とある倉庫<br />
+        サイトアドレス: https://novel.manasas.dev/
+      </p>
+      <Image src={BannerImage} alt="バナー" />
+    </div>
+    <hr />
+  </Card>
+  <div class="link">
+    <p>
+      <a href="https://wavebox.me/wave/1zpw4z8irp585mvq/" target="_blank"
+        ><Image src={Clap} alt="はくしゅ" height={16} /></a
+      >
+    </p>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .title {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .topSection {
+    p {
+      text-align: center;
+    }
+  }
+  h1,
+  p {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  .inner {
+    width: 90%;
+    margin: 0 auto 2rem auto;
+
+    h1,
+    p {
+      width: 100%;
+      margin: 0 auto;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+  }
+</style>

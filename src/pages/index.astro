@@ -1,136 +1,75 @@
 ---
-import Layout from '@/layouts/Layout.astro'
-import History from '@/components/feature/History.astro'
-import NovelList from '@/components/feature/NovelList.astro'
-import TankaList from '@/components/feature/TankaList.astro'
-import CharacterSection from '@/components/feature/CharacterSection.astro'
-import Log from '@/components/feature/Log.astro'
-import IllustSection from '@/components/feature/IllustSection.astro'
+import SimpleLayout from '@/layouts/SimpleLayout.astro'
 import Card from '@/components/Card.astro'
 import { Image } from 'astro:assets'
 import TitleLogo from '@/img/titleLogo.svg'
-import Clap from '@/img/clap.gif'
 import { mySiteName } from '@/constants/constants'
-import Title from '@/components/Title.astro'
 import ImageLinkList from '@/components/ImageLinkList.astro'
 import { SearchLinks } from '@/data/link/search'
 import { DoumeiLinks } from '@/data/link/doumei'
-import { SozaiLinks } from '@/data/link/sozai'
-import BannerImage from '@/img/banner.png'
 ---
 
-<Layout title={mySiteName}>
+<SimpleLayout title={mySiteName}>
   <Card>
     <h1 class="title">
       <Image src={TitleLogo} alt={mySiteName} height={75} />
     </h1>
-    <div class="topSection">
-      <p>まなさすの創作まとめサイト。</p>
-      <p>🌟 このサイトは性別を超越した装いと愛に溢れています 🌟</p>
+    <div class="description">
+      <p>まなさすの一次創作サイト。</p>
+      <p>下記の要素を含みます。</p>
+      <ul>
+        <li>性別不定</li>
+        <li>同性愛</li>
+        <li>異性装</li>
+        <li>世界滅びます</li>
+      </ul>
     </div>
-    <hr />
-    <div class="inner">
-      <Title text="このサイトについて" />
-      <p>
-        一次創作メイン。<br />
-        性別不定多いです。同性愛あります。世界滅びます。<br />
-      </p>
-    </div>
-    <hr />
-    <History />
-    <hr />
-    <NovelList />
-    <hr />
-    <Log />
-    <hr />
-    <TankaList />
-    <hr />
-    <IllustSection />
-    <hr />
-    <CharacterSection />
-    <hr />
-    <div class="inner">
-      <Title text="管理人" />
-      <p>まなさす</p>
-      <Title text="SNS" />
-      <p>
-        <ul>
-          <li>
-            <a href="https://fedibird.com/@thetalemon/" target="_blank"
-              >fedibird（本拠地）</a
-            >
-          </li>
-          <li>
-            <a href="https://bsky.app/profile/manasas.dev" target="_blank"
-              >Bluesky</a
-            >
-          </li>
-        </ul>
-      </p>
-    </div>
-    <hr />
-    <div class="inner">
-      <p>
-        リンクはご自由にどうぞ。バナーはお持ち帰りで。<br />
-        サイト名: 北極の とある倉庫<br />
-        サイトアドレス: https://novel.manasas.dev/
-      </p>
-      <Image src={BannerImage} alt="バナー" />
-    </div>
-    <hr />
-    <div class="inner" id="link">
-      <Title text="素材お借りしました" />
-      <ImageLinkList list={SozaiLinks} />
-    </div>
-    <div class="inner">
-      <Title text="サーチ" />
-      <ImageLinkList list={SearchLinks} />
-    </div>
-    <div class="inner">
-      <Title text="同盟" />
-      <ImageLinkList list={DoumeiLinks} />
-    </div>
+    <a class="enterButton" href="/top">Enter</a>
+    <ImageLinkList list={SearchLinks} />
+    <ImageLinkList list={DoumeiLinks} />
   </Card>
-  <div class="link">
-    <p>
-      <a href="https://wavebox.me/wave/1zpw4z8irp585mvq/" target="_blank"
-        ><Image src={Clap} alt="はくしゅ" height={16} /></a
-      >
-    </p>
-  </div>
-</Layout>
+</SimpleLayout>
 
 <style lang="scss">
+  body {
+    min-height: 100vh;
+    background: #0575e6;
+    background: -webkit-linear-gradient(to top, #021b79, #0575e6);
+    background: linear-gradient(to top, #021b79, #0575e6);
+  }
   .title {
     margin: 1rem 0;
     display: flex;
     justify-content: center;
     width: 100%;
   }
-  .topSection {
+
+  .description {
+    text-align: center;
+    color: #f5f5f5;
     p {
-      text-align: center;
+      margin: 0;
+    }
+    margin-top: 50px;
+    ul {
+      display: flex;
+      margin: 0 auto;
+      justify-content: center;
+      li {
+        margin: 0.5rem 0.5rem;
+      }
     }
   }
-  h1,
-  p {
-    width: 90%;
-    margin: 0 auto;
-  }
-  .link {
-    margin-top: 3rem;
-    text-align: center;
-  }
-  .inner {
-    width: 90%;
-    margin: 0 auto 2rem auto;
 
-    h1,
-    p {
-      width: 100%;
-      margin: 0 auto;
-      line-height: 1.5;
-      margin-bottom: 1rem;
+  .enterButton {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 36px;
+    margin: 80px auto;
+    &:hover {
+      text-decoration: underline;
     }
   }
 </style>

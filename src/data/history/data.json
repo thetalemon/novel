@@ -1,5 +1,10 @@
 [
   {
+    "date": "20251106",
+    "title": "ENTERページを追加",
+    "description": "ENTERページを追加しました"
+  },
+  {
     "date": "20250822",
     "title": "同盟バナーを追加",
     "description": "同盟バナーを追加しました"
@@ -12,7 +17,7 @@
   {
     "date": "20241110",
     "title": "小説2つ追加しました",
-    "description": "別所にて公開していた<a href=\"https://novel.manasas.dev/novel/naiteiinoha/\">泣いていいのは、私ではない。</a>と<a href=\"https://novel.manasas.dev/novel/shinsyunoichinichi/\">真朱の1日</a>をこちらにまとめました"
+    "description": "別所にて公開していた<a href=\"https://novel.manasas.dev/novel/nidohanai/naiteiinoha/\">泣いていいのは、私ではない。</a>と<a href=\"https://novel.manasas.dev/novel/syumaji/shinsyunoichinichi/\">真朱の1日</a>をこちらにまとめました"
   },
   {
     "date": "20241006",
@@ -32,12 +37,12 @@
   {
     "date": "20231231",
     "title": "龍の子シリーズを公開",
-    "description": "<a href=\"https://novel.manasas.dev/novel/momo/\">モモの過去</a>, <a href=\"https://novel.manasas.dev/novel/sui/\">スイの過去</a>, <a href=\"https://novel.manasas.dev/novel/doragon-god/\">龍神様のはじまり</a>, <a href=\"https://novel.manasas.dev/novel/momo-and-doragon/\">モモと龍神様</a>, <a href=\"https://novel.manasas.dev/novel/dragon-new-year/\">龍と新年</a>を公開"
+    "description": "<a href=\"https://novel.manasas.dev/novel/ryu-no-ko/momo/\">モモの過去</a>, <a href=\"https://novel.manasas.dev/novel/ryu-no-ko/sui/\">スイの過去</a>, <a href=\"https://novel.manasas.dev/novel/ryu-no-ko/doragon-god/\">龍神様のはじまり</a>, <a href=\"https://novel.manasas.dev/novel/ryu-no-ko/momo-and-doragon/\">モモと龍神様</a>, <a href=\"https://novel.manasas.dev/novel/ryu-no-ko/dragon-new-year/\">龍と新年</a>を公開"
   },
   {
     "date": "20230609",
     "title": "とある雨の日を公開",
-    "description": "<a href=\"https://novel.manasas.dev/novel/rainy/\">とある雨の日</a>を公開"
+    "description": "<a href=\"https://novel.manasas.dev/novel/2023april1/rainy/\">とある雨の日</a>を公開"
   },
   {
     "date": "20230511",

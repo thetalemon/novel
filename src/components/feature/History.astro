@@ -1,7 +1,6 @@
 ---
 import { HistoryList } from '@/data/history'
 import { getDate } from '@/utils/dateHelper'
-import { Icon } from 'astro-icon/components'
 ---
 
 <div class="root">
@@ -10,10 +9,10 @@ import { Icon } from 'astro-icon/components'
     {
       HistoryList.map((item) => (
         <li>
-          <div class="date">
-            <a href={`/notify/${item.date}`}>{getDate(item.date)}</a>
-          </div>
-          <div class="historyItem" set:html={item.description} />
+          <p>
+            <span class="date">{getDate(item.date)}</span>
+            <span class="historyItem" set:html={item.description} />
+          </p>
         </li>
       ))
     }

@@ -12,7 +12,7 @@ const isTop = Astro.url.pathname === '/'
     </div>
   )
 }
-<footer>
+<footer class={isTop ? 'is-top' : ''}>
   <a href="https://manasas.dev" rel="me" target="_blank">© manasas</a>
 </footer>
 
@@ -34,6 +34,11 @@ const isTop = Astro.url.pathname === '/'
     padding: 16px 0px;
     a {
       text-decoration: none;
+    }
+    &.is-top {
+      a {
+        color: #fff;
+      }
     }
   }
 </style>
