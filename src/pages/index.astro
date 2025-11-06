@@ -52,11 +52,18 @@ import { DoumeiLinks } from '@/data/link/doumei'
     }
     margin-top: 50px;
     ul {
-      display: flex;
       margin: 0 auto;
-      justify-content: center;
+      margin-top: 8px;
       li {
         margin: 0.5rem 0.5rem;
+        &::before {
+          content: '・';
+          margin-right: 0.5rem;
+        }
+        &::after {
+          content: '・';
+          margin-left: 0.5rem;
+        }
       }
     }
   }
