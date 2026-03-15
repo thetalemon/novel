@@ -12,22 +12,22 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
-    "@astrojs/check": "0.9.6",
-    "@astrojs/sitemap": "3.6.0",
-    "astro": "5.16.6",
+    "@astrojs/check": "0.9.7",
+    "@astrojs/sitemap": "3.7.1",
+    "astro": "6.0.4",
     "astro-icon": "1.1.5",
     "date-fns": "4.1.0"
   },
   "devDependencies": {
-    "eslint": "9.39.2",
+    "@typescript-eslint/parser": "8.57.0",
+    "eslint": "10.0.3",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-astro": "1.5.0",
-    "globals": "17.0.0",
-    "prettier": "3.6.2",
+    "eslint-plugin-astro": "1.6.0",
+    "globals": "17.4.0",
+    "prettier": "3.8.1",
     "prettier-plugin-astro": "0.14.1",
-    "sass-embedded": "1.93.3",
+    "sass-embedded": "1.98.0",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.51.0",
-    "@typescript-eslint/parser": "8.51.0"
+    "typescript-eslint": "8.57.0"
   }
 }
