@@ -3,6 +3,7 @@
   "editor.formatOnSave": true,
   "prettier.documentSelectors": ["**/*.astro"],
   "cSpell.words": [
+    "manasas",
     "Maru",
     "Momo",
     "naiteiinoha",
