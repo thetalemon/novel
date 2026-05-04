@@ -12,5 +12,27 @@ const STYLE = styleHelper([
 ---
 
 <body style={STYLE}>
+  <div class="color"></div>
   <slot />
 </body>
+
+<style lang="scss">
+  .color {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 9999;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      #e40303 0% 16.66%,
+      #ff8c00 16.66% 33.33%,
+      #ffed00 33.33% 50%,
+      #008026 50% 66.66%,
+      #004dff 66.66% 83.33%,
+      #750787 83.33% 100%
+    );
+  }
+</style>
