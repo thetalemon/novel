@@ -1,5 +1,4 @@
 import Bakeneko from '@/img/banners/bakeneko.gif'
-import WebCitron from '@/img/banners/WebCitron.gif'
 import type { LinkImage } from '@/types/link'
 
 export const SozaiLinks: LinkImage[] = [

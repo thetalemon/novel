@@ -1,7 +1,6 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "prettier.documentSelectors": ["**/*.astro"],
   "cSpell.words": [
     "manasas",
     "Maru",
@@ -12,6 +11,7 @@
     "textbbox",
     "textsize",
     "tighag",
-    "yasuragi"
+    "yasuragi",
+    "Bakeneko"
   ]
 }
