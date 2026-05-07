@@ -7,7 +7,7 @@ import typescriptEslintParser from '@typescript-eslint/parser'
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    ignores: ['dist/'],
+    ignores: ['dist/', '**/*.astro'],
   },
   {
     files: ['**/*.{js,mjs,cjs,ts}'],
