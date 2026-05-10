@@ -1,0 +1,38 @@
+---
+import NovelLayout from '@/layouts/NovelLayout.astro'
+import { getCollection, getEntry, render } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('novel')) as CollectionEntry<'novel'>[]
+  return posts.map((post: CollectionEntry<'novel'>) => ({
+    params: { slug: post.id },
+  }))
+}
+
+const slugParam = Astro.params.slug
+const slug = Array.isArray(slugParam) ? slugParam.join('/') : String(slugParam)
+const post = await getEntry('novel', slug)
+if (!post) {
+  throw new Error(`Post not found: ${slug}`)
+}
+const { Content } = await render(post)
+
+const frontImage = post.data?.image ?? null
+---
+
+<NovelLayout title={post.data?.title || 'Novel'}>
+  {
+    frontImage ? (
+      <img
+        src={frontImage}
+        alt={post.data?.title || 'page image'}
+        width="450"
+        height="450"
+      />
+    ) : null
+  }
+  <div class="md-content">
+    <Content />
+  </div>
+</NovelLayout>

@@ -1,0 +1,35 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const blogEntries = await getCollection('blog')
+
+function formatDate(day: string): string {
+  try {
+    return new Date(day).toLocaleDateString('ja-JP')
+  } catch {
+    return day
+  }
+}
+---
+
+<Layout title="Blog">
+  <h1>Blog</h1>
+  <p>Debug: {blogEntries.length} posts</p>
+  <ul>
+    {
+      blogEntries
+        .sort(
+          (a, b) =>
+            new Date(String(b.data?.pubDate)).getTime() -
+            new Date(String(a.data?.pubDate)).getTime(),
+        )
+        .map((post) => (
+          <li>
+            <a href={`/blog/${post.id}`}>{post.data?.title}</a>
+            <small> — {formatDate(String(post.data?.pubDate))}</small>
+          </li>
+        ))
+    }
+  </ul>
+</Layout>

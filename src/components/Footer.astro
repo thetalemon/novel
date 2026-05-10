@@ -6,14 +6,14 @@ const isTop = Astro.url.pathname === '/'
 {
   !isTop && (
     <div class="returnButton">
-      <a href="/">
+      <a href="/top">
         <Icon name="home" />
       </a>
     </div>
   )
 }
 <footer class={isTop ? 'is-top' : ''}>
-  <a href="https://manasas.dev" rel="me" target="_blank">© manasas</a>
+  <a href="https://manasas.dev/" rel="me" target="_blank">© manasas</a>
 </footer>
 
 <style lang="scss">

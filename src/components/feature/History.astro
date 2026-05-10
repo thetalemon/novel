@@ -21,7 +21,6 @@ import { getDate } from '@/utils/dateHelper'
 
 <style lang="scss">
   .root {
-    width: 90%;
     margin: 0 auto;
     ul {
       display: flex;
@@ -32,13 +31,17 @@ import { getDate } from '@/utils/dateHelper'
         margin: 0;
         gap: 1rem;
         align-items: baseline;
+        p {
+          margin: 0;
+        }
+        .date {
+          font-weight: bold;
+          margin-right: 16px;
+        }
         @media screen and (max-width: 600px) {
           flex-direction: column;
           gap: 0;
-          margin: 1rem 0 0 0;
-          .date {
-            font-weight: bold;
-          }
+          margin: 0.5rem 0 0 0;
         }
         .date {
           flex-shrink: 0;
@@ -48,14 +51,6 @@ import { getDate } from '@/utils/dateHelper'
           }
         }
       }
-    }
-  }
-</style>
-
-<style lang="scss" is:global>
-  .historyItem {
-    p {
-      margin: 0;
     }
   }
 </style>

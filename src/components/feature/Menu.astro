@@ -1,5 +1,4 @@
 ---
-import Card from '@/components/Card.astro'
 import NovelList from '@/components/feature/NovelList.astro'
 
 interface Props {
@@ -9,7 +8,5 @@ const { class: className } = Astro.props
 ---
 
 <div class:list={[className]}>
-  <Card>
-    <NovelList />
-  </Card>
+  <NovelList />
 </div>

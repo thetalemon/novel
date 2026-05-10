@@ -1,6 +1,5 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import Card from '@/components/Card.astro'
 import Menu from '@/components/feature/Menu.astro'
 
 const title = '龍の子'
@@ -10,29 +9,27 @@ const title = '龍の子'
   title={title}
   ogImage={`https://novel.manasas.dev/og/novel/ryu-no-ko/ryu-no-ko.png`}
 >
-  <Card>
-    <h1>{title}</h1>
-    <p>2024年辰年記念の小説</p>
-    <div class="novel">
-      <ul>
-        <li>
-          <a href="/novel/ryu-no-ko/dragon-god"> 龍神様のはじまり </a>
-        </li>
-        <li>
-          <a href="/novel/ryu-no-ko/sui"> スイの過去 </a>
-        </li>
-        <li>
-          <a href="/novel/ryu-no-ko/momo"> モモの過去 </a>
-        </li>
-        <li>
-          <a href="/novel/ryu-no-ko/momo-and-dragon"> モモと龍神様 </a>
-        </li>
-        <li>
-          <a href="/novel/ryu-no-ko/dragon-new-year"> 龍と新年 </a>
-        </li>
-      </ul>
-    </div>
-  </Card>
+  <h1>{title}</h1>
+  <p>2024年辰年記念の小説</p>
+  <div class="novel">
+    <ul>
+      <li>
+        <a href="/novel/ryu-no-ko/dragon-god"> 龍神様のはじまり </a>
+      </li>
+      <li>
+        <a href="/novel/ryu-no-ko/sui"> スイの過去 </a>
+      </li>
+      <li>
+        <a href="/novel/ryu-no-ko/momo"> モモの過去 </a>
+      </li>
+      <li>
+        <a href="/novel/ryu-no-ko/momo-and-dragon"> モモと龍神様 </a>
+      </li>
+      <li>
+        <a href="/novel/ryu-no-ko/dragon-new-year"> 龍と新年 </a>
+      </li>
+    </ul>
+  </div>
   <Menu class="menu" />
 </Layout>
 
