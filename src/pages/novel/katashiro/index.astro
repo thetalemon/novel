@@ -1,0 +1,65 @@
+---
+import Layout from '@/layouts/Layout.astro'
+
+const title = 'カタシロ'
+---
+
+<Layout
+  title={title}
+  ogImage={`https://novel.manasas.dev/og/novel/katashiro/katashiro.png`}
+>
+  <h1>{title}</h1>
+  <p>🐙Caution🐙</p>
+  <p>
+    これはまなさすが
+    <a
+      href="https://disumstore.booth.pm/items/12345678"
+      target="_blank"
+      rel="noopener noreferrer"
+      >新クトゥルフ神話TRPG / カタシロ - ディズムストア― - BOOTH</a
+    >
+    のプレイ内容を基に小説にしたものです。
+  </p>
+  <p>
+    カタシロのシナリオ内容がほぼすべて含まれております。プレイ予定の方はまたプレイ後にまた来てくれると嬉しいです。
+  </p>
+  <p>
+    プレイ済の方、今後の人生でプレイする予定は絶対にない方は、リンク先へどうぞ。
+  </p>
+  <div class="novel">
+    <ul>
+      <li>
+        <a href="/novel/katashiro/replay">
+          Replay（プレイ時の内容を、記憶を頼りにそのまま文章化したもの）</a
+        >
+      </li>
+    </ul>
+  </div>
+</Layout>
+
+<style lang="scss">
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  hr {
+    width: 100%;
+    border: 1px #ccc solid;
+  }
+  .novel {
+    margin: 0 1rem;
+    @media screen and (max-width: 768px) {
+      margin: 0;
+    }
+    p {
+      margin: 2rem 0;
+      line-height: 2;
+    }
+  }
+</style>
+
+<style lang="scss" is:global>
+  .menu {
+    margin-top: 40px;
+  }
+</style>
