@@ -20,4 +20,13 @@ const novel = defineCollection({
   }),
 })
 
-export const collections = { blog, novel }
+const memo = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/memo' }),
+  schema: z.object({
+    title: z.string(),
+    pubDate: z.coerce.date().optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+})
+
+export const collections = { blog, novel, memo }

@@ -1,7 +1,8 @@
 ---
+import Layout from '@/layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 
-const blogEntries = await getCollection('blog')
+const memoEntries = await getCollection('memo')
 
 function formatDate(day: string): string {
   try {
@@ -12,11 +13,12 @@ function formatDate(day: string): string {
 }
 ---
 
-<div class="topMenu">
-  <h2>きろく</h2>
+<Layout title="Memo">
+  <h1>Memo</h1>
+  <p>創作小ネタとかifとかそういうもの</p>
   <ul>
     {
-      blogEntries
+      memoEntries
         .sort(
           (a, b) =>
             new Date(String(b.data?.pubDate)).getTime() -
@@ -24,10 +26,11 @@ function formatDate(day: string): string {
         )
         .map((post) => (
           <li>
-            <a href={`/blog/${post.id}`}>{post.data?.title}</a>
+            <a href={`/memo/${post.id}`}>{post.data?.title}</a>
             <small> — {formatDate(String(post.data?.pubDate))}</small>
+            <small> {post.data?.tags?.join(', ')} </small>
           </li>
         ))
     }
   </ul>
-</div>
+</Layout>

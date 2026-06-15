@@ -1,24 +1,26 @@
 ---
+import Layout from '@/layouts/Layout.astro'
 import { HistoryList } from '@/data/history'
 import { getDate } from '@/utils/dateHelper'
-
-const latestHistory = HistoryList.slice(0, 5)
 ---
 
-<div class="root">
-  <h2>更新履歴</h2>
-  <ul>
-    {
-      latestHistory.map((item) => (
-        <li>
-          <p class="date">{getDate(item.date)}</p>
-          <p class="historyItem" set:html={item.description} />
-        </li>
-      ))
-    }
-    <li class="more"><p><a href="/history">更に過去の履歴を見る</a></p></li>
-  </ul>
-</div>
+<Layout title="更新履歴">
+  <div class="root">
+    <h2>更新履歴</h2>
+    <ul>
+      {
+        HistoryList.map((item) => (
+          <li>
+            <p>
+              <p class="date">{getDate(item.date)}</p>
+              <p class="historyItem" set:html={item.description} />
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Layout>
 
 <style lang="scss">
   .root {
@@ -44,10 +46,6 @@ const latestHistory = HistoryList.slice(0, 5)
             text-decoration: none;
             color: inherit;
           }
-        }
-        &.more {
-          text-align: right;
-          margin-top: 1rem;
         }
       }
     }

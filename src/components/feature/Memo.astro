@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 
-const blogEntries = await getCollection('blog')
+const memoEntries = await getCollection('memo')
 
 function formatDate(day: string): string {
   try {
@@ -13,10 +13,10 @@ function formatDate(day: string): string {
 ---
 
 <div class="topMenu">
-  <h2>きろく</h2>
+  <h2>memo</h2>
   <ul>
     {
-      blogEntries
+      memoEntries
         .sort(
           (a, b) =>
             new Date(String(b.data?.pubDate)).getTime() -
@@ -24,7 +24,7 @@ function formatDate(day: string): string {
         )
         .map((post) => (
           <li>
-            <a href={`/blog/${post.id}`}>{post.data?.title}</a>
+            <a href={`/memo/${post.id}`}>{post.data?.title}</a>
             <small> — {formatDate(String(post.data?.pubDate))}</small>
           </li>
         ))
