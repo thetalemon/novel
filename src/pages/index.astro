@@ -9,6 +9,19 @@ import { SearchLinks } from '@/data/link/search'
 import { DoumeiLinks } from '@/data/link/doumei'
 ---
 
+<script>
+  const KEY = 'noticeRead'
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.querySelector<HTMLAnchorElement>('.enterButton')
+    if (!el) return
+    el.addEventListener('click', () => {
+      try {
+        localStorage.setItem(KEY, 'true')
+      } catch (e) {}
+    })
+  })
+</script>
+
 <SimpleLayout title={mySiteName}>
   <Card>
     <h1 class="title">

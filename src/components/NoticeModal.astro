@@ -1,0 +1,99 @@
+<script>
+  const KEY = 'noticeRead'
+
+  function show(el: HTMLElement | null) {
+    el?.removeAttribute('hidden')
+  }
+
+  function hide(el: HTMLElement | null) {
+    el?.setAttribute('hidden', '')
+  }
+
+  function markRead(el: HTMLElement | null) {
+    try {
+      localStorage.setItem(KEY, 'true')
+    } catch (e) {}
+    hide(el)
+  }
+
+  function initNoticeModal() {
+    const ElementModal = document.querySelector<HTMLElement>('#notice-modal')
+    const ElementOk = document.querySelector<HTMLButtonElement>('#notice-ok')
+
+    try {
+      const v = localStorage.getItem(KEY)
+      if (v !== 'true') show(ElementModal)
+    } catch (e) {}
+
+    if (ElementOk !== null) {
+      ElementOk.addEventListener('click', () => markRead(ElementModal))
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (!ElementModal || ElementModal.hasAttribute('hidden')) return
+      if (e.key === 'Enter') markRead(ElementModal)
+    })
+  }
+
+  initNoticeModal()
+  document.addEventListener('astro:after-swap', initNoticeModal)
+</script>
+
+<div
+  id="notice-modal"
+  class="notice-modal"
+  role="dialog"
+  aria-modal="true"
+  hidden
+>
+  <div class="notice-inner">
+    <h2>ちゅういがき</h2>
+    <p>このサイトは下記の要素を含みます。</p>
+    <ul>
+      <li>性別不定</li>
+      <li>同性愛</li>
+      <li>異性装</li>
+      <li>世界滅びます</li>
+    </ul>
+    <div class="actions">
+      <button id="notice-ok" class="btn">大丈夫です</button>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .notice-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    .notice-inner {
+      padding: 24px;
+      width: 80%;
+      background: rgb(var(--bgColor));
+      color: rgb(var(--textColor));
+      max-width: calc(100% - 16px);
+      border-radius: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    .actions {
+      margin-top: 36px;
+      text-align: right;
+      display: flex;
+      justify-content: center;
+    }
+    .btn {
+      padding: 8px 24px;
+      background: rgb(var(--buttonColor));
+      color: #fff;
+      border-radius: 6px;
+    }
+  }
+  [hidden] {
+    display: none;
+  }
+</style>
