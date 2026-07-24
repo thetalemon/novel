@@ -3,7 +3,6 @@ import Header from '@/components/Header.astro'
 import Head from '@/layouts/components/Head.astro'
 import Body from '@/layouts/components/Body.astro'
 import Footer from '@/components/Footer.astro'
-import Card from '@/components/Card.astro'
 import NoticeModal from '@/components/NoticeModal.astro'
 import '@/styles/global.scss'
 
@@ -22,9 +21,9 @@ const { title, ogImage } = Astro.props
     <NoticeModal client:load />
     <main>
       <article class="content">
-        <Card>
+        <div>
           <slot />
-        </Card>
+        </div>
       </article>
     </main>
     <Footer />

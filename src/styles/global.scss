@@ -1,14 +1,30 @@
 html {
   font-family: system-ui, sans-serif;
   background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.2rem;
+  color: rgb(var(--textColor));
 }
 
 body {
   margin: 0;
   background: rgb(var(--bgColor));
-  @media (min-width: 800px) {
+
+  @media (min-width: 801px) {
+    min-width: auto;
     border-radius: 40px;
     margin: 24px 16px;
+    padding: 24px 40px;
+  }
+  @media (max-width: 800px) {
+    min-width: auto;
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
   }
 }
 

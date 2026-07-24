@@ -2,7 +2,6 @@
 import Head from '@/layouts/components/Head.astro'
 import Body from '@/layouts/components/Body.astro'
 import Footer from '@/components/Footer.astro'
-import Card from '@/components/Card.astro'
 import '@/styles/global.scss'
 
 export interface Props {
@@ -18,9 +17,9 @@ const { title, ogImage } = Astro.props
   <Body>
     <main>
       <article class="content">
-        <Card>
+        <div>
           <slot />
-        </Card>
+        </div>
       </article>
     </main>
     <Footer />
