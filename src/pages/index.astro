@@ -1,6 +1,5 @@
 ---
 import SimpleLayout from '@/layouts/SimpleLayout.astro'
-import Card from '@/components/Card.astro'
 import { Image } from 'astro:assets'
 import TitleLogo from '@/img/titleLogo.svg'
 import { mySiteName } from '@/constants/constants'
@@ -23,22 +22,22 @@ import { DoumeiLinks } from '@/data/link/doumei'
 </script>
 
 <SimpleLayout title={mySiteName}>
-  <Card>
-    <h1 class="title">
-      <Image src={TitleLogo} alt={mySiteName} height={75} />
-    </h1>
-    <div class="description">
-      <p>まなさすの一次創作サイト。</p>
-      <ul>
-        <li>創作内にLGBTQ+要素を含みます</li>
-        <li>小説・イラストは人間が作成しています</li>
-        <li>サイト制作や誤脱チェック等にAIを利用しています</li>
-      </ul>
-    </div>
+  <h1 class="title">
+    <Image src={TitleLogo} alt={mySiteName} height={75} />
+  </h1>
+  <div class="description">
+    <p>まなさすの一次創作サイト。</p>
+    <ul>
+      <li>創作内にLGBTQ+要素を含みます</li>
+      <li>小説・イラストは人間が作成しています</li>
+      <li>サイト制作や誤脱チェック等にAIを利用しています</li>
+    </ul>
+  </div>
+  <p class="enterArea">
     <a class="enterButton" href="/top">Enter</a>
-    <ImageLinkList list={SearchLinks} />
-    <ImageLinkList list={DoumeiLinks} />
-  </Card>
+  </p>
+  <ImageLinkList list={SearchLinks} />
+  <ImageLinkList list={DoumeiLinks} />
 </SimpleLayout>
 
 <style lang="scss">
@@ -52,8 +51,9 @@ import { DoumeiLinks } from '@/data/link/doumei'
     background-repeat: no-repeat;
     background-position: center center;
   }
+
   .title {
-    margin: 1rem 0;
+    margin: 40px 0 0 0;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -84,15 +84,18 @@ import { DoumeiLinks } from '@/data/link/doumei'
     }
   }
 
-  .enterButton {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    font-size: 36px;
-    margin: 80px auto;
-    &:hover {
+  .enterArea {
+    display: flex;
+    .enterButton {
+      color: #fff;
+      text-align: center;
+      font-size: 36px;
+      margin: 0 auto;
+      padding: 1.5rem 80px;
       text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 </style>

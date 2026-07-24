@@ -1,7 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import { Image } from 'astro:assets'
-import Card from '@/components/Card.astro'
 import { allCharacterList } from '@/data/character/index'
 import { myUrl } from '@/constants/constants'
 
@@ -16,7 +15,6 @@ const ogpPath = `${myUrl}${character.img.src}`
 ---
 
 <Layout title={character.name} ogImage={ogpPath}>
-  <Card>
     <Image src={character.img} alt={character.name} width={250} height={250} />
     <h1>{character.name}</h1>
     <div set:html={character.text} />
@@ -32,7 +30,6 @@ const ogpPath = `${myUrl}${character.img.src}`
           </ul>
       )
     }
-  </Card>
 </Layout>
 
 <style lang="scss">

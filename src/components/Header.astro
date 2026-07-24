@@ -22,6 +22,19 @@ import { Icon } from 'astro-icon/components'
     })
   }
 
+  const updateIcon = (mode: ColorMode) => {
+    const sun = document.querySelector<HTMLElement>('.js-icon-sun')
+    const moon = document.querySelector<HTMLElement>('.js-icon-moon')
+    if (!sun || !moon) return
+    if (mode === 'dark') {
+      moon.style.display = 'none'
+      sun.style.display = ''
+    } else {
+      moon.style.display = ''
+      sun.style.display = 'none'
+    }
+  }
+
   const setColorMode = () => {
     const getColorMode = () => {
       const lsColorMode = localStorage.getItem('color')
@@ -34,6 +47,7 @@ import { Icon } from 'astro-icon/components'
 
     let currentColorMode = getColorMode()
     setColor(currentColorMode)
+    updateIcon(currentColorMode)
     const ElementChangeColorMode = document.querySelector<HTMLButtonElement>(
       '.js-colorModeChange',
     )
@@ -44,6 +58,7 @@ import { Icon } from 'astro-icon/components'
         currentColorMode = setMode
         localStorage.setItem('color', setMode)
         setColor(setMode)
+        updateIcon(setMode)
       })
     }
   }
@@ -57,8 +72,10 @@ import { Icon } from 'astro-icon/components'
     <button
       class="js-colorModeChange buttonColorMode"
       aria-label="ダークモード・ライトモード変更"
+      type="button"
     >
-      <Icon name="sun" />
+      <Icon name="sun" class="js-icon-sun" />
+      <Icon name="moon" class="js-icon-moon" />
     </button>
   </div>
 </header>
@@ -67,13 +84,13 @@ import { Icon } from 'astro-icon/components'
   header {
     display: flex;
     justify-content: center;
-    margin: 16px 0;
+    padding: 32px 0;
     .inner {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      width: 80%;
-      max-width: 750px;
+      width: calc(100% - 32px);
+      max-width: 800px;
 
       [data-icon='sun'],
       [data-icon='moon'] {
