@@ -1,8 +1,9 @@
 import Sousekai from '@/img/banners/sousekai.gif'
-import ReiwaKojinSite from '@/img/banners/reiwakojinsite.png'
+import ReiwaKojinSite from '@/img/banners/reiwaKojinSite.png'
 import Jimoe from '@/img/banners/jimoe.gif'
 import NotSayukotei from '@/img/banners/notSayukotei.gif'
 import Heki from '@/img/banners/heki.gif'
+import Jimaku from '@/img/banners/jimaku.gif'
 import Kaku from '@/img/banners/kaku.png'
 import Onigiri from '@/img/banners/onigiri.gif'
 import SiteSuki from '@/img/banners/sitesuki.png'
@@ -16,14 +17,14 @@ import Ahiru from '@/img/banners/ahiru.png'
 import Seiheki from '@/img/banners/seiheki.png'
 import JiSaitoAi from '@/img/banners/jisaitoai.png'
 import SiteCustom from '@/img/banners/sitecustom.png'
-import SousakuChara from '@/img/banners/sousakuChara.gif'
+import SousakuCharacter from '@/img/banners/sousakuCharacter.gif'
 import SousakuBiyori from '@/img/banners/sousakuBiyori.gif'
 import Onsousui from '@/img/banners/onsousui.gif'
-import Jimaku from '@/img/banners/jimaku.gif'
 import Ouchi from '@/img/banners/ouchi.gif'
 import Nfm from '@/img/banners/nfm.webp'
 import Yurui from '@/img/banners/yurui.png'
 import Kaisou from '@/img/banners/kaisou.png'
+import Gradation from '@/img/banners/gradation.png'
 
 import type { LinkImage } from '@/types/link'
 
@@ -96,7 +97,14 @@ export const DoumeiLinks: LinkImage[] = [
     src: Kaisou,
     width: 88,
     height: 31,
-    alt: '階層癖',
+    alt: '改装癖',
+  },
+  {
+    href: 'https://3-u.net/union/gradation/',
+    src: Gradation,
+    width: 88,
+    height: 31,
+    alt: 'グラデーション好き',
   },
   {
     href: 'https://unionmatome.web.fc2.com/jikoman/index.html',
@@ -114,7 +122,7 @@ export const DoumeiLinks: LinkImage[] = [
   },
   {
     href: 'https://orijinal.ikaduchi.com/',
-    src: SousakuChara,
+    src: SousakuCharacter,
     width: 75,
     height: 10,
     alt: '創作キャラ同盟',

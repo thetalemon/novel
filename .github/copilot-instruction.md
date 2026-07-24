@@ -1,4 +1,3 @@
-
 # Copilot Instruction
 
 ## 前提条件

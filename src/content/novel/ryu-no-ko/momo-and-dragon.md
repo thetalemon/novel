@@ -1,6 +1,6 @@
 ---
-title: "モモと龍神様"
-ogImage: "/og/novel/momo-and-dragon.png"
+title: 'モモと龍神様'
+ogImage: '/og/novel/momo-and-dragon.png'
 ---
 
 龍神様は今までずーっと、ひとりだったらしい。
