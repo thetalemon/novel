@@ -4,16 +4,16 @@ import sitemap from '@astrojs/sitemap'
 
 import mdx from '@astrojs/mdx'
 import rehypeExternalLinks from 'rehype-external-links'
+import { unified } from '@astrojs/markdown-remark'
 
 export default defineConfig({
   image: {
     domains: ['novel.manasas.dev'],
   },
   site: 'https://novel.manasas.dev',
-  integrations: [
-    icon(),
-    sitemap(),
-    mdx({
+  integrations: [icon(), sitemap(), mdx()],
+  markdown: {
+    processor: unified({
       rehypePlugins: [
         [
           rehypeExternalLinks,
@@ -36,7 +36,7 @@ export default defineConfig({
         ],
       ],
     }),
-  ],
+  },
   vite: {
     css: {
       preprocessorOptions: {
