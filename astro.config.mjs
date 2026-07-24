@@ -1,7 +1,6 @@
 import icon from 'astro-icon'
 import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
-
 import mdx from '@astrojs/mdx'
 import rehypeExternalLinks from 'rehype-external-links'
 import { unified } from '@astrojs/markdown-remark'
