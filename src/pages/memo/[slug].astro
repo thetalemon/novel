@@ -27,9 +27,7 @@ function formatDate(day: string): string {
     <h1>{post.data?.title}</h1>
     {
       post.data?.pubDate ? (
-        <p>
-          <small>{formatDate(String(post.data?.pubDate))}</small>
-        </p>
+        <p class="date">{formatDate(String(post.data?.pubDate))}</p>
       ) : null
     }
     <p>タグ: <small>{post.data?.tags?.join(', ')}</small></p>
@@ -38,3 +36,9 @@ function formatDate(day: string): string {
     </div>
   </article>
 </Layout>
+
+<style lang="scss">
+  .date {
+    text-align: right;
+  }
+</style>

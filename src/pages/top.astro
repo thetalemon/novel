@@ -1,19 +1,19 @@
 ---
+import Blog from '@/components/feature/Blog.astro'
+import CharacterSection from '@/components/feature/CharacterSection.astro'
+import Clap from '@/img/clap.gif'
 import Layout from '@/layouts/Layout.astro'
 import History from '@/components/feature/History.astro'
 import NovelList from '@/components/feature/NovelList.astro'
 import TankaList from '@/components/feature/TankaList.astro'
-import CharacterSection from '@/components/feature/CharacterSection.astro'
 import Log from '@/components/feature/Log.astro'
 import IllustSection from '@/components/feature/IllustSection.astro'
 import Memo from '@/components/feature/Memo.astro'
-import { Image } from 'astro:assets'
 import TitleLogo from '@/img/titleLogo.svg'
-import Clap from '@/img/clap.gif'
-import { mySiteName } from '@/constants/constants'
 import Title from '@/components/Title.astro'
-import BannerImage from '@/img/banner.png'
-import Blog from '@/components/feature/Blog.astro'
+import OwnerSection from '@/components/feature/OwnerSection.astro'
+import { Image } from 'astro:assets'
+import { mySiteName } from '@/constants/constants'
 ---
 
 <Layout title={mySiteName}>
@@ -45,30 +45,7 @@ import Blog from '@/components/feature/Blog.astro'
   <hr />
   <CharacterSection />
   <hr />
-  <div class="inner owner">
-    <Title text="管理人" />
-    <p>まなさす</p>
-    <Title text="SNS" />
-    <p>
-      <ul>
-        <li>
-          <a href="https://fedibird.com/@thetalemon/" target="_blank">
-            fedibird
-          </a>
-        </li>
-      </ul>
-    </p>
-  </div>
-  <hr />
-  <div class="inner">
-    <p>
-      リンクはEnterにお願いします。<br />
-      バナーはお持ち帰りでお願いします。<br />
-      サイト名: 北極の とある倉庫<br />
-      サイトアドレス: https://novel.manasas.dev/
-    </p>
-    <Image src={BannerImage} alt="バナー" />
-  </div>
+  <OwnerSection />
   <hr />
   <Blog />
   <hr />
@@ -93,11 +70,6 @@ import Blog from '@/components/feature/Blog.astro'
   .topSection {
     p {
       text-align: center;
-    }
-  }
-  .owner {
-    p {
-      margin: 0.5rem 0;
     }
   }
   .link {
