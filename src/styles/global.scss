@@ -34,7 +34,8 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+small {
   line-height: 1.5;
   margin: 2rem 0;
   color: rgb(var(--textColor));
@@ -47,6 +48,10 @@ h2 {
 
 h3 {
   margin: 0 0 0.5rem;
+}
+
+small {
+  font-size: 0.7rem;
 }
 
 hr {

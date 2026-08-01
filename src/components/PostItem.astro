@@ -1,0 +1,28 @@
+---
+export interface Props {
+  href: string
+  title: string
+  date: string
+}
+
+const { href, title, date } = Astro.props
+
+function formatDate(day: string): string {
+  try {
+    return new Date(day).toLocaleDateString('ja-JP')
+  } catch {
+    return day
+  }
+}
+---
+
+<li>
+  <a href={href}>{title}</a>
+  <small class="date">{formatDate(String(date))}</small>
+</li>
+
+<style lang="scss">
+  .date {
+    margin-left: 16px;
+  }
+</style>

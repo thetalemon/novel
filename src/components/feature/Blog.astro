@@ -1,33 +1,25 @@
 ---
 import { getCollection } from 'astro:content'
-
+import PostItem from '@/components/PostItem.astro'
 const blogEntries = await getCollection('blog')
-
-function formatDate(day: string): string {
-  try {
-    return new Date(day).toLocaleDateString('ja-JP')
-  } catch {
-    return day
-  }
-}
+const sortedBlogEntries = blogEntries.sort(
+  (a, b) =>
+    new Date(String(b.data?.pubDate)).getTime() -
+    new Date(String(a.data?.pubDate)).getTime(),
+)
 ---
 
 <div class="topMenu">
   <h2>きろく</h2>
   <ul>
     {
-      blogEntries
-        .sort(
-          (a, b) =>
-            new Date(String(b.data?.pubDate)).getTime() -
-            new Date(String(a.data?.pubDate)).getTime(),
-        )
-        .map((post) => (
-          <li>
-            <a href={`/blog/${post.id}`}>{post.data?.title}</a>
-            <small> — {formatDate(String(post.data?.pubDate))}</small>
-          </li>
-        ))
+      sortedBlogEntries.map((post) => (
+        <PostItem
+          href={`/blog/${post.id}`}
+          title={post.data?.title}
+          date={String(post.data?.pubDate)}
+        />
+      ))
     }
   </ul>
 </div>

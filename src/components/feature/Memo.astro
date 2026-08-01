@@ -1,33 +1,26 @@
 ---
 import { getCollection } from 'astro:content'
+import PostItem from '@/components/PostItem.astro'
 
 const memoEntries = await getCollection('memo')
-
-function formatDate(day: string): string {
-  try {
-    return new Date(day).toLocaleDateString('ja-JP')
-  } catch {
-    return day
-  }
-}
+const sortedMemoEntries = memoEntries.sort(
+  (a, b) =>
+    new Date(String(b.data?.pubDate)).getTime() -
+    new Date(String(a.data?.pubDate)).getTime(),
+)
 ---
 
 <div class="topMenu">
   <h2>memo</h2>
   <ul>
     {
-      memoEntries
-        .sort(
-          (a, b) =>
-            new Date(String(b.data?.pubDate)).getTime() -
-            new Date(String(a.data?.pubDate)).getTime(),
-        )
-        .map((post) => (
-          <li>
-            <a href={`/memo/${post.id}`}>{post.data?.title}</a>
-            <small> — {formatDate(String(post.data?.pubDate))}</small>
-          </li>
-        ))
+      sortedMemoEntries.map((post) => (
+        <PostItem
+          href={`/memo/${post.id}`}
+          title={post.data?.title}
+          date={String(post.data?.pubDate)}
+        />
+      ))
     }
   </ul>
 </div>
