@@ -1,6 +1,5 @@
 ---
 import ListImage from '@/components/ListImage.astro'
-import Title from '@/components/Title.astro'
 import { allCharacterList } from '@/data/character/index'
 
 const list = allCharacterList.map((item) => {
@@ -13,7 +12,7 @@ const list = allCharacterList.map((item) => {
 ---
 
 <div class="root">
-  <Title text="キャラ一覧" />
+  <h2>キャラ一覧</h2>
   <ListImage list={list} />
 </div>
 

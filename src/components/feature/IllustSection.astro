@@ -1,6 +1,5 @@
 ---
 import ListImage from '@/components/ListImage.astro'
-import Title from '@/components/Title.astro'
 import ImgDoodleBanner from '@/img/doodle.png'
 import { Image } from 'astro:assets'
 import { ILLUST_LIST } from '@/data/illust'
@@ -15,7 +14,7 @@ const list = ILLUST_LIST.map((item) => {
 ---
 
 <div class="root">
-  <Title text="イラスト一覧" />
+  <h2>イラスト一覧</h2>
   <ListImage list={list} />
   <a href="https://doodle.manasas.dev/" target="_blank">
     <Image src={ImgDoodleBanner} alt="北極の らくがき倉庫" width={300} />

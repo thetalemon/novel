@@ -35,9 +35,19 @@ h4,
 h5,
 h6,
 p,
-small {
-  margin: 1rem 0;
+small,
+dt,
+dd {
   color: rgb(var(--textColor));
+}
+
+dt {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+dd {
+  margin: 0;
 }
 
 h1,

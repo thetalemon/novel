@@ -5,12 +5,9 @@ import Clap from '@/img/clap.gif'
 import Layout from '@/layouts/Layout.astro'
 import History from '@/components/feature/History.astro'
 import NovelList from '@/components/feature/NovelList.astro'
-import TankaList from '@/components/feature/TankaList.astro'
-import Log from '@/components/feature/Log.astro'
 import IllustSection from '@/components/feature/IllustSection.astro'
 import Memo from '@/components/feature/Memo.astro'
 import TitleLogo from '@/img/titleLogo.svg'
-import Title from '@/components/Title.astro'
 import OwnerSection from '@/components/feature/OwnerSection.astro'
 import { Image } from 'astro:assets'
 import { mySiteName } from '@/constants/constants'
@@ -26,7 +23,7 @@ import { mySiteName } from '@/constants/constants'
   </div>
   <hr />
   <div class="inner">
-    <Title text="このサイトについて" />
+    <h2>このサイトについて</h2>
     <p>
       一次創作メイン。<br />
       性別不定多いです。同性愛あります。世界滅びます。<br />
@@ -37,15 +34,13 @@ import { mySiteName } from '@/constants/constants'
   <hr />
   <NovelList />
   <hr />
-  <Log />
-  <hr />
-  <TankaList />
-  <hr />
   <IllustSection />
   <hr />
   <CharacterSection />
   <hr />
   <OwnerSection />
+  <hr />
+  <a href="/other">その他のコンテンツ</a>
   <hr />
   <Blog />
   <hr />

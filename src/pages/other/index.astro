@@ -1,0 +1,40 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { allTankaList } from '@/data/tanka/index'
+---
+
+<Layout title="その他 創作コンテンツ">
+  <section>
+    <h2>ソロジャーナルログ</h2>
+    <ul>
+      <li>
+        <a href={`log/tabi`}>旅といちにち</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h2>短歌</h2>
+    <ul class="novelList">
+      {
+        allTankaList.map((tanka) => (
+          <li>
+            <a href={`/tanka/${tanka.slug}`}>{tanka.name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <section>
+    <h2>CoC Replay</h2>
+    <a href="/novel/katashiro"> カタシロ </a>
+  </section>
+</Layout>
+
+<style lang="scss">
+  section {
+    margin: 40px 0;
+  }
+  li {
+    margin-left: 16px;
+  }
+</style>

@@ -1,20 +1,36 @@
 ---
-import Title from '@/components/Title.astro'
 import { Image } from 'astro:assets'
 import BannerImage from '@/img/banner.png'
 ---
 
 <div class="inner owner">
-  <Title text="管理人" />
-  <p>まなさす</p>
-  <Title text="SNS" />
-  <p>
-    <a href="https://fedibird.com/@thetalemon/" target="_blank"> fedibird </a>
-  </p>
-  <Title text="バナー" />
-  <p>サイト内のリンクはご自由にどうぞ。</p>
-  <p>サイト名: 北極の とある倉庫</p>
-  <p>サイトアドレス: https://novel.manasas.dev/</p>
-  <p>バナーはお持ち帰りでお願いします</p>
-  <Image src={BannerImage} alt="バナー" />
+  <dl>
+    <dt>管理人</dt>
+    <dd>まなさす</dd>
+    <dt>SNS</dt>
+    <dd>
+      <a href="https://fedibird.com/@thetalemon/" target="_blank"> fedibird </a>
+    </dd>
+    <dt>サイト名</dt>
+    <dd>北極の とある倉庫</dd>
+    <dt>サイトアドレス</dt>
+    <dd>https://novel.manasas.dev/</dd>
+    <dt>バナー</dt>
+    <dd><Image src={BannerImage} alt="バナー" /></dd>
+  </dl>
 </div>
+
+<style lang="scss">
+  p {
+    margin: 0;
+  }
+  dl {
+    dd:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+  .banner img {
+    display: block;
+    margin: 16px auto 0 auto;
+  }
+</style>
