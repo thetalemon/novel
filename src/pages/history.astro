@@ -1,53 +1,17 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import { HistoryList } from '@/data/history'
-import { getDate } from '@/utils/dateHelper'
+import ListHistory from '@/components/ListHistory.astro'
 ---
 
 <Layout title="更新履歴">
   <div class="root">
     <h2>更新履歴</h2>
-    <ul>
-      {
-        HistoryList.map((item) => (
-          <li>
-            <p>
-              <p class="date">{getDate(item.date)}</p>
-              <p class="historyItem" set:html={item.description} />
-            </p>
-          </li>
-        ))
-      }
-    </ul>
+    <ListHistory />
   </div>
 </Layout>
 
 <style lang="scss">
   .root {
     margin: 0 auto;
-    ul {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin: 0.5rem 0 0 0;
-      li {
-        display: flex;
-        flex-direction: column;
-        p {
-          margin: 0;
-        }
-        .date {
-          font-weight: bold;
-          margin-right: 16px;
-        }
-        .date {
-          flex-shrink: 0;
-          a {
-            text-decoration: none;
-            color: inherit;
-          }
-        }
-      }
-    }
   }
 </style>

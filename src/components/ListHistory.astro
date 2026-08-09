@@ -1,0 +1,52 @@
+---
+import { getDate } from '@/utils/dateHelper'
+import { HistoryList } from '@/data/history'
+
+export interface Props {
+  slice?: number
+}
+
+const { slice } = Astro.props
+
+const showList = slice ? HistoryList.slice(0, slice) : HistoryList
+---
+
+<ul>
+  {
+    showList.map((item) => {
+      return (
+        <li>
+          <p class="date">{getDate(item.date)}</p>
+          <p set:html={item.description} />
+        </li>
+      )
+    })
+  }
+  {
+    slice && slice < HistoryList.length && (
+      <li class="more">
+        <p>
+          <a href="/history">更に過去の履歴を見る</a>
+        </p>
+      </li>
+    )
+  }
+</ul>
+
+<style lang="scss">
+  ul {
+    li {
+      p {
+        margin: 0;
+      }
+      .date {
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+      &.more {
+        text-align: right;
+        margin-top: 1rem;
+      }
+    }
+  }
+</style>

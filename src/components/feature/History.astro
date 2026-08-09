@@ -1,55 +1,14 @@
 ---
-import { HistoryList } from '@/data/history'
-import { getDate } from '@/utils/dateHelper'
-
-const latestHistory = HistoryList.slice(0, 5)
+import ListHistory from '@/components/ListHistory.astro'
 ---
 
 <div class="root">
   <h2>更新履歴</h2>
-  <ul>
-    {
-      latestHistory.map((item) => (
-        <li>
-          <p class="date">{getDate(item.date)}</p>
-          <p class="historyItem" set:html={item.description} />
-        </li>
-      ))
-    }
-    <li class="more"><p><a href="/history">更に過去の履歴を見る</a></p></li>
-  </ul>
+  <ListHistory slice={5} />
 </div>
 
 <style lang="scss">
   .root {
     margin: 0 auto;
-    ul {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin: 0.5rem 0 0 0;
-      li {
-        display: flex;
-        flex-direction: column;
-        p {
-          margin: 0;
-        }
-        .date {
-          font-weight: bold;
-          margin-right: 16px;
-        }
-        .date {
-          flex-shrink: 0;
-          a {
-            text-decoration: none;
-            color: inherit;
-          }
-        }
-        &.more {
-          text-align: right;
-          margin-top: 1rem;
-        }
-      }
-    }
   }
 </style>
