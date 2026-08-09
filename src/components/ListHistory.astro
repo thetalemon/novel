@@ -26,7 +26,7 @@ const showList = slice ? HistoryList.slice(0, slice) : HistoryList
     slice && slice < HistoryList.length && (
       <li class="more">
         <p>
-          <a href="/history">更に過去の履歴を見る</a>
+          <a href="/history">更に過去の更新履歴を見る</a>
         </p>
       </li>
     )
@@ -36,6 +36,9 @@ const showList = slice ? HistoryList.slice(0, slice) : HistoryList
 <style lang="scss">
   ul {
     li {
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
       p {
         margin: 0;
       }
@@ -46,6 +49,7 @@ const showList = slice ? HistoryList.slice(0, slice) : HistoryList
       &.more {
         text-align: right;
         margin-top: 1rem;
+        font-size: 0.9rem;
       }
     }
   }

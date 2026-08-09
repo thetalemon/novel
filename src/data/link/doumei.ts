@@ -25,6 +25,7 @@ import Nfm from '@/img/banners/nfm.webp'
 import Yurui from '@/img/banners/yurui.png'
 import Kaisou from '@/img/banners/kaisou.png'
 import Gradation from '@/img/banners/gradation.png'
+import Jyunkissa from '@/img/banners/jyunkissa.png'
 
 import type { LinkImage } from '@/types/link'
 
@@ -196,6 +197,13 @@ export const DoumeiLinks: LinkImage[] = [
     width: 32,
     height: 32,
     alt: 'ゴムのアヒルちゃん',
+  },
+  {
+    href: 'https://junkissa.web.fc2.com/',
+    src: Jyunkissa,
+    width: 32,
+    height: 32,
+    alt: '純喫茶同盟',
   },
   {
     href: 'https://zattaratta.chottu.net/',

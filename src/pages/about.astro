@@ -1,10 +1,13 @@
 ---
-import { Image } from 'astro:assets'
+import Layout from '@/layouts/Layout.astro'
 import BannerImage from '@/img/banner.png'
+import { Image } from 'astro:assets'
 ---
 
-<div class="inner owner">
+<Layout title="このサイトについて">
   <dl>
+    <dt>このサイトについて</dt>
+    <dd>まなさすの創作とかの倉庫</dd>
     <dt>管理人</dt>
     <dd>まなさす</dd>
     <dt>SNS</dt>
@@ -18,9 +21,15 @@ import BannerImage from '@/img/banner.png'
     <dt>バナー</dt>
     <dd><Image src={BannerImage} alt="バナー" /></dd>
   </dl>
-</div>
+</Layout>
 
 <style lang="scss">
+  section {
+    margin: 40px 0;
+  }
+  li {
+    margin-left: 16px;
+  }
   p {
     margin: 0;
   }

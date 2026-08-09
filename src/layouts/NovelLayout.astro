@@ -4,7 +4,6 @@ import Head from '@/layouts/components/Head.astro'
 import Body from '@/layouts/components/Body.astro'
 import Footer from '@/components/Footer.astro'
 import Menu from '@/components/feature/Menu.astro'
-import NoticeModal from '@/components/NoticeModal.astro'
 import '@/styles/global.scss'
 
 export interface Props {
@@ -19,7 +18,6 @@ const { title, ogImage } = Astro.props
   <Head title={title} ogImage={ogImage} />
   <Body>
     <Header />
-    <NoticeModal />
     <main>
       <article class="content">
         <div>

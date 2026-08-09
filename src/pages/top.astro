@@ -1,51 +1,35 @@
 ---
-import Blog from '@/components/feature/Blog.astro'
-import CharacterSection from '@/components/feature/CharacterSection.astro'
 import Clap from '@/img/clap.gif'
 import Layout from '@/layouts/Layout.astro'
-import History from '@/components/feature/History.astro'
-import NovelList from '@/components/feature/NovelList.astro'
-import IllustSection from '@/components/feature/IllustSection.astro'
-import Memo from '@/components/feature/Memo.astro'
+import ListHistory from '@/components/ListHistory.astro'
 import TitleLogo from '@/img/titleLogo.svg'
-import OwnerSection from '@/components/feature/OwnerSection.astro'
 import { Image } from 'astro:assets'
 import { mySiteName } from '@/constants/constants'
+import UnderConstruction from '@/img/construction.png'
 ---
 
 <Layout title={mySiteName}>
   <h1 class="title">
     <Image src={TitleLogo} alt={mySiteName} height={75} />
   </h1>
-  <div class="topSection">
-    <p>まなさすの創作まとめサイト。</p>
-    <p>🌟 このサイトは性別を超越した装いと愛に溢れています 🌟</p>
+  <div class="construction">
+    <Image src={UnderConstruction} alt="工事中" height={180} />
+    <p>工事のため一部のリンクやレイアウトが壊れてたりします</p>
   </div>
-  <hr />
-  <div class="inner">
-    <h2>このサイトについて</h2>
-    <p>
-      一次創作メイン。<br />
-      性別不定多いです。同性愛あります。世界滅びます。<br />
-    </p>
+  <div class="history">
+    <div class="inner">
+      <ListHistory slice={1} />
+    </div>
   </div>
-  <hr />
-  <History />
-  <hr />
-  <NovelList />
-  <hr />
-  <IllustSection />
-  <hr />
-  <CharacterSection />
-  <hr />
-  <OwnerSection />
-  <hr />
-  <a href="/other">その他のコンテンツ</a>
-  <hr />
-  <Blog />
-  <hr />
-  <Memo />
-  <hr />
+  <div class="contents">
+    <ul>
+      <li><p><a href="/about">このサイトについて</a></p></li>
+      <li><p><a href="/novel">一次創作</a></p></li>
+      <li><p><a href="/illust">イラスト</a></p></li>
+      <li><p><a href="/other">ブログ</a></p></li>
+      <li><p><a href="/other">その他のコンテンツ</a></p></li>
+    </ul>
+  </div>
   <div class="link">
     <p>
       <a href="https://wavebox.me/wave/1zpw4z8irp585mvq/" target="_blank"
@@ -62,13 +46,44 @@ import { mySiteName } from '@/constants/constants'
     justify-content: center;
     width: 100%;
   }
-  .topSection {
+  .construction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      margin-bottom: 8px;
+    }
+  }
+  .top {
     p {
       text-align: center;
+      font-size: 1.2rem;
+    }
+  }
+  .contents {
+    display: flex;
+    justify-content: center;
+    li {
+      margin: 8px;
+      p {
+        text-align: center;
+      }
     }
   }
   .link {
-    margin-top: 3rem;
+    margin-top: 16px;
     text-align: center;
+  }
+  .history {
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+
+    .inner {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      max-width: 400px;
+    }
   }
 </style>
