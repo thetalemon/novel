@@ -27,7 +27,7 @@ function formatDate(day: string): string {
     <h1>{post.data?.title}</h1>
     {
       post.data?.pubDate ? (
-        <p class="date">{formatDate(String(post.data?.pubDate))}</p>
+        <p class="pubDate">{formatDate(String(post.data?.pubDate))}</p>
       ) : null
     }
     <div class="md-content">
@@ -37,7 +37,8 @@ function formatDate(day: string): string {
 </Layout>
 
 <style lang="scss">
-  .date {
+  .pubDate {
     text-align: right;
+    margin-bottom: 24px;
   }
 </style>
