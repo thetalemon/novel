@@ -37,3 +37,63 @@ const STYLE = styleHelper([
     );
   }
 </style>
+
+<script type="module">
+  function addKutenSpacing(root = document) {
+    const containers = root.querySelectorAll('.md-content')
+    const excludeTags = new Set([
+      'A',
+      'CODE',
+      'PRE',
+      'SCRIPT',
+      'STYLE',
+      'IMG',
+      'TEXTAREA',
+    ])
+
+    containers.forEach((container) => {
+      const walker = document.createTreeWalker(
+        container,
+        NodeFilter.SHOW_TEXT,
+        null,
+      )
+      const toReplace = []
+      while (walker.nextNode()) {
+        const node = walker.currentNode
+        const parentTag = node.parentElement && node.parentElement.tagName
+        if (parentTag && excludeTags.has(parentTag)) continue
+        if (node.nodeValue && node.nodeValue.includes('。'))
+          toReplace.push(node)
+      }
+
+      toReplace.forEach((textNode) => {
+        const parent = textNode.parentNode
+        const parts = textNode.nodeValue.split(/(。)/)
+        const frag = document.createDocumentFragment()
+        for (let i = 0; i < parts.length; i++) {
+          const part = parts[i]
+          if (part === '。') {
+            frag.appendChild(document.createTextNode('。'))
+            const next = parts[i + 1] || ''
+            if (next && !/^[\s\u3000]/.test(next)) {
+              const span = document.createElement('span')
+              span.className = 'ja-kuten-space'
+              frag.appendChild(span)
+            }
+          } else if (part) {
+            frag.appendChild(document.createTextNode(part))
+          }
+        }
+        parent.replaceChild(frag, textNode)
+      })
+    })
+  }
+
+  if (typeof window !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => addKutenSpacing())
+    } else {
+      addKutenSpacing()
+    }
+  }
+</script>

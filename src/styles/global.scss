@@ -124,10 +124,17 @@ main {
   p {
     margin-bottom: 32px;
     line-height: 1.75;
+    white-space: pre-line;
   }
   h2,
   h3 {
     margin-top: 40px;
     margin-bottom: 16px;
   }
+}
+
+/* Small space after Japanese full stop '。' inserted by client script */
+.ja-kuten-space {
+  display: inline-block;
+  width: 0.25em;
 }

@@ -3,8 +3,9 @@ import Header from '@/components/Header.astro'
 import Head from '@/layouts/components/Head.astro'
 import Body from '@/layouts/components/Body.astro'
 import Footer from '@/components/Footer.astro'
-import Menu from '@/components/feature/Menu.astro'
 import '@/styles/global.scss'
+import { Image } from 'astro:assets'
+import Clap from '@/img/clap.gif'
 
 export interface Props {
   title: string
@@ -26,7 +27,16 @@ const { title, ogImage } = Astro.props
             <slot />
           </div>
         </div>
-        <Menu class="menu" />
+        <div class="link">
+          <p>
+            <a href="https://wavebox.me/wave/1zpw4z8irp585mvq/" target="_blank"
+              ><Image src={Clap} alt="はくしゅ" height={16} /></a
+            >
+          </p>
+          <p>
+            <a href="/novel" target="_blank">一次創作トップ</a>
+          </p>
+        </div>
       </article>
     </main>
     <Footer />
@@ -46,12 +56,13 @@ const { title, ogImage } = Astro.props
     margin: 2rem 0;
     line-height: 2;
   }
+  .link {
+    margin-top: 16px;
+    text-align: center;
+  }
 </style>
 
 <style lang="scss" is:global>
-  .menu {
-    margin-top: 40px;
-  }
   img {
     max-width: 100%;
     height: auto;

@@ -1,22 +1,31 @@
 ---
+import { Icon } from 'astro-icon/components'
+
 export interface Props {
   slug: string
   title: string
+  new?: boolean
 }
 
-const { slug, title } = Astro.props
+const { slug, title, new: isNew } = Astro.props
 const path = `/novel/${slug}/`
 ---
 
 {
   Astro.url.pathname === path ? (
     <li class="current">
-      <p>{title}</p>
+      <>
+        <p>
+          {title}
+          {isNew && <Icon name="new" />}
+        </p>
+      </>
     </li>
   ) : (
     <li>
       <p>
         <a href={path}>{title}</a>
+        {isNew && <Icon name="new" />}
       </p>
     </li>
   )
@@ -27,6 +36,11 @@ const path = `/novel/${slug}/`
     p {
       margin: 0.5rem 0rem 0.5rem 1.25rem;
       font-size: 1rem;
+      display: flex;
+      align-items: center;
+      svg {
+        margin-left: 0.5rem;
+      }
     }
 
     &.current {

@@ -8,6 +8,10 @@ const isMenu = Astro.url.pathname !== '/'
 
 <div class={isMenu ? 'menu' : 'topMenu'}>
   <h2>Novel</h2>
+  <h3>短編</h3>
+  <ul>
+    <NovelItem slug="greyyellow" title="grey, yellow" new={true} />
+  </ul>
   <h3>朱を交える</h3>
   <ul>
     <NovelItem slug="syumaji/shinsyunoichinichi" title="真朱の1日-夏の手前-" />

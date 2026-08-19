@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
 import mdx from '@astrojs/mdx'
 import rehypeExternalLinks from 'rehype-external-links'
+import remarkGfm from 'remark-gfm'
 import { unified } from '@astrojs/markdown-remark'
 
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
   integrations: [icon(), sitemap(), mdx()],
   markdown: {
     processor: unified({
+      remarkPlugins: [remarkGfm],
       rehypePlugins: [
         [
           rehypeExternalLinks,
