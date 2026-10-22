@@ -1,15 +1,22 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import { Image } from 'astro:assets'
-import { allCharacterList } from '@/data/character/index'
+import { RyuCharacterList } from '@/data/character/series/ryu'
+import { yasuragiCharacterList } from '@/data/character/series/yasuragi'
 import { myUrl } from '@/constants/constants'
+import type { Character } from '@/types/character'
 
 export const getStaticPaths = async () => {
+  const allCharacterList: Character[] = [
+    ...RyuCharacterList,
+    ...yasuragiCharacterList,
+  ]
   return allCharacterList.map((character) => ({
     params: { slug: character.slug },
     props: { character },
   }))
 }
+
 const { character } = Astro.props
 const ogpPath = `${myUrl}${character.img.src}`
 ---
