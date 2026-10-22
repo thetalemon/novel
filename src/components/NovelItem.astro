@@ -11,25 +11,23 @@ const { slug, title, new: isNew } = Astro.props
 const path = `/novel/${slug}/`
 ---
 
-{
-  Astro.url.pathname === path ? (
-    <li class="current">
-      <>
-        <p>
-          {title}
-          {isNew && <Icon name="new" />}
-        </p>
-      </>
-    </li>
-  ) : (
-    <li>
+{Astro.url.pathname === path ? (
+  <li class="current">
+    <>
       <p>
-        <a href={path}>{title}</a>
+        {title}
         {isNew && <Icon name="new" />}
       </p>
-    </li>
-  )
-}
+    </>
+  </li>
+) : (
+  <li>
+    <p>
+      <a href={path}>{title}</a>
+      {isNew && <Icon name="new" />}
+    </p>
+  </li>
+)}
 
 <style lang="scss">
   li {

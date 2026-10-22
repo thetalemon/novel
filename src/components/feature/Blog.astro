@@ -12,14 +12,12 @@ const sortedBlogEntries = blogEntries.sort(
 <div class="topMenu">
   <h2>きろく</h2>
   <ul>
-    {
-      sortedBlogEntries.map((post) => (
-        <PostItem
-          href={`/blog/${post.id}`}
-          title={post.data?.title}
-          date={String(post.data?.pubDate)}
-        />
-      ))
-    }
+    {sortedBlogEntries.map((post) => (
+      <PostItem
+        href={`/blog/${post.id}`}
+        title={post.data?.title}
+        date={String(post.data?.pubDate)}
+      />
+    ))}
   </ul>
 </div>

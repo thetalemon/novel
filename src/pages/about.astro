@@ -12,14 +12,19 @@ import { Image } from 'astro:assets'
     <dd>まなさす</dd>
     <dt>SNS</dt>
     <dd>
-      <a href="https://fedibird.com/@thetalemon/" target="_blank"> fedibird </a>
+      <a href="https://fedibird.com/@thetalemon/" target="_blank">
+        {' '}
+        fedibird{' '}
+      </a>
     </dd>
     <dt>サイト名</dt>
     <dd>北極の とある倉庫</dd>
     <dt>サイトアドレス</dt>
     <dd>https://novel.manasas.dev/</dd>
     <dt>バナー</dt>
-    <dd><Image src={BannerImage} alt="バナー" /></dd>
+    <dd>
+      <Image src={BannerImage} alt="バナー" />
+    </dd>
   </dl>
 </Layout>
 

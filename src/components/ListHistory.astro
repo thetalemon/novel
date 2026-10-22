@@ -12,25 +12,21 @@ const showList = slice ? HistoryList.slice(0, slice) : HistoryList
 ---
 
 <ul>
-  {
-    showList.map((item) => {
-      return (
-        <li>
-          <p class="date">{getDate(item.date)}</p>
-          <p set:html={item.description} />
-        </li>
-      )
-    })
-  }
-  {
-    slice && slice < HistoryList.length && (
-      <li class="more">
-        <p>
-          <a href="/history">更に過去の更新履歴を見る</a>
-        </p>
+  {showList.map((item) => {
+    return (
+      <li>
+        <p class="date">{getDate(item.date)}</p>
+        <p set:html={item.description} />
       </li>
     )
-  }
+  })}
+  {slice && slice < HistoryList.length && (
+    <li class="more">
+      <p>
+        <a href="/history">更に過去の更新履歴を見る</a>
+      </p>
+    </li>
+  )}
 </ul>
 
 <style lang="scss">

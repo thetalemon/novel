@@ -16,19 +16,17 @@ function formatDate(day: string): string {
 <Layout title="Blog">
   <h1>Blog</h1>
   <ul>
-    {
-      blogEntries
-        .sort(
-          (a, b) =>
-            new Date(String(b.data?.pubDate)).getTime() -
-            new Date(String(a.data?.pubDate)).getTime(),
-        )
-        .map((post) => (
-          <li>
-            <a href={`/blog/${post.id}`}>{post.data?.title}</a>
-            <small> — {formatDate(String(post.data?.pubDate))}</small>
-          </li>
-        ))
-    }
+    {blogEntries
+      .sort(
+        (a, b) =>
+          new Date(String(b.data?.pubDate)).getTime() -
+          new Date(String(a.data?.pubDate)).getTime(),
+      )
+      .map((post) => (
+        <li>
+          <a href={`/blog/${post.id}`}>{post.data?.title}</a>
+          <small> — {formatDate(String(post.data?.pubDate))}</small>
+        </li>
+      ))}
   </ul>
 </Layout>

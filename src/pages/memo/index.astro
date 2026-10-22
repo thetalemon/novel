@@ -17,20 +17,18 @@ function formatDate(day: string): string {
   <h1>Memo</h1>
   <p>創作小ネタとかifとかそういうもの</p>
   <ul>
-    {
-      memoEntries
-        .sort(
-          (a, b) =>
-            new Date(String(b.data?.pubDate)).getTime() -
-            new Date(String(a.data?.pubDate)).getTime(),
-        )
-        .map((post) => (
-          <li>
-            <a href={`/memo/${post.id}`}>{post.data?.title}</a>
-            <small> — {formatDate(String(post.data?.pubDate))}</small>
-            <small> {post.data?.tags?.join(', ')} </small>
-          </li>
-        ))
-    }
+    {memoEntries
+      .sort(
+        (a, b) =>
+          new Date(String(b.data?.pubDate)).getTime() -
+          new Date(String(a.data?.pubDate)).getTime(),
+      )
+      .map((post) => (
+        <li>
+          <a href={`/memo/${post.id}`}>{post.data?.title}</a>
+          <small> — {formatDate(String(post.data?.pubDate))}</small>
+          <small> {post.data?.tags?.join(', ')} </small>
+        </li>
+      ))}
   </ul>
 </Layout>

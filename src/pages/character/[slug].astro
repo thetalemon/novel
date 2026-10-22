@@ -15,21 +15,21 @@ const ogpPath = `${myUrl}${character.img.src}`
 ---
 
 <Layout title={character.name} ogImage={ogpPath}>
-    <Image src={character.img} alt={character.name} width={250} height={250} />
-    <h1>{character.name}</h1>
-    <div set:html={character.text} />
-    {
-      character.related && character.related.length > 0 && (
-          <h2>関連キャラクター</h2>
-          <ul>
-            {character.related.map((related) => (
-              <li>
-                <a href={`/character/${related.slug}`}>{related.name}</a>
-              </li>
-            ))}
-          </ul>
-      )
-    }
+  <Image src={character.img} alt={character.name} width={250} height={250} />
+  <h1>{character.name}</h1>
+  <div set:html={character.text} />
+  {character.related && character.related.length > 0 && (
+    <>
+      <h2>関連キャラクター</h2>
+      <ul>
+        {character.related.map((related) => (
+          <li>
+            <a href={`/character/${related.slug}`}>{related.name}</a>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
 </Layout>
 
 <style lang="scss">

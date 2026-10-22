@@ -13,14 +13,12 @@ const sortedMemoEntries = memoEntries.sort(
 <div class="topMenu">
   <h2>memo</h2>
   <ul>
-    {
-      sortedMemoEntries.map((post) => (
-        <PostItem
-          href={`/memo/${post.id}`}
-          title={post.data?.title}
-          date={String(post.data?.pubDate)}
-        />
-      ))
-    }
+    {sortedMemoEntries.map((post) => (
+      <PostItem
+        href={`/memo/${post.id}`}
+        title={post.data?.title}
+        date={String(post.data?.pubDate)}
+      />
+    ))}
   </ul>
 </div>

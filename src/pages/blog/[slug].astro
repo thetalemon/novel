@@ -25,11 +25,9 @@ function formatDate(day: string): string {
 <Layout title={post.data?.title || 'Blog'}>
   <article>
     <h1>{post.data?.title}</h1>
-    {
-      post.data?.pubDate ? (
-        <p class="pubDate">{formatDate(String(post.data?.pubDate))}</p>
-      ) : null
-    }
+    {post.data?.pubDate ? (
+      <p class="pubDate">{formatDate(String(post.data?.pubDate))}</p>
+    ) : null}
     <div class="md-content">
       <Content />
     </div>

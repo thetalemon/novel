@@ -15,13 +15,11 @@ import { allTankaList } from '@/data/tanka/index'
   <section>
     <h2>短歌</h2>
     <ul class="novelList">
-      {
-        allTankaList.map((tanka) => (
-          <li>
-            <a href={`/tanka/${tanka.slug}`}>{tanka.name}</a>
-          </li>
-        ))
-      }
+      {allTankaList.map((tanka) => (
+        <li>
+          <a href={`/tanka/${tanka.slug}`}>{tanka.name}</a>
+        </li>
+      ))}
     </ul>
   </section>
   <section>

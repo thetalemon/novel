@@ -11,14 +11,12 @@ const { tankaList } = Astro.props
 ---
 
 <ul class=`mainContent ${TankaMain.getClassName()}`>
-  {
-    tankaList.map((tanka, index) => (
-      <TankaCard id={String(index + 1)}>
-        <span slot="first-line">{tanka.first}</span>
-        <span slot="second-line">{tanka.second}</span>
-      </TankaCard>
-    ))
-  }
+  {tankaList.map((tanka, index) => (
+    <TankaCard id={String(index + 1)}>
+      <span slot="first-line">{tanka.first}</span>
+      <span slot="second-line">{tanka.second}</span>
+    </TankaCard>
+  ))}
 </ul>
 
 <style lang="scss">

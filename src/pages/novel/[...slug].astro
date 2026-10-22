@@ -22,16 +22,14 @@ const frontImage = post.data?.image ?? null
 ---
 
 <NovelLayout title={post.data?.title || 'Novel'}>
-  {
-    frontImage ? (
-      <img
-        src={frontImage}
-        alt={post.data?.title || 'page image'}
-        width="450"
-        height="450"
-      />
-    ) : null
-  }
+  {frontImage ? (
+    <img
+      src={frontImage}
+      alt={post.data?.title || 'page image'}
+      width="450"
+      height="450"
+    />
+  ) : null}
   <div class="md-content">
     <Content />
   </div>

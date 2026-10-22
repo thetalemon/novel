@@ -25,12 +25,12 @@ function formatDate(day: string): string {
 <Layout title={post.data?.title || 'Memo'}>
   <article>
     <h1>{post.data?.title}</h1>
-    {
-      post.data?.pubDate ? (
-        <p class="date">{formatDate(String(post.data?.pubDate))}</p>
-      ) : null
-    }
-    <p>タグ: <small>{post.data?.tags?.join(', ')}</small></p>
+    {post.data?.pubDate ? (
+      <p class="date">{formatDate(String(post.data?.pubDate))}</p>
+    ) : null}
+    <p>
+      タグ: <small>{post.data?.tags?.join(', ')}</small>
+    </p>
     <div class="md-content">
       <Content />
     </div>
