@@ -6,16 +6,20 @@ import Memo from '@/components/feature/Memo.astro'
 ---
 
 <Layout title="一次創作">
+  <h2>Novel</h2>
+  <!-- <div>
+    <p class="introduction">
+      <a href="/novel/introduction">世界観紹介</a>
+    </p>
+  </div> -->
   <NovelList />
   <CharacterSection />
   <Memo />
 </Layout>
 
 <style lang="scss">
-  section {
-    margin: 40px 0;
-  }
-  li {
-    margin-left: 16px;
+  .introduction {
+    font-size: 1.5rem;
+    text-align: center;
   }
 </style>

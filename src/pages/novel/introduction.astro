@@ -1,0 +1,21 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import NovelList from '@/components/feature/NovelList.astro'
+import CharacterSection from '@/components/feature/CharacterSection.astro'
+import Memo from '@/components/feature/Memo.astro'
+---
+
+<Layout title="一次創作">
+  <NovelList />
+  <CharacterSection />
+  <Memo />
+</Layout>
+
+<style lang="scss">
+  section {
+    margin: 40px 0;
+  }
+  li {
+    margin-left: 16px;
+  }
+</style>

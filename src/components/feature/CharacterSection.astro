@@ -1,8 +1,8 @@
 ---
 import ListImage from '@/components/ListImage.astro'
-import { allCharacterList } from '@/data/character/index'
+import { yasuragiCharacterList } from '@/data/character/series/yasuragi'
 
-const list = allCharacterList.map((item) => {
+const list = yasuragiCharacterList.map((item) => {
   return {
     path: `/character/${item.slug}/`,
     img: item.img,
