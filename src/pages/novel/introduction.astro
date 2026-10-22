@@ -1,21 +1,158 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import NovelList from '@/components/feature/NovelList.astro'
-import CharacterSection from '@/components/feature/CharacterSection.astro'
-import Memo from '@/components/feature/Memo.astro'
+import MayuImage from '@/data/character/mayu.png'
+import MaoImage from '@/data/character/mao.png'
+import masagoImage from '@/data/character/masago.png'
+import sakaeImage from '@/data/character/sakae.png'
+import ikomaImage from '@/data/character/ikoma.png'
+import riiImage from '@/data/character/rii.png'
+import kisakiImage from '@/data/character/kisaki.png'
+import ichiseImage from '@/data/character/ichise.png'
+import kanaeImage from '@/data/character/kanae.png'
+import mizukiImage from '@/data/character/mizuki.png'
+import cecilImage from '@/data/character/cecil.png'
+import { Image } from 'astro:assets'
 ---
 
-<Layout title="一次創作">
-  <NovelList />
-  <CharacterSection />
-  <Memo />
+<Layout title="世界観紹介">
+  <h1>世界観紹介</h1>
+  <div>
+    <p>現代とは似てるようで少し違う、すこしこわれた世界。</p>
+  </div>
+
+  <h2>キャラクター</h2>
+  <h3>hazamaya</h3>
+  <div>
+    <p>どこかの街の裏路地にひっそりある服飾店。</p>
+  </div>
+
+  <h4>■ 和泉 真由 (いずみ まゆ)</h4>
+  <div class="character-image">
+    <Image src={MayuImage} alt="和泉 真由" />
+  </div>
+  <p>
+    hazamayaの店主。服作り担当。
+    <br />
+    集中したら時間を忘れるタイプなのでお店のことは真央に任せている。
+  </p>
+
+  <h4>■ 和泉 真央 (いずみ まお)</h4>
+  <div class="character-image">
+    <Image src={MaoImage} alt="和泉 真央" />
+  </div>
+  <p>
+    hazamayaの店主。接客と経理とか担当。
+    <br />
+    真由の双子。真由の服を売るのが好き。
+  </p>
+
+  <h3>和風バンド（名前未定）</h3>
+  <h4>■ ユキ</h4>
+  <div class="character-image">
+    <Image src={masagoImage} alt="ユキ" />
+  </div>
+  <p>
+    和風バンドのボーカル。
+    <br />
+    自分が世界で1番かわいい。
+  </p>
+  <h4>■ サカエ</h4>
+  <div class="character-image">
+    <Image src={sakaeImage} alt="サカエ" />
+  </div>
+  <p>
+    和風バンドのドラム。
+    <br />
+    好きな服装をするのが大好き。
+  </p>
+  <h4>■ 生駒</h4>
+  <div class="character-image">
+    <Image src={ikomaImage} alt="生駒" />
+  </div>
+  <p>
+    和風バンドのキーボード。
+    <br />
+    クールビューティー。
+  </p>
+
+  <h3>そのほか</h3>
+  <h4>■ りい</h4>
+  <div class="character-image">
+    <Image src={riiImage} alt="りい" />
+  </div>
+  <p>
+    hazamayaのお客さん。
+    <br />
+    やりたい服装との間に葛藤があり、悩んでいる。
+  </p>
+
+  <h4>■ 雨宮 希咲</h4>
+  <div class="character-image">
+    <Image src={kisakiImage} alt="雨宮 希咲" />
+  </div>
+  <p>
+    hazamayaのお客さん。
+    <br />
+    身長が高くて似合う服装に悩んでいる。
+  </p>
+
+  <h4>■ 浮舟 市瀬（うきふね いちせ）</h4>
+  <div class="character-image">
+    <Image src={ichiseImage} alt="浮舟 市瀬" />
+  </div>
+  <p>
+    和泉兄弟のお隣さん。
+    <br />
+    昔からゴスロリを着ている。真由が服を作るきっかけのひとり。
+  </p>
+
+  <h4>■ みずき</h4>
+  <div class="character-image">
+    <Image src={mizukiImage} alt="みずき" />
+  </div>
+  <p>
+    市瀬のお隣さん。
+    <br />
+    市瀬の服装に憧れがある。
+  </p>
+
+  <h4>■ 奏永（かなえ）</h4>
+  <div class="character-image">
+    <Image src={kanaeImage} alt="奏永" />
+  </div>
+  <p>市瀬のまわりにふわっと現れる神出鬼没の謎の存在。</p>
+
+  <h4>■ 瀬知（せしる）</h4>
+  <div class="character-image">
+    <Image src={cecilImage} alt="せしる" />
+  </div>
+  <p>
+    迷子。
+    <br />
+    この服装にこだわりがあるが、理由は教えてくれない。どこから来たのかも教えてくれない。
+  </p>
 </Layout>
 
 <style lang="scss">
-  section {
-    margin: 40px 0;
+  .character-image {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+    img {
+      max-width: 100%;
+      width: auto;
+      max-height: 320px;
+    }
   }
-  li {
-    margin-left: 16px;
+
+  h2 {
+    margin: 32px 0 0 0;
+  }
+  h3 {
+    margin: 40px 0 8px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  h4 {
+    margin: 32px 0 0 0;
   }
 </style>
